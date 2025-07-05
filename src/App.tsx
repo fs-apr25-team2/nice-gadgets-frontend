@@ -1,4 +1,3 @@
-import './App.scss';
 import { Root } from './Root';
 
 function App() {
