@@ -1,7 +1,8 @@
-import './App.css';
+import './App.scss';
+import { Root } from './Root';
 
 function App() {
-  return <div>Home Page</div>;
+  return <Root />;
 }
 
 export default App;
