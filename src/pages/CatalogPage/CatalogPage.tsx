@@ -10,7 +10,10 @@ type Props = {
 export const CatalogPage: React.FC<Props> = ({ catalogCategory }) => {
   return (
     <div>
-      <Heading title={catalogCategory} />
+      <Heading
+        tag="h1"
+        title={catalogCategory}
+      />
 
       <div>Catalog page</div>
     </div>

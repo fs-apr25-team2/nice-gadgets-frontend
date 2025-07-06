@@ -1,37 +1,43 @@
-@import './styles/utils/normalize';
-@import './styles/utils/font';
-@import './styles/utils/variables';
-@import './styles/utils/mixins';
+@use './styles/utils/normalize' as *;
+@use './styles/utils/fonts' as *;
+@use './styles/utils/variables' as *;
+@use './styles/utils/mixins' as *;
+@use './styles/typography' as *;
 
-.theme {
-  // from figma
-  $primary-color: #313237;
-  $secondary-color: #889395;
-  $icons-color: #b4bdc3;
-  $elements-color: #e2e6e9;
-  $hover-background-color: #e2e6e9;
-  $white-color: #ffffff;
-  $green-color: #eb5757;
-  $red-color: #27ae60;
+:root {
+  --primary-color: #313237;
+  --secondary-color: #889395;
+  --icons-color: #b4bdc3;
+  --elements-color: #e2e6e9;
+  --hover-background-color: #e2e6e9;
+  --white-color: #ffffff;
+  --green-color: #27ae60;
+  --red-color: #eb5757;
 
-  // for using
-  --main-background-color: $white-color;
-  --title-color: $primary-color;
+  --main-background-color: var(--white-color);
+  --title-color: var(--primary-color);
 
-  &--dark {
-    $secondary-color: #75767f;
-    $icons-color: #4a4d58;
-    $elements-color: #3b3e4a;
-    $surface2-color: #323542;
-    $surface1-color: #161827;
-    $black-color: #0f1121;
-    $white-color: #f1f2f9;
-    $purple-accent-color: #905bff;
-    $purple-hover-color: #a378ff;
-    $green-color: #27ae60;
-    $red-color: #eb5757;
+  font-family: 'Mont', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
 
-    --main-background-color: $black-color;
-    --title-color: $white-color;
-  }
+  background-color: var(--main-background-color);
+}
+
+.theme--dark {
+  --primary-color: #f1f2f9;
+  --secondary-color: #75767f;
+  --icons-color: #4a4d58;
+  --elements-color: #3b3e4a;
+  --surface2-color: #323542;
+  --surface1-color: #161827;
+  --black-color: #0f1121;
+  --white-color: #f1f2f9;
+  --purple-accent-color: #905bff;
+  --purple-hover-color: #a378ff;
+  --green-color: #27ae60;
+  --red-color: #eb5757;
+
+  --main-background-color: var(--black-color);
+  --title-color: var(--white-color);
 }
