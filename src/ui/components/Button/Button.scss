@@ -1,0 +1,29 @@
+.button {
+  &--primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 176px;
+    height: 40px;
+    color: var(--white-color);
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 700;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    transition: 0.3s ease;
+
+    &:hover:not(&-selected) {
+      box-shadow: 0 3px 13px #17203166;
+      transition: 0.3s ease;
+    }
+
+    &-selected {
+      background-color: var(--white-color);
+      color: var(--green-color);
+      transition: 0.3s ease;
+      border: 1px solid var(--elements-color);
+      box-shadow: none;
+    }
+  }
+}
