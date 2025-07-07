@@ -1,19 +1,14 @@
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useNavigate } from 'react-router';
 import { ArrowLeftIcon } from '../../ui/icons/ArrowLeftIcon';
+import { Product } from '../../types/types';
 
 import './CartPage.scss';
 
-type Product = {
-  itemId: string;
-  name: string;
-  price: number;
-  image: string;
-  quantity?: number;
-};
+type CartProduct = Product & { quantity?: number };
 
 export const CartPage: React.FC = () => {
-  const [cartItems, setCartItems] = useLocalStorage<Product[]>('cart', []);
+  const [cartItems, setCartItems] = useLocalStorage<CartProduct[]>('cart', []);
   const navigate = useNavigate();
 
   const removeFromCart = (itemId: string) => {
