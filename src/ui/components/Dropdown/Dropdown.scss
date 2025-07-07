@@ -1,0 +1,54 @@
+@use '../../../index.scss';
+
+.dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: var(--primary-color);
+  border: 1px solid var(--elements-color);
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  min-width: 120px;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--secondary-color);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.dropdown-content {
+  margin-top: 6px;
+  background-color: white;
+  border: 1px solid var(--elements-color);
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  padding: 4px 0;
+  min-width: 140px;
+  z-index: 1000;
+}
+
+.dropdown-item {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: var(--primary-color);
+  cursor: pointer;
+  user-select: none;
+
+  &:hover,
+  &:focus {
+    background-color: var(--elements-color);
+    outline: none;
+  }
+
+  &[data-disabled] {
+    color: var(--secondary-color);
+    cursor: not-allowed;
+  }
+}
