@@ -1,14 +1,12 @@
 import React from 'react';
-import { HashRouter, Routes, Route } from 'react-router';
+import { HashRouter, Routes, Route, Navigate } from 'react-router';
 import { AppLayout } from './pages/AppLayout';
 import { HomePage } from './pages/HomePage/HomePage';
-import { PhonesPage } from './pages/PhonesPage';
-import { TabletsPage } from './pages/TabletsPage';
-import { AccessoriesPage } from './pages/AccessoriesPage';
 import { CartPage } from './pages/CartPage';
 import { FavouritesPage } from './pages/FavouritesPage';
 import { ProductPage } from './pages/ProductPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { CatalogPage } from './pages/CatalogPage';
 
 export const Root: React.FC = () => (
   <HashRouter>
@@ -18,22 +16,16 @@ export const Root: React.FC = () => (
           index
           element={<HomePage />}
         />
-        <Route
-          path="/phones"
-          element={<PhonesPage />}
-        />
-        <Route
-          path="/tablets"
-          element={<TabletsPage />}
-        />
-        <Route
-          path="/accessories"
-          element={<AccessoriesPage />}
-        />
-        <Route
-          path="/product/:productId"
-          element={<ProductPage />}
-        />
+        <Route path=":category">
+          <Route
+            index
+            element={<CatalogPage />}
+          />
+          <Route
+            path=":productId"
+            element={<ProductPage />}
+          />
+        </Route>
         <Route
           path="/cart"
           element={<CartPage />}
@@ -43,8 +35,12 @@ export const Root: React.FC = () => (
           element={<FavouritesPage />}
         />
         <Route
-          path="*"
+          path="/not-found"
           element={<NotFoundPage />}
+        />
+        <Route
+          path="*"
+          element={<Navigate to="/not-found" />}
         />
       </Route>
     </Routes>
