@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import './Heading.scss';
 
 type Tag = 'h1' | 'h2' | 'h3' | 'h4';
@@ -11,5 +12,9 @@ type Props = {
 export const Heading: React.FC<Props> = ({ tag, title }) => {
   const Tag = tag;
 
-  return <Tag className="typography typography--h1">{title}</Tag>;
+  return (
+    <Tag className={classNames('typography', `typography--${tag}`)}>
+      {title}
+    </Tag>
+  );
 };
