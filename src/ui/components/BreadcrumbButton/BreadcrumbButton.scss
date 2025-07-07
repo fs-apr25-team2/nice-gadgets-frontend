@@ -1,0 +1,30 @@
+.button {
+  &--breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--secondary-color);
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 12px;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+
+  &__breadcrumb-text {
+    font-family: 'Mont', sans-serif;
+    transform: translateY(0.5px);
+  }
+
+  &__breadcrumb-icon {
+    display: flex;
+    color: var(--primary-color);
+  }
+}

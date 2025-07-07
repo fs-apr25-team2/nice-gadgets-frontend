@@ -1,0 +1,30 @@
+.button {
+  &--color {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--elements-color);
+    cursor: pointer;
+    background-color: var(--white-color);
+    transition: 0.3s ease;
+
+    &:hover:not(&-selected) {
+      border: 1px solid var(--icons-color);
+    }
+
+    &-selected {
+      border: 1px solid var(--primary-color);
+    }
+  }
+
+  &__color-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--white-color);
+    box-sizing: border-box;
+  }
+}
