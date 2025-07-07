@@ -13,7 +13,6 @@ $regular-weight: 400;
     line-height: 41px;
     letter-spacing: -0.01em;
     font-weight: $bold-weight;
-    color: var(--title-color);
 
     @include on-tablet {
       font-size: 48px;
@@ -25,7 +24,6 @@ $regular-weight: 400;
     font-size: 22px;
     line-height: 31px;
     font-weight: $bold-weight;
-    color: var(--title-color);
 
     @include on-tablet {
       font-size: 32px;
@@ -38,7 +36,6 @@ $regular-weight: 400;
     font-size: 20px;
     line-height: 26px;
     font-weight: $semibold-weight;
-    color: var(--title-color);
 
     @include on-tablet {
       font-size: 22px;
@@ -51,7 +48,6 @@ $regular-weight: 400;
     font-size: 16px;
     line-height: 20px;
     font-weight: $semibold-weight;
-    color: var(--title-color);
 
     @include on-tablet {
       font-size: 20px;
