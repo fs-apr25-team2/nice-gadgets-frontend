@@ -1,11 +1,9 @@
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useNavigate } from 'react-router';
 import { ArrowLeftIcon } from '../../ui/icons/ArrowLeftIcon';
-import { Product } from '../../types/types';
+import { CartProduct } from '../../types/types';
 
 import './CartPage.scss';
-
-type CartProduct = Product & { quantity?: number };
 
 export const CartPage: React.FC = () => {
   const [cartItems, setCartItems] = useLocalStorage<CartProduct[]>('cart', []);
@@ -43,64 +41,84 @@ export const CartPage: React.FC = () => {
       >
         {ArrowLeftIcon()} <span className="cart-page__back__text">Back</span>
       </button>
+
       <h1 className="cart-page__title">Cart</h1>
 
-      <div className="cart-page__content">
-        <div className="cart-page__items">
-          {cartItems.map((item) => (
-            <div
-              key={item.itemId}
-              className="cart-page__item"
-            >
-              <button
-                className="cart-page__remove"
-                onClick={() => removeFromCart(item.itemId)}
+      {cartItems.length === 0 ?
+        <div className="cart-page__empty">
+          <img
+            src="../../../img/cart-is-empty.png"
+            alt="Empty cart"
+            className="cart-page__empty-img"
+          />
+          <h2>Your cart is empty</h2>
+          <p>Looks like you haven’t added anything yet.</p>
+          <button
+            className="cart-page__checkout"
+            onClick={() => navigate('/')}
+          >
+            Continue Shopping
+          </button>
+        </div>
+      : <div className="cart-page__content">
+          <div className="cart-page__items">
+            {cartItems.map((item) => (
+              <div
+                key={item.itemId}
+                className="cart-page__item"
               >
-                ×
-              </button>
+                <button
+                  className="cart-page__remove"
+                  onClick={() => removeFromCart(item.itemId)}
+                >
+                  ×
+                </button>
 
-              <img
-                src={item.image}
-                alt={item.name}
-                className="cart-page__image"
-              />
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="cart-page__image"
+                />
 
-              <div className="cart-page__info-block">
-                <div className="cart-page__info">
-                  <div className="cart-page__name">{item.name}</div>
-                  <div className="cart-page__controls">
-                    <button
-                      className="cart-page__btn"
-                      onClick={() => changeQty(item.itemId, -1)}
-                    >
-                      -
-                    </button>
-                    <span className="cart-page__qty">{item.quantity ?? 1}</span>
-                    <button
-                      className="cart-page__btn"
-                      onClick={() => changeQty(item.itemId, 1)}
-                    >
-                      +
-                    </button>
+                <div className="cart-page__info-block">
+                  <div className="cart-page__info">
+                    <div className="cart-page__name">{item.name}</div>
+                    <div className="cart-page__controls">
+                      <button
+                        className="cart-page__btn"
+                        onClick={() => changeQty(item.itemId, -1)}
+                      >
+                        -
+                      </button>
+                      <span className="cart-page__qty">
+                        {item.quantity ?? 1}
+                      </span>
+                      <button
+                        className="cart-page__btn"
+                        onClick={() => changeQty(item.itemId, 1)}
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="cart-page__price">
+                    ${item.price * (item.quantity ?? 1)}
                   </div>
                 </div>
-
-                <div className="cart-page__price">
-                  ${item.price * (item.quantity ?? 1)}
-                </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="cart-page__summary">
-          <div className="cart-page__total">${total}</div>
-          <div className="cart-page__label">
-            Total for {totalQuantity} item{totalQuantity !== 1 && 's'}
+            ))}
           </div>
-          <button className="cart-page__checkout">Checkout</button>
+
+          <div className="cart-page__summary">
+            <div className="cart-page__total">${total}</div>
+            <div className="cart-page__label">
+              Total for {totalQuantity} item{totalQuantity !== 1 && 's'}
+            </div>
+            <button className="cart-page__checkout">Checkout</button>
+          </div>
         </div>
-      </div>
+      }
     </div>
   );
 };
