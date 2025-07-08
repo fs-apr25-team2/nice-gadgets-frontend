@@ -1,0 +1,25 @@
+.button {
+  &--favourites {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--icons-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    background-color: var(--white-color);
+    transition: 0.3s ease;
+
+    &:hover:not(&-selected) {
+      border: 1px solid var(--primary-color);
+      transition: 0.3s ease;
+    }
+
+    &-selected {
+      background-color: var(--white-color);
+      border: 1px solid var(--elements-color);
+      transition: 0.3s ease;
+    }
+  }
+}

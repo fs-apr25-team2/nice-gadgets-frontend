@@ -1,0 +1,27 @@
+.button {
+  &--pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--elements-color);
+    color: var(--primary-color);
+    font-family: 'Mont', sans-serif;
+    cursor: pointer;
+    background-color: var(--white-color);
+    transition: 0.3s ease;
+
+    &:hover {
+      border: 1px solid var(--primary-color);
+      transition: 0.3s ease;
+    }
+
+    &-selected {
+      background-color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      color: var(--white-color);
+      transition: 0.3s ease;
+    }
+  }
+}
