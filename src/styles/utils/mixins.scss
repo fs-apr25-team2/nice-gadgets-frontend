@@ -22,10 +22,10 @@
   @include on-tablet {
     padding-inline: 24px;
   }
-  @include on-small-desktop {
+  @include on-desktop {
     padding-inline: 32px;
   }
-  @include on-large-desktop {
+  @include on-big-desktop {
     padding-inline: 152px;
   }
 }
@@ -41,7 +41,7 @@
     --columns: 12;
   }
 
-  @include on-small-desktop {
+  @include on-desktop {
     --columns: 24;
   }
 }
