@@ -1,0 +1,82 @@
+@use '../../styles/utils/mixins.scss' as *;
+@use '../../styles/typography.scss' as *;
+
+.header {
+  background-color: var(--main-background-color);
+  border-bottom: 1px solid var(--elements-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+
+    @include on-desktop {
+      height: 64px;
+    }
+  }
+
+  .header__left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include on-desktop {
+      gap: 24px;
+    }
+
+    .logo {
+      width: 64px;
+      height: auto;
+      padding: 0 16px;
+
+      @include on-desktop {
+        width: 80px;
+        padding: 0 24px;
+      }
+    }
+  }
+
+  .header__nav {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+    }
+  }
+
+  &__right {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  .burger {
+    display: flex;
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+}

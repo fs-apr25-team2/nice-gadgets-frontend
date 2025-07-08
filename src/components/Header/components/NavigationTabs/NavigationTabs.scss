@@ -1,0 +1,63 @@
+@use '../../../../styles/utils/mixins.scss' as *;
+@use '../../../../styles/typography.scss' as *;
+
+.nav-tabs {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 32px;
+
+  &__item {
+    .nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      color: var(--secondary-color);
+      position: relative;
+      transition: color 0.3s;
+
+      @include on-desktop {
+        height: 64px;
+      }
+
+      &:hover {
+        color: var(--primary-color);
+      }
+
+      &.active {
+        color: var(--primary-color);
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 2px;
+          background-color: var(--primary-color);
+        }
+      }
+    }
+  }
+
+  &--horizontal {
+    flex-direction: row;
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &--vertical {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+
+    .nav-link {
+      justify-content: flex-start;
+      height: auto;
+      padding: 8px 0;
+    }
+  }
+}
