@@ -1,0 +1,60 @@
+@use '../../styles/utils/mixins.scss' as *;
+@use '../../styles/typography.scss' as *;
+
+.rights {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white-color);
+
+    @include content-padding-inline;
+
+    @include on-tablet {
+      padding-top: 40px;
+    }
+  }
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+  }
+
+  &__back__text {
+    margin-left: 8px;
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--secondary-color);
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+
+  &__title {
+    padding: 24px 0;
+    color: var(--primary-color);
+
+    @include on-tablet {
+      padding: 40px 0;
+    }
+  }
+
+  &__section {
+    margin-bottom: 16px;
+  }
+
+  &__section-title {
+    margin-bottom: 16px;
+    color: var(--primary-color);
+  }
+
+  &__text {
+    margin-bottom: 16px;
+    color: var(--secondary-color);
+  }
+}
