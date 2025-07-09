@@ -1,3 +1,5 @@
+@use '/src/styles/utils/variables.scss' as *;
+
 .button {
   &--color {
     display: flex;
@@ -26,5 +28,34 @@
     border-radius: 50%;
     border: 2px solid var(--white-color);
     box-sizing: border-box;
+
+    $colors: (
+      'black': $black,
+      'white': $white,
+      'silver': $silver,
+      'gold': $gold,
+      'rosegold': $rosegold,
+      'yellow': $yellow,
+      'red': $red,
+      'purple': $purple,
+      'green': $green,
+      'coral': $coral,
+      'midnightgreen': $midnightgreen,
+      'graphite': $graphite,
+      'sierrablue': $sierrablue,
+      'blue': $blue,
+      'pink': $pink,
+      'starlight': $starlight,
+      'midnight': $midnight,
+      'skyblue': $skyblue,
+      'spacegray': $spacegray,
+      'spaceblack': $spaceblack,
+    );
+
+    @each $name, $color in $colors {
+      &.#{$name} {
+        background-color: $color;
+      }
+    }
   }
 }
