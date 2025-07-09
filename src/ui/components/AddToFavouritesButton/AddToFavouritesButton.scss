@@ -21,5 +21,10 @@
       border: 1px solid var(--elements-color);
       transition: 0.3s ease;
     }
+
+    &--product {
+      width: 48px;
+      height: 48px;
+    }
   }
 }

@@ -1,0 +1,38 @@
+@use '/src/styles/utils/mixins.scss' as *;
+@use '/src/styles/typography.scss' as *;
+@use './MainInfo.scss' as *;
+
+.page {
+  min-width: 320px;
+  box-sizing: border-box;
+  @include content-padding-inline;
+  padding-top: 24px;
+
+  &__back {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 12px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+
+  &__back-text {
+    font-family: 'Mont', sans-serif;
+    font-weight: 700;
+    color: var(--secondary-color);
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+
+  &__title {
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+}

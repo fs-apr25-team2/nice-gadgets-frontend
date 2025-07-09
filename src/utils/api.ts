@@ -1,6 +1,13 @@
-import { Product, ProductDetails } from '../types/types';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Product, ProductCategory, ProductDetails } from '../types/types';
 
 const BASE_URL = '/api';
+
+function wait(delay: number) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, delay);
+  });
+}
 
 async function get<T>(url: string): Promise<T> {
   const fullURL = BASE_URL + url + '.json';
@@ -27,3 +34,19 @@ export const getProducts = () => get<Product[]>('/products');
 export const getPhones = () => get<ProductDetails[]>('/phones');
 export const getTablets = () => get<ProductDetails[]>('/tablets');
 export const getAccessories = () => get<ProductDetails[]>('/accessories');
+
+export async function getProductsByCategory(
+  category: ProductCategory,
+): Promise<ProductDetails[]> {
+  let data: ProductDetails[] = [];
+
+  if (category === 'phones') {
+    data = await getPhones();
+  } else if (category === 'tablets') {
+    data = await getTablets();
+  } else if (category === 'accessories') {
+    data = await getAccessories();
+  }
+
+  return data;
+}
