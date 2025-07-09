@@ -21,10 +21,7 @@ export const ColorSelectorsButton: React.FC<ColorSelectorsButtonProps> = ({
       })}
       onClick={onClick}
     >
-      <span
-        className="button__color-circle"
-        style={{ backgroundColor: color }}
-      />
+      <span className={cn('button__color-circle', `${color}`)} />
     </button>
   );
 };

@@ -49,3 +49,8 @@ export type ProductDetails = {
   zoom?: string;
   cell: string[];
 };
+
+export type ProductOptions = {
+  color?: string;
+  capacity?: string;
+};
