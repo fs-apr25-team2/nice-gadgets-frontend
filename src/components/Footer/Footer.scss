@@ -7,6 +7,10 @@
   font-size: 14px;
   color: var(--secondary-color);
   padding: 32px 0px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
 
   &__container {
     display: flex;
