@@ -27,18 +27,19 @@ export const Footer = () => {
           >
             Github
           </a>
-          <a
-            href="#"
+          <NavLink
+            to="contacts"
             className="footer__link typography typography--uppercase"
           >
             Contacts
-          </a>
-          <a
-            href="#"
+          </NavLink>
+
+          <NavLink
+            to="rights"
             className="footer__link typography typography--uppercase"
           >
             Rights
-          </a>
+          </NavLink>
         </nav>
 
         <div className="footer__back">
