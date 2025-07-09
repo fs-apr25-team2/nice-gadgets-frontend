@@ -4,6 +4,9 @@
   padding: 40px 20px;
   max-width: 1200px;
   margin: 0 auto;
+  min-height: calc(100vh - 250px);
+  display: flex;
+  flex-direction: column;
 
   &__back {
     background: none;
@@ -40,6 +43,7 @@
     column-gap: 16px;
     row-gap: 40px;
     grid-template-columns: repeat(4, 1fr);
+    flex: 1;
 
     @include on-tablet {
       grid-template-columns: repeat(12, 1fr);
@@ -210,6 +214,8 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    flex: 1;
+    min-height: 200px;
 
     img {
       width: 300px;
