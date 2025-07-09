@@ -4,21 +4,31 @@ import React from 'react';
 
 type AddToFavouritesButtonProps = {
   selected?: boolean;
+  variant?: 'home' | 'catalog' | 'product' | 'cart' | 'favourites';
   icon: React.ReactNode;
+  disabled?: boolean;
   onClick?: () => void;
 };
 
 export const AddToFavouritesButton: React.FC<AddToFavouritesButtonProps> = ({
   selected = false,
+  variant,
   icon,
+  disabled,
   onClick,
 }) => {
   return (
     <button
       type="button"
-      className={cn('button', 'button--favourites', {
-        'button--favourites-selected': selected,
-      })}
+      className={cn(
+        'button',
+        'button--favourites',
+        `button--favourites--${variant}`,
+        {
+          'button--favourites-selected': selected,
+        },
+      )}
+      disabled={disabled}
       onClick={onClick}
     >
       {icon}

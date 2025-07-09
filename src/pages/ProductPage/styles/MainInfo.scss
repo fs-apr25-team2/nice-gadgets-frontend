@@ -1,0 +1,244 @@
+@use '/src/styles/utils/variables.scss' as *;
+@use '/src/styles/utils/mixins.scss' as *;
+@use '/src/styles/utils/normalize.scss' as *;
+
+.main-info {
+  @include page-grid;
+  row-gap: 40px;
+}
+
+.images {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  @include on-tablet {
+    grid-column: 1 / 7;
+    flex-direction: row-reverse;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+  }
+
+  &__main {
+    width: 288px;
+    height: 288px;
+    grid-column: 1 / -1;
+    box-sizing: border-box;
+    padding: 11px;
+    display: flex;
+    justify-content: start;
+
+    @include on-desktop {
+      width: 464px;
+      height: 464px;
+    }
+  }
+  &__img {
+    width: 100%;
+    object-fit: contain;
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  &__slider {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+
+    @include on-tablet {
+      flex-direction: column;
+      justify-content: start;
+    }
+
+    &__img {
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+      cursor: pointer;
+
+      @include on-tablet {
+        min-height: 35px;
+      }
+
+      @include on-desktop {
+        height: 80px;
+      }
+    }
+  }
+}
+
+.features {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: 8 / -1;
+  }
+
+  @include on-desktop {
+    grid-column: 14 / 21;
+  }
+
+  &__head {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--elements-color);
+    margin: 24px 0;
+  }
+}
+
+.colors {
+  &__label {
+    color: var(--secondary-color);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    padding-top: 8px;
+  }
+
+  &__outline {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--elements-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--active {
+      border: 1px solid var(--primary-color);
+    }
+  }
+
+  &__item {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
+.capacity {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__label {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: var(--secondary-color);
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__memory {
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding-inline: 8px;
+    border: 1px solid var(--icons-color);
+    color: var(--primary-color);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    cursor: pointer;
+
+    &--active {
+      background-color: var(--primary-color);
+      color: var(--white-color);
+      border: 0;
+    }
+  }
+}
+
+.prices {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  &__discount {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    color: var(--secondary-color);
+  }
+
+  &__regular {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-decoration: line-through;
+    color: var(--primary-color);
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+.descriptions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.description {
+  display: flex;
+  justify-content: space-between;
+
+  &__label {
+    display: block;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    color: var(--secondary-color);
+  }
+
+  &__value {
+    display: block;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    color: var(--primary-color);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
