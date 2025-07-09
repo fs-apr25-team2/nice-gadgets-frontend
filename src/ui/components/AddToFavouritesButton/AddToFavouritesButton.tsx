@@ -6,6 +6,7 @@ type AddToFavouritesButtonProps = {
   selected?: boolean;
   variant?: 'home' | 'catalog' | 'product' | 'cart' | 'favourites';
   icon: React.ReactNode;
+  disabled?: boolean;
   onClick?: () => void;
 };
 
@@ -13,6 +14,7 @@ export const AddToFavouritesButton: React.FC<AddToFavouritesButtonProps> = ({
   selected = false,
   variant,
   icon,
+  disabled,
   onClick,
 }) => {
   return (
@@ -26,6 +28,7 @@ export const AddToFavouritesButton: React.FC<AddToFavouritesButtonProps> = ({
           'button--favourites-selected': selected,
         },
       )}
+      disabled={disabled}
       onClick={onClick}
     >
       {icon}

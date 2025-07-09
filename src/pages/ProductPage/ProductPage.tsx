@@ -185,6 +185,7 @@ export const ProductPage = () => {
                     : <HeartIcon />
                   }
                   onClick={handleAddToFavourites}
+                  disabled={isProductAddedToFavourites()}
                 />
               </div>
 
