@@ -1,0 +1,109 @@
+@use '../../styles/utils/mixins.scss' as *;
+
+.catalog-page {
+  @include content-padding-inline;
+
+  &__breadcrumb {
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 40px;
+    }
+
+    .button--breadcrumb {
+      gap: 8px;
+    }
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--secondary-color);
+    margin-top: 8px;
+
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__top-controls {
+    display: flex;
+    gap: 16px;
+
+    &-label {
+      font-size: 12px;
+      line-height: 100%;
+      color: var(--secondary-color);
+      font-weight: 700;
+      padding-bottom: 4px;
+    }
+
+    &-control {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    margin-bottom: 64px;
+
+    @include on-tablet {
+      margin-top: 40px;
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-top: 40px;
+      margin-bottom: 80px;
+    }
+
+    &-numbers {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.product-list {
+  @include page-grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.product-card-placeholder {
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+
+  @include on-desktop {
+    grid-column: span 6;
+  }
+
+  height: 450px;
+  background-color: var(--elements-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary-color);
+  font-weight: 600;
+}
