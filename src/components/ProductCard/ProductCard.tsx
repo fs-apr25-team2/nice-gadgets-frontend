@@ -12,6 +12,8 @@ type Props = {
   isAddedToFavourites: (product: Product) => boolean;
   addToCart: (product: Product) => void;
   addToFavourites: (product: Product) => void;
+  removeFromCart: (product: Product) => void;
+  removeFromFavourites: (product: Product) => void;
 };
 
 export const ProductCard: React.FC<Props> = ({
@@ -20,6 +22,8 @@ export const ProductCard: React.FC<Props> = ({
   isAddedToFavourites,
   addToCart,
   addToFavourites,
+  removeFromCart,
+  removeFromFavourites,
 }) => {
   return (
     <li className="card">
@@ -55,8 +59,13 @@ export const ProductCard: React.FC<Props> = ({
         <Button
           selected={isInCart(product)}
           variant="catalog"
-          disabled={isInCart(product)}
-          onClick={() => addToCart(product)}
+          onClick={() => {
+            if (isInCart(product)) {
+              removeFromCart(product);
+            } else {
+              addToCart(product);
+            }
+          }}
         >
           {isInCart(product) ? 'Added' : 'Add to cart'}
         </Button>
@@ -66,9 +75,14 @@ export const ProductCard: React.FC<Props> = ({
           icon={
             isAddedToFavourites(product) ? <HeartFilledIcon /> : <HeartIcon />
           }
-          disabled={isAddedToFavourites(product)}
           variant="catalog"
-          onClick={() => addToFavourites(product)}
+          onClick={() => {
+            if (isAddedToFavourites(product)) {
+              removeFromFavourites(product);
+            } else {
+              addToFavourites(product);
+            }
+          }}
         />
       </div>
     </li>
