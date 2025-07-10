@@ -1,6 +1,6 @@
-@use '/src/styles/utils/variables.scss' as *;
-@use '/src/styles/utils/mixins.scss' as *;
-@use '/src/styles/utils/normalize.scss' as *;
+@use '../../../styles/utils/variables.scss' as *;
+@use '../../../styles/utils/mixins.scss' as *;
+@use '../../../styles/utils/normalize.scss' as *;
 
 .main-info {
   @include page-grid;
