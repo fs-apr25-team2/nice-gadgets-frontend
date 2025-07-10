@@ -1,4 +1,5 @@
 import './CatalogPage.scss';
+
 import { useEffect, useState } from 'react';
 import { useParams, Navigate } from 'react-router';
 
@@ -24,6 +25,9 @@ function isProductCategory(value: string): value is ProductCategory {
 
 export const CatalogPage: React.FC = () => {
   const { category } = useParams();
+
+  const categoryParam = category as string;
+
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -38,12 +42,14 @@ export const CatalogPage: React.FC = () => {
       .finally(() => setIsLoading(false));
   }, []);
 
-  if (!isProductCategory(category as string)) {
+  if (!isProductCategory(categoryParam)) {
     return <Navigate to="/not-found" />;
   }
 
+  const safeCategory: ProductCategory = categoryParam;
+
   const filteredProducts = products.filter(
-    (product) => product.category === category,
+    (product) => product.category === safeCategory,
   );
 
   const sortProducts = (productsToSort: Product[]) => {
@@ -137,13 +143,13 @@ export const CatalogPage: React.FC = () => {
           onClick={() => console.log('Category clicked')}
           iconColor="var(--secondary-color)"
         >
-          {category}
+          {safeCategory}
         </BreadcrumbButton>
       </nav>
 
       <Heading
         tag="h1"
-        title={CATALOG_TITLES[category]}
+        title={CATALOG_TITLES[safeCategory]}
       />
       <p className="catalog-page__subtitle">{filteredProducts.length} models</p>
 
