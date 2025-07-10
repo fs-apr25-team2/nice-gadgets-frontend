@@ -70,9 +70,27 @@ export const ProductPage = () => {
     }
   };
 
+  const handleRemoveFromCart = () => {
+    if (product) {
+      setCartItems(
+        cartItems.filter((cartItem) => cartItem.itemId !== product.itemId),
+      );
+    }
+  };
+
   const handleAddToFavourites = () => {
     if (product) {
       setFavouritesItems((prev) => [...prev, product]);
+    }
+  };
+
+  const handleRemoveFromFavourites = () => {
+    if (product) {
+      setFavouritesItems(
+        favouritesItems.filter(
+          (favouritesItem) => favouritesItem.itemId !== product.itemId,
+        ),
+      );
     }
   };
 
@@ -171,7 +189,9 @@ export const ProductPage = () => {
                 <Button
                   variant="product"
                   selected={isProductInCart()}
-                  onClick={handleAddToCart}
+                  onClick={
+                    isProductInCart() ? handleRemoveFromCart : handleAddToCart
+                  }
                 >
                   {isProductInCart() ? 'Added to Cart' : 'Add to Cart'}
                 </Button>
@@ -184,7 +204,11 @@ export const ProductPage = () => {
                       <HeartFilledIcon />
                     : <HeartIcon />
                   }
-                  onClick={handleAddToFavourites}
+                  onClick={
+                    isProductAddedToFavourites() ?
+                      handleRemoveFromFavourites
+                    : handleAddToFavourites
+                  }
                 />
               </div>
 

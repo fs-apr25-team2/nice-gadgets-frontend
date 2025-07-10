@@ -4,6 +4,12 @@
   }
 }
 
+@mixin on-big-tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
 @mixin on-desktop {
   @media (min-width: 1200px) {
     @content;

@@ -34,16 +34,31 @@ export const ProductList: React.FC<Props> = ({ products }) => {
   };
 
   const handleAddToCart = (product: Product) => {
-    if (product) {
-      setCartItems((prev) => [...prev, { ...product, quantity: 1 }]);
-    }
+    console.log(product);
+    console.log(cartItems);
+    setCartItems((prev) => [...prev, { ...product, quantity: 1 }]);
+  };
+
+  const handleRemoveFromCart = (product: Product) => {
+    setCartItems(
+      cartItems.filter((cartItem) => cartItem.itemId !== product.itemId),
+    );
   };
 
   const handleAddToFavourites = (product: Product) => {
-    if (product) {
-      setFavouritesItems((prev) => [...prev, product]);
-    }
+    console.log(product);
+    console.log(favouritesItems);
+    setFavouritesItems((prev) => [...prev, product]);
   };
+
+  const handleRemoveFromFavourites = (product: Product) => {
+    setFavouritesItems(
+      favouritesItems.filter(
+        (favouritesItem) => favouritesItem.itemId !== product.itemId,
+      ),
+    );
+  };
+
   return (
     <div className="product-list">
       {products.map((product) => (
@@ -54,6 +69,8 @@ export const ProductList: React.FC<Props> = ({ products }) => {
           isAddedToFavourites={isProductAddedToFavourites}
           addToCart={handleAddToCart}
           addToFavourites={handleAddToFavourites}
+          removeFromCart={handleRemoveFromCart}
+          removeFromFavourites={handleRemoveFromFavourites}
         />
       ))}
     </div>
