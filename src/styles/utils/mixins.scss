@@ -25,9 +25,6 @@
   @include on-desktop {
     padding-inline: 32px;
   }
-  @include on-big-desktop {
-    padding-inline: 152px;
-  }
 }
 
 @mixin page-grid {
