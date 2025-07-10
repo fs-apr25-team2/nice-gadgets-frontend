@@ -13,7 +13,7 @@ export const Footer = () => {
         >
           <img
             className="footer__logo"
-            src="/logo/Logo.png"
+            src="/logo/Logo.svg"
             alt="Nice & Gadgets logo"
           />
         </NavLink>
