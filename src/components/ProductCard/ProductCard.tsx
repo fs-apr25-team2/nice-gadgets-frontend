@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './ProductCard.scss';
 import { Product } from '../../types/types';
 import { Button } from '../../ui/components/Button';
@@ -8,12 +8,19 @@ import { HeartFilledIcon } from '../../ui/icons/HeartFilledIcon';
 
 type Props = {
   product: Product;
+  isInCart: (product: Product) => boolean;
+  isAddedToFavourites: (product: Product) => boolean;
+  addToCart: (product: Product) => void;
+  addToFavourites: (product: Product) => void;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
-  const [isInCart, setIsInCart] = useState(false);
-  const [isFavourite, setIsFavourite] = useState(false);
-
+export const ProductCard: React.FC<Props> = ({
+  product,
+  isInCart,
+  isAddedToFavourites,
+  addToCart,
+  addToFavourites,
+}) => {
   return (
     <li className="card">
       <img
@@ -46,18 +53,22 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className="card__actions">
         <Button
-          selected={isInCart}
+          selected={isInCart(product)}
           variant="catalog"
-          onClick={() => setIsInCart(!isInCart)}
+          disabled={isInCart(product)}
+          onClick={() => addToCart(product)}
         >
-          {isInCart ? 'Added' : 'Add to cart'}
+          {isInCart(product) ? 'Added' : 'Add to cart'}
         </Button>
 
         <AddToFavouritesButton
-          selected={isFavourite}
-          icon={isFavourite ? <HeartFilledIcon /> : <HeartIcon />}
+          selected={isAddedToFavourites(product)}
+          icon={
+            isAddedToFavourites(product) ? <HeartFilledIcon /> : <HeartIcon />
+          }
+          disabled={isAddedToFavourites(product)}
           variant="catalog"
-          onClick={() => setIsFavourite(!isFavourite)}
+          onClick={() => addToFavourites(product)}
         />
       </div>
     </li>
