@@ -14,14 +14,13 @@ export const useProductDetails = () => {
   const [productsBySelectedModel, setProductsBySelectedModel] = useState<
     ProductDetails[]
   >([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(productDetails?.images[0]);
 
   useEffect(() => {
+    setIsLoading(true);
     const fetchData = async () => {
       try {
-        setIsLoading(true);
-
         const products = await getProducts();
         const productsByCategories = await getProductsByCategory(
           category as ProductCategory,
@@ -54,8 +53,6 @@ export const useProductDetails = () => {
 
     fetchData();
   }, [category, productId]);
-
-  useEffect(() => {}, [category, productId]);
 
   return {
     category,

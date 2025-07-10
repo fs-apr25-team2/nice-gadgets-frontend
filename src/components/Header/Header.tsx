@@ -27,10 +27,11 @@ export const Header = () => {
           <NavLink
             to="/"
             aria-label="Go to homepage"
+            className="logo-container"
           >
             <img
               className="logo"
-              src="/logo/Logo.png"
+              src="/logo/Logo.svg"
               alt="Nice & Gadgets logo"
             />
           </NavLink>

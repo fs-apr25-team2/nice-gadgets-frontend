@@ -1,20 +1,11 @@
-import { useNavigate } from 'react-router';
-import './RightsPage.scss';
 import { rightsText } from './rightsText';
-import { ArrowLeftIcon } from '../../ui/icons/ArrowLeftIcon';
+import { GoBack } from '../../ui/components/GoBack';
+import './RightsPage.scss';
 
 export const RightsPage = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="rights__wrapper">
-      <button
-        className="rights__back typography typography--h4"
-        onClick={() => navigate(-1)}
-      >
-        <ArrowLeftIcon />
-        <span className="rights__back__text">Back</span>
-      </button>
+      <GoBack />
 
       <h1 className="rights__title typography typography--h1">
         Welcome to Nice Gadgets!

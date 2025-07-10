@@ -1,0 +1,127 @@
+@use '../../../styles/utils/variables.scss' as *;
+@use '../../../styles/utils/mixins.scss' as *;
+@use '../../../styles/utils/normalize.scss' as *;
+
+.details {
+  margin-block: 56px;
+  row-gap: 56px;
+
+  @include page-grid;
+
+  @include on-tablet {
+    row-gap: 64px;
+    margin-block: 64px;
+  }
+
+  @include on-desktop {
+    row-gap: 80px;
+    margin-block: 80px;
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--elements-color);
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+}
+
+.about {
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 100%;
+    color: var(--primary-color);
+
+    @include on-tablet {
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__article {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &-title {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 100%;
+      color: var(--primary-color);
+    }
+
+    &-description {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      color: var(--secondary-color);
+    }
+  }
+}
+
+.tech-specs {
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    grid-column: 14 / -1;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 100%;
+    color: var(--primary-color);
+
+    @include on-tablet {
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+    }
+  }
+
+  &__features {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__feature {
+    display: flex;
+    justify-content: space-between;
+
+    &-label {
+      display: block;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      color: var(--secondary-color);
+    }
+
+    &-value {
+      display: block;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      color: var(--primary-color);
+    }
+  }
+}

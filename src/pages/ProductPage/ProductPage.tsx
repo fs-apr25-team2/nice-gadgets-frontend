@@ -6,12 +6,14 @@ import './styles//ProductPage.scss';
 import { Loader } from '../../components/Loader';
 import { useProductDetails } from '../../hooks/useProductDetails';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { Breadcrumbs } from '../../ui/components/Breadcrumbs/intex';
+import { GoBack } from '../../ui/components/GoBack';
 import { ColorSelectorsButton } from '../../ui/components/ColorSelectorsButton';
 import { Button } from '../../ui/components/Button';
 import { AddToFavouritesButton } from '../../ui/components/AddToFavouritesButton';
-import { ArrowLeftIcon } from '../../ui/icons/ArrowLeftIcon';
 import { HeartFilledIcon } from '../../ui/icons/HeartFilledIcon';
 import { HeartIcon } from '../../ui/icons/HeartIcon';
+import { ProductNotFound } from './components/ProductNotFound';
 
 export const ProductPage = () => {
   const navigate = useNavigate();
@@ -75,20 +77,18 @@ export const ProductPage = () => {
   };
 
   return (
-    <div className="page">
+    <div className="product-page">
       {!productDetails && isLoading && <Loader />}
-      {!productDetails && !isLoading && <div>Product not found</div>}
+      {!productDetails && !isLoading && <ProductNotFound />}
       {productDetails && !isLoading && (
         <>
-          <button
-            className="page__back"
-            onClick={() => navigate(-1)}
-          >
-            {ArrowLeftIcon()}
-            <span className="page__back-text">Back</span>
-          </button>
+          <Breadcrumbs
+            productName={productDetails.name}
+            modification="product"
+          />
+          <GoBack />
 
-          <h2 className="typography typography--h2 page__title">
+          <h2 className="typography typography--h2 product-page__title">
             {productDetails.name}
           </h2>
 
@@ -106,6 +106,7 @@ export const ProductPage = () => {
                 {productDetails?.images.map((image) => (
                   <div
                     key={image}
+                    className="images__slider__img-wrapper"
                     onClick={() => setSelectedImage(image)}
                   >
                     <img
@@ -171,7 +172,6 @@ export const ProductPage = () => {
                   variant="product"
                   selected={isProductInCart()}
                   onClick={handleAddToCart}
-                  disabled={isProductInCart()}
                 >
                   {isProductInCart() ? 'Added to Cart' : 'Add to Cart'}
                 </Button>
@@ -185,7 +185,6 @@ export const ProductPage = () => {
                     : <HeartIcon />
                   }
                   onClick={handleAddToFavourites}
-                  disabled={isProductAddedToFavourites()}
                 />
               </div>
 
@@ -212,6 +211,92 @@ export const ProductPage = () => {
                   <span className="description__label">RAM</span>
                   <span className="description__value">
                     {productDetails.ram}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="details">
+            <div className="about">
+              <h3 className="about__title">About</h3>
+
+              <div className="details__line"></div>
+
+              <div className="about__content">
+                {productDetails.description.map((desc) => (
+                  <article
+                    key={desc.title}
+                    className="about__article"
+                  >
+                    <h4 className="about__article-title">{desc.title}</h4>
+                    {desc.text.map((text) => (
+                      <p
+                        key={text}
+                        className="about__article-description"
+                      >
+                        {text}
+                      </p>
+                    ))}
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <div className="tech-specs">
+              <h3 className="tech-specs__title">Tech specs</h3>
+
+              <div className="details__line"></div>
+
+              <div className="tech-specs__features">
+                <div className="tech-specs__feature">
+                  <span className="tech-specs__feature-label">Screen</span>
+                  <span className="tech-specs__feature-value">
+                    {productDetails.screen}
+                  </span>
+                </div>
+                <div className="tech-specs__feature">
+                  <span className="tech-specs__feature-label">Resolution</span>
+                  <span className="tech-specs__feature-value">
+                    {productDetails.resolution}
+                  </span>
+                </div>
+                <div className="tech-specs__feature">
+                  <span className="tech-specs__feature-label">Processor</span>
+                  <span className="tech-specs__feature-value">
+                    {productDetails.processor}
+                  </span>
+                </div>
+                <div className="tech-specs__feature">
+                  <span className="tech-specs__feature-label">RAM</span>
+                  <span className="tech-specs__feature-value">
+                    {productDetails.ram}
+                  </span>
+                </div>
+                <div className="tech-specs__feature">
+                  <span className="tech-specs__feature-label">
+                    Build in memory
+                  </span>
+                  <span className="tech-specs__feature-value">
+                    {productDetails.capacity}
+                  </span>
+                </div>
+                <div className="tech-specs__feature">
+                  <span className="tech-specs__feature-label">Camera</span>
+                  <span className="tech-specs__feature-value">
+                    {productDetails.camera}
+                  </span>
+                </div>
+                <div className="tech-specs__feature">
+                  <span className="tech-specs__feature-label">Zoom</span>
+                  <span className="tech-specs__feature-value">
+                    {productDetails.zoom}
+                  </span>
+                </div>
+                <div className="tech-specs__feature">
+                  <span className="tech-specs__feature-label">Cell</span>
+                  <span className="tech-specs__feature-value">
+                    {productDetails.cell.join(', ')}
                   </span>
                 </div>
               </div>

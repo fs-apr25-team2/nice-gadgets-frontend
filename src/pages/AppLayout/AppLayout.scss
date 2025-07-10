@@ -1,0 +1,25 @@
+@use '../../styles/utils/mixins.scss' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  min-height: calc(100vh - 144px);
+  display: flex;
+  flex-direction: column;
+
+  @include on-desktop {
+    min-height: calc(100vh - 164px);
+  }
+}
+
+.page-container {
+  min-width: 320px;
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+
+  @include content-padding-inline;
+}
