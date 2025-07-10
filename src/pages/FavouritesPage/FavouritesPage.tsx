@@ -14,11 +14,13 @@ export const FavouritesPage = () => {
 
   return (
     <div className="favourites-page">
-      <Breadcrumbs />
-      <h1 className="favourites-page__title">Favourites</h1>
-      <p className="favourites-page__count">
-        {favourites.length} item{favourites.length !== 1 && 's'}
-      </p>
+      <div className="favourites-page__header">
+        <Breadcrumbs />
+        <h1 className="favourites-page__title">Favourites</h1>
+        <p className="favourites-page__count">
+          {favourites.length} item{favourites.length !== 1 && 's'}
+        </p>
+      </div>
 
       {hasNoFavorites ?
         <div className="favourites-page__empty">

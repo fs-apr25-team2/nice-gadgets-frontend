@@ -2,9 +2,19 @@
 
 .favourites-page {
   padding-block: 40px;
-  @include content-padding-inline;
   max-width: 1200px;
   margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+
+  &__header {
+    width: 100%;
+    margin-bottom: 32px;
+    align-self: stretch;
+  }
 
   &__title {
     font-size: 36px;
@@ -24,31 +34,22 @@
   &__count {
     font-size: 16px;
     color: var(--secondary-color);
-    margin-bottom: 32px;
+    margin-bottom: 0;
     text-align: left;
   }
 
-  &__grid {
-    display: grid;
-    gap: 24px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  @include on-big-tablet {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
 
-    @include on-big-tablet {
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    }
+  @include on-desktop {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
 
-    @include on-desktop {
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    }
-
-    @include on-big-desktop {
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    }
+  @include on-big-desktop {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 
   &__empty {
@@ -57,16 +58,17 @@
     align-items: center;
     justify-content: center;
     padding-block: 60px;
-    @include content-padding-inline;
     text-align: center;
-    min-height: 60vh;
+    min-height: 50vh;
+    width: 100%;
+    align-self: center;
 
     @include on-tablet {
-      min-height: 50vh;
+      min-height: 40vh;
     }
 
     @include on-desktop {
-      min-height: 40vh;
+      min-height: 35vh;
     }
   }
 
