@@ -1,5 +1,12 @@
+import { Hero } from '../../components/Hero';
+import { ShopByCategory } from './components/ShopByCategory';
 import './HomePage.scss';
 
-export const HomePage = () => {
-  return <div>Home page1</div>;
+export const HomePage: React.FC = () => {
+  return (
+    <>
+      <Hero />
+      <ShopByCategory />
+    </>
+  );
 };
