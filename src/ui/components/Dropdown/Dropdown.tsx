@@ -14,16 +14,19 @@ type DropdownItem = {
 interface DropdownProps {
   label?: string;
   options: DropdownItem[];
+  onSelect?: (option: DropdownItem) => void;
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({
   label = 'Default',
   options,
+  onSelect,
 }) => {
   const [selectedLabel, setSelectedLabel] = useState(label);
 
-  const handleSelect = (label: string) => {
-    setSelectedLabel(label);
+  const handleSelect = (item: DropdownItem) => {
+    setSelectedLabel(item.label);
+    onSelect?.(item);
   };
 
   return (
@@ -45,7 +48,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
             key={index}
             className="dropdown-item"
             disabled={item.disabled}
-            onSelect={() => handleSelect(item.label)}
+            onSelect={() => handleSelect(item)}
           >
             {item.label}
           </DropdownMenu.Item>
