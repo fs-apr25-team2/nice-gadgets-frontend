@@ -6,7 +6,7 @@ type ButtonProps = {
   selected?: boolean;
   variant?: 'home' | 'catalog' | 'product' | 'cart' | 'favourites';
   children?: React.ReactNode;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
 export const Button: React.FC<ButtonProps> = ({

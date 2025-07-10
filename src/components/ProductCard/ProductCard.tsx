@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 import './ProductCard.scss';
 import { Product } from '../../types/types';
 import { Button } from '../../ui/components/Button';
@@ -25,8 +26,17 @@ export const ProductCard: React.FC<Props> = ({
   removeFromCart,
   removeFromFavourites,
 }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/${product.category}/${product.itemId}`);
+  };
+
   return (
-    <li className="card">
+    <li
+      className="card"
+      onClick={handleCardClick}
+    >
       <img
         src={product.image}
         alt={product.name}
@@ -59,7 +69,11 @@ export const ProductCard: React.FC<Props> = ({
         <Button
           selected={isInCart(product)}
           variant="catalog"
-          onClick={() => {
+          onClick={(event) => {
+            if (event) {
+              event.stopPropagation();
+            }
+
             if (isInCart(product)) {
               removeFromCart(product);
             } else {
@@ -76,7 +90,11 @@ export const ProductCard: React.FC<Props> = ({
             isAddedToFavourites(product) ? <HeartFilledIcon /> : <HeartIcon />
           }
           variant="catalog"
-          onClick={() => {
+          onClick={(event) => {
+            if (event) {
+              event.stopPropagation();
+            }
+
             if (isAddedToFavourites(product)) {
               removeFromFavourites(product);
             } else {
