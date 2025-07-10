@@ -1,0 +1,119 @@
+@import '../../styles/utils/mixins.scss';
+
+.favourites-page {
+  padding-block: 40px;
+  @include content-padding-inline;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &__title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-align: left;
+
+    @include on-tablet {
+      font-size: 44px;
+    }
+
+    @include on-desktop {
+      font-size: 48px;
+    }
+  }
+
+  &__count {
+    font-size: 16px;
+    color: var(--secondary-color);
+    margin-bottom: 32px;
+    text-align: left;
+  }
+
+  &__grid {
+    display: grid;
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+
+    @include on-big-tablet {
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+    @include on-big-desktop {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+  }
+
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-block: 60px;
+    @include content-padding-inline;
+    text-align: center;
+    min-height: 60vh;
+
+    @include on-tablet {
+      min-height: 50vh;
+    }
+
+    @include on-desktop {
+      min-height: 40vh;
+    }
+  }
+
+  &__empty-image {
+    width: 220px;
+    height: auto;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      width: 280px;
+    }
+
+    @include on-desktop {
+      width: 400px;
+    }
+  }
+
+  &__empty-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--secondary-color);
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      font-size: 20px;
+    }
+  }
+
+  &__home-button {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      color: black;
+      background-color: var(--hover-background-color);
+    }
+
+    @include on-tablet {
+      font-size: 18px;
+      padding: 14px 28px;
+    }
+  }
+}
