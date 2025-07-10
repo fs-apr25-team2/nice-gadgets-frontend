@@ -1,0 +1,81 @@
+@use '../../../../styles/typography.scss' as *;
+@use '../../../../styles/utils/mixins.scss' as *;
+
+.shop-category {
+  @include content-padding-inline;
+
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__grid {
+    @include page-grid;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  &__item {
+    grid-column: span 4;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      grid-column: span 4;
+      margin-bottom: 0px;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+      margin-bottom: 0px;
+    }
+
+    display: flex;
+    flex-direction: column;
+    color: var(--primary-color);
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    @include on-tablet {
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    @include on-desktop {
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__image-wrapper {
+    aspect-ratio: 1 / 1;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__info {
+    margin-top: 24px;
+  }
+
+  &__name {
+    padding-bottom: 4px;
+  }
+
+  &__models {
+    color: var(--secondary-color);
+  }
+}
