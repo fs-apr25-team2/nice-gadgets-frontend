@@ -1,0 +1,31 @@
+@use '../../../styles/utils/mixins.scss' as *;
+@use '../../../styles/utils/fonts.scss' as *;
+
+.backButton {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  color: var(--primary-color);
+  padding: 24px 0;
+  font-family: inherit;
+  cursor: pointer;
+
+  @include on-tablet {
+    padding-top: 40px;
+    padding-bottom: 16px;
+  }
+
+  &__text {
+    margin-left: 4px;
+    height: 16px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--secondary-color);
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+}
