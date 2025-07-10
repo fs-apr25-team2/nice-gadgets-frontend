@@ -1,39 +1,46 @@
 import React, { useState } from 'react';
 import './ProductCard.scss';
+import { Product } from '../../types/types';
 import { Button } from '../../ui/components/Button';
 import { AddToFavouritesButton } from '../../ui/components/AddToFavouritesButton';
 import { HeartIcon } from '../../ui/icons/HeartIcon';
 import { HeartFilledIcon } from '../../ui/icons/HeartFilledIcon';
 
-export const ProductCard: React.FC = () => {
+type Props = {
+  product: Product;
+};
+
+export const ProductCard: React.FC<Props> = ({ product }) => {
   const [isInCart, setIsInCart] = useState(false);
   const [isFavourite, setIsFavourite] = useState(false);
+
   return (
-    <div className="card">
+    <li className="card">
       <img
-        src="https://via.placeholder.com/150"
-        alt="Apple iPhone 14 Pro"
+        src={product.image}
+        alt={product.name}
         className="card__image"
       />
 
-      <h3 className="card__title">Apple iPhone 14 Pro 128GB Silver (MQ023)</h3>
+      <h3 className="card__title">{product.name}</h3>
 
       <p className="card__price">
-        $999<span className="card__price--old">$1199</span>
+        ${product.price}
+        <span className="card__price--old">${product.fullPrice}</span>
       </p>
 
       <ul className="card__specs">
         <li className="card__spec">
           <span className="card__spec-label">Screen</span>
-          <span className="card__spec-value">6.1” OLED</span>
+          <span className="card__spec-value">{product.screen}</span>
         </li>
         <li className="card__spec">
           <span className="card__spec-label">Capacity</span>
-          <span className="card__spec-value">128 GB</span>
+          <span className="card__spec-value">{product.capacity}</span>
         </li>
         <li className="card__spec">
           <span className="card__spec-label">RAM</span>
-          <span className="card__spec-value">6 GB</span>
+          <span className="card__spec-value">{product.ram}</span>
         </li>
       </ul>
 
@@ -53,6 +60,6 @@ export const ProductCard: React.FC = () => {
           onClick={() => setIsFavourite(!isFavourite)}
         />
       </div>
-    </div>
+    </li>
   );
 };
