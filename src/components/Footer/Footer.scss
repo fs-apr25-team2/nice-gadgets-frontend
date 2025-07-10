@@ -13,8 +13,6 @@
     flex-direction: column;
     gap: 32px;
 
-    @include content-padding-inline;
-
     @include on-tablet {
       flex-direction: row;
       justify-content: space-between;

@@ -1,8 +1,6 @@
 @use '../../styles/utils/mixins.scss' as *;
 
 .catalog-page {
-  @include content-padding-inline;
-
   &__breadcrumb {
     margin-top: 24px;
     margin-bottom: 24px;

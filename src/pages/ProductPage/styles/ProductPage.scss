@@ -1,38 +1,25 @@
-@use '../../../styles/utils/mixins.scss' as *;
-@use '../../../styles/typography.scss' as *;
+@use '/src/styles/utils/mixins.scss' as *;
+@use '/src/styles/typography.scss' as *;
 @use './MainInfo.scss' as *;
+@use './DetailsInfo.scss' as *;
 
-.page {
+.product-page {
   min-width: 320px;
-  box-sizing: border-box;
-  @include content-padding-inline;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   padding-top: 24px;
 
-  &__back {
-    display: flex;
-    align-items: flex-end;
-    gap: 4px;
-    background: none;
-    border: none;
-    color: var(--primary-color);
-    font-size: 12px;
-    cursor: pointer;
-    margin-bottom: 20px;
-  }
-
-  &__back-text {
-    font-family: 'Mont', sans-serif;
-    font-weight: 700;
-    color: var(--secondary-color);
-    transition: color 0.3s ease-in-out;
-
-    &:hover {
-      color: var(--primary-color);
-    }
+  @include on-desktop {
+    min-height: calc(100vh - 164px);
   }
 
   &__title {
     margin-top: 16px;
     margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
   }
 }
