@@ -42,18 +42,6 @@
     &:hover {
       transform: scale(1.05);
     }
-
-    @include on-tablet {
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-
-    @include on-desktop {
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
   }
 
   &__image-wrapper {
