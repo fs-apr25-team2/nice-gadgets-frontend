@@ -16,6 +16,7 @@ import { ArrowLeftIcon } from '../../ui/icons/ArrowLeftIcon';
 import { HomeIcon } from '../../ui/icons/HomeIcon';
 import { Dropdown } from '../../ui/components/Dropdown';
 import { PaginationButton } from '../../ui/components/PaginationButton';
+import { Button } from '../../ui/components/Button';
 
 const categories: ProductCategory[] = ['phones', 'tablets', 'accessories'];
 
@@ -192,12 +193,32 @@ export const CatalogPage: React.FC = () => {
 
       {isLoading && <p>Loading...</p>}
       {hasError && (
-        <div>
+        <div className="catalog-page__error">
           <p>Something went wrong</p>
-          <button onClick={() => window.location.reload()}>Reload</button>
+          <Button
+            variant="product"
+            onClick={() => window.location.reload()}
+          >
+            Reload
+          </Button>
         </div>
       )}
-      {!isLoading && !hasError && <ProductList products={currentItems} />}
+
+      {!isLoading && !hasError && filteredProducts.length === 0 && (
+        <div className="catalog-page__empty">
+          <p>There are no {safeCategory} yet</p>
+          <Button
+            variant="product"
+            onClick={() => window.location.reload()}
+          >
+            Reload
+          </Button>
+        </div>
+      )}
+
+      {!isLoading && !hasError && filteredProducts.length > 0 && (
+        <ProductList products={currentItems} />
+      )}
 
       {pageCount > 1 && (
         <div className="catalog-page__pagination">
