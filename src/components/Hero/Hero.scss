@@ -1,0 +1,136 @@
+@use '../../styles/utils/mixins.scss' as *;
+@use '../../styles/typography.scss' as *;
+
+.hero {
+  padding-top: clamp(1.5rem, 2.857vw + 0.929rem, 3.5rem);
+  padding-bottom: clamp(3.5rem, 2.143vw + 3.071rem, 5rem);
+  @include content-padding-inline;
+
+  &__title {
+    @extend .typography--h1;
+    margin-bottom: clamp(1.5rem, 2.857vw + 0.929rem, 3.5rem);
+  }
+
+  &__arrow {
+    display: none;
+    position: absolute;
+    width: 32px;
+    height: 189px;
+    background-color: transparent;
+    border: 1px solid var(--icons-color);
+
+    &--prev {
+      left: 32px;
+    }
+
+    &--next {
+      right: 32px;
+    }
+  }
+
+  &__swiper {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  &__slide {
+    width: 100%;
+    height: 320px;
+
+    display: flex;
+    align-items: center;
+  }
+
+  &__banner {
+    width: 100%;
+    height: auto;
+    display: block;
+
+    &--tablet,
+    &--desktop {
+      display: none;
+    }
+
+    &--mobile {
+      display: block;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 8px;
+  }
+
+  &__bullet {
+    width: 14px;
+    height: 4px;
+    background-color: var(--elements-color);
+    border-radius: 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &.swiper-pagination-bullet-active {
+      background-color: var(--primary-color);
+    }
+  }
+
+  @include on-tablet {
+    &__swiper {
+      max-width: 490px;
+      height: 189px;
+    }
+
+    &__slide {
+      height: 189px;
+    }
+
+    &__arrow {
+      display: block;
+      height: 189px;
+    }
+
+    &__banner {
+      max-width: 490px;
+      &--tablet {
+        display: block;
+      }
+
+      &--mobile,
+      &--desktop {
+        display: none;
+      }
+    }
+  }
+
+  @include on-desktop {
+    &__swiper {
+      max-width: 1040px;
+      height: 400px;
+    }
+
+    &__slide {
+      height: 400px;
+    }
+
+    &__arrow {
+      height: 400px;
+    }
+
+    &__banner {
+      max-width: 1040px;
+      &--desktop {
+        display: block;
+      }
+
+      &--mobile,
+      &--tablet {
+        display: none;
+      }
+    }
+  }
+}

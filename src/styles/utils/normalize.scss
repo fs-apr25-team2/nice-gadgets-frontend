@@ -1,16 +1,23 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
 }
 
 a {
   text-decoration: none;
-  color: white;
+  color: currentColor;
 }
 
 button {
   border-radius: 0;
   border: 0;
   padding: 0;
+  cursor: pointer;
 }
 
 h1,
@@ -28,8 +35,12 @@ p {
 
 img {
   display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 ul {
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
