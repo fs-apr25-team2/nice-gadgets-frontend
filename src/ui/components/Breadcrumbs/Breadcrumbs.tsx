@@ -1,25 +1,31 @@
 import { Link, useLocation } from 'react-router';
-
 import { ArrowRightIcon } from '../../../ui/icons/ArrowRightIcon';
 import { HomeIcon } from '../../../ui/icons/HomeIcon';
-
+import cn from 'classnames';
 import './Breadcrumbs.scss';
 
 interface BreadcrumbsProps {
   productName?: string;
+  modification?: string;
 }
 
-export const Breadcrumbs = ({ productName }: BreadcrumbsProps) => {
+export const Breadcrumbs = ({
+  productName,
+  modification,
+}: BreadcrumbsProps) => {
   const location = useLocation();
-  const pathnames = location.pathname.split('/').filter(Boolean);
 
-  const capitalize = (str: string) => {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  };
+  const rawPathnames = location.pathname.split('/').filter(Boolean);
+  const pathnames = productName ? rawPathnames.slice(0, -1) : rawPathnames;
+
+  const capitalize = (str: string) =>
+    str.charAt(0).toUpperCase() + str.slice(1);
 
   return (
     <nav
-      className="breadcrumbs"
+      className={cn('breadcrumbs', {
+        [`breadcrumbs--${modification}`]: Boolean(modification),
+      })}
       aria-label="breadcrumbs"
     >
       <Link
@@ -32,9 +38,6 @@ export const Breadcrumbs = ({ productName }: BreadcrumbsProps) => {
       {pathnames.map((name, index) => {
         const routeTo = '/' + pathnames.slice(0, index + 1).join('/');
         const isLast = index === pathnames.length - 1;
-        const isSecondLast = index === pathnames.length - 2;
-
-        const shouldHighlight = productName ? isSecondLast : isLast;
 
         return (
           <span
@@ -42,20 +45,14 @@ export const Breadcrumbs = ({ productName }: BreadcrumbsProps) => {
             className="breadcrumbs__item"
           >
             <span className="breadcrumbs__separator">{ArrowRightIcon()}</span>
-
-            {isLast && !productName ?
-              <span className="breadcrumbs__current breadcrumbs__current--disabled">
-                {capitalize(name)}
-              </span>
-            : <Link
-                to={routeTo}
-                className={`breadcrumbs__link ${
-                  shouldHighlight ? 'breadcrumbs__link--active' : ''
-                }`}
-              >
-                {capitalize(name)}
-              </Link>
-            }
+            <Link
+              to={routeTo}
+              className={`breadcrumbs__link ${
+                isLast && !productName ? 'breadcrumbs__link--active' : ''
+              }`}
+            >
+              {capitalize(name)}
+            </Link>
           </span>
         );
       })}

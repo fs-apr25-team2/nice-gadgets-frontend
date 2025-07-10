@@ -22,20 +22,24 @@
   .header__left {
     display: flex;
     align-items: center;
-    gap: 16px;
+    padding: 0 16px;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
 
     @include on-desktop {
-      gap: 24px;
+      padding: 0 24px;
+      gap: 48px;
     }
 
     .logo {
       width: 64px;
       height: auto;
-      padding: 0 16px;
 
       @include on-desktop {
         width: 80px;
-        padding: 0 24px;
       }
     }
   }

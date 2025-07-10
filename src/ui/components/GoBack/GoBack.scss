@@ -7,14 +7,8 @@
   border: none;
   background: none;
   color: var(--primary-color);
-  padding: 24px 0;
   font-family: inherit;
   cursor: pointer;
-
-  @include on-tablet {
-    padding-top: 40px;
-    padding-bottom: 16px;
-  }
 
   &__text {
     margin-left: 4px;

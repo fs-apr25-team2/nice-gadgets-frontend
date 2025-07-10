@@ -3,10 +3,13 @@
 .breadcrumbs {
   display: flex;
   gap: 8px;
-  padding: 24px 0;
 
-  @include on-tablet {
-    padding-bottom: 40px;
+  &--product {
+    padding-bottom: 24px;
+
+    @include on-tablet {
+      padding-bottom: 40px;
+    }
   }
 
   &__separator {
