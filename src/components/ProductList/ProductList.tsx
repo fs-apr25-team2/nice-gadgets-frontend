@@ -3,13 +3,15 @@
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { CartProduct, Product } from '../../types/types';
 import { ProductCard } from '../ProductCard';
+import cn from 'classnames';
 import './ProductList.scss';
 
 type Props = {
   products: Product[];
+  className?: string;
 };
 
-export const ProductList: React.FC<Props> = ({ products }) => {
+export const ProductList: React.FC<Props> = ({ products, className }) => {
   // const { category, productId } = useParams();
   const [cartItems, setCartItems] = useLocalStorage<CartProduct[]>('cart', []);
   const [favouritesItems, setFavouritesItems] = useLocalStorage<Product[]>(
@@ -34,8 +36,6 @@ export const ProductList: React.FC<Props> = ({ products }) => {
   };
 
   const handleAddToCart = (product: Product) => {
-    console.log(product);
-    console.log(cartItems);
     setCartItems((prev) => [...prev, { ...product, quantity: 1 }]);
   };
 
@@ -46,8 +46,6 @@ export const ProductList: React.FC<Props> = ({ products }) => {
   };
 
   const handleAddToFavourites = (product: Product) => {
-    console.log(product);
-    console.log(favouritesItems);
     setFavouritesItems((prev) => [...prev, product]);
   };
 
@@ -60,7 +58,7 @@ export const ProductList: React.FC<Props> = ({ products }) => {
   };
 
   return (
-    <div className="product-list">
+    <ul className={cn('product-list', className)}>
       {products.map((product) => (
         <ProductCard
           key={product.id}
@@ -73,6 +71,6 @@ export const ProductList: React.FC<Props> = ({ products }) => {
           removeFromFavourites={handleRemoveFromFavourites}
         />
       ))}
-    </div>
+    </ul>
   );
 };
