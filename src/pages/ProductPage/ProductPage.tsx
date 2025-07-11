@@ -13,7 +13,7 @@ import { Button } from '../../ui/components/Button';
 import { AddToFavouritesButton } from '../../ui/components/AddToFavouritesButton';
 import { HeartFilledIcon } from '../../ui/icons/HeartFilledIcon';
 import { HeartIcon } from '../../ui/icons/HeartIcon';
-import { ProductError } from './components/ProductError';
+import { PageError } from '../../components/PageError';
 import { ProductNotFound } from './components/ProductNotFound';
 
 export const ProductPage = () => {
@@ -109,7 +109,7 @@ export const ProductPage = () => {
       <GoBack />
 
       {isLoading && <Loader />}
-      {!productDetails && !isLoading && hasError && <ProductError />}
+      {!productDetails && !isLoading && hasError && <PageError />}
       {!productDetails && !hasError && !isLoading && <ProductNotFound />}
       {productDetails && !hasError && !isLoading && (
         <>

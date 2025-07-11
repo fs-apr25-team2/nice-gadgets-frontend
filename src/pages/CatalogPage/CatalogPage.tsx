@@ -14,8 +14,10 @@ import { ArrowRightIcon } from '../../ui/icons/ArrowRightIcon';
 import { ArrowLeftIcon } from '../../ui/icons/ArrowLeftIcon';
 import { Dropdown } from '../../ui/components/Dropdown';
 import { PaginationButton } from '../../ui/components/PaginationButton';
-import { Button } from '../../ui/components/Button';
 import { Breadcrumbs } from '../../ui/components/Breadcrumbs';
+import { PageError } from '../../components/PageError';
+import { Loader } from '../../components/Loader';
+import { CatalogEmpty } from './components/CatalogEmpty/CatalogEmpty';
 
 const categories: ProductCategory[] = ['phones', 'tablets', 'accessories'];
 
@@ -172,105 +174,90 @@ export const CatalogPage: React.FC = () => {
         tag="h1"
         title={CATALOG_TITLES[safeCategory]}
       />
-      <p className="catalog-page__subtitle">{filteredProducts.length} models</p>
 
-      <div className="catalog-page__top-controls">
-        <div className="catalog-page__control">
-          <p className="catalog-page__control-label">Sort by</p>
-          <Dropdown
-            label={sortOptionsMap[sortParam]}
-            options={[
-              { label: 'Newest' },
-              { label: 'Alphabetically' },
-              { label: 'Cheapest' },
-            ]}
-            onSelect={(option) => {
-              const param = sortLabelToParam[option.label] || 'age';
-              setSearchParams((prev) => {
-                const newParams = new URLSearchParams(prev.toString());
-                newParams.set('sort', param);
-                newParams.delete('page');
-                return newParams;
-              });
-            }}
-          />
-        </div>
-
-        <div className="catalog-page__control">
-          <p className="catalog-page__control-label">Items on page</p>
-          <Dropdown
-            label={itemsPerPage === 'All' ? 'All' : itemsPerPage.toString()}
-            options={[
-              { label: '4' },
-              { label: '8' },
-              { label: '16' },
-              { label: 'All' },
-            ]}
-            onSelect={(option) => {
-              const newValue =
-                option.label === 'All' ? 'All' : Number(option.label);
-              setItemsPerPage(newValue);
-              setSearchParams((prev) => {
-                const newParams = new URLSearchParams(prev.toString());
-                newParams.set('perPage', option.label);
-                newParams.delete('page');
-                return newParams;
-              });
-            }}
-          />
-        </div>
-      </div>
-
-      {isLoading && <p>Loading...</p>}
-      {hasError && (
-        <div className="catalog-page__error">
-          <p>Something went wrong</p>
-          <Button
-            variant="product"
-            onClick={() => window.location.reload()}
-          >
-            Reload
-          </Button>
-        </div>
+      {isLoading && <Loader />}
+      {!isLoading && hasError && <PageError />}
+      {!isLoading && !hasError && products.length === 0 && (
+        <CatalogEmpty category={safeCategory} />
       )}
-
-      {!isLoading && !hasError && filteredProducts.length === 0 && (
-        <div className="catalog-page__empty">
-          <p>There are no {safeCategory} yet</p>
-          <Button
-            variant="product"
-            onClick={() => window.location.reload()}
-          >
-            Reload
-          </Button>
-        </div>
-      )}
-
       {!isLoading && !hasError && filteredProducts.length > 0 && (
-        <ProductList products={currentItems} />
-      )}
+        <>
+          <p className="catalog-page__subtitle">
+            {filteredProducts.length} models
+          </p>
 
-      {pageCount > 1 && (
-        <div
-          ref={paginationRef}
-          className="catalog-page__pagination"
-        >
-          <PaginationButton
-            onClick={handlePrevious}
-            disabled={pageParam === 1}
-          >
-            <ArrowLeftIcon />
-          </PaginationButton>
+          <div className="catalog-page__top-controls">
+            <div className="catalog-page__control">
+              <p className="catalog-page__control-label">Sort by</p>
+              <Dropdown
+                label={sortOptionsMap[sortParam]}
+                options={[
+                  { label: 'Newest' },
+                  { label: 'Alphabetically' },
+                  { label: 'Cheapest' },
+                ]}
+                onSelect={(option) => {
+                  const param = sortLabelToParam[option.label] || 'age';
+                  setSearchParams((prev) => {
+                    const newParams = new URLSearchParams(prev.toString());
+                    newParams.set('sort', param);
+                    newParams.delete('page');
+                    return newParams;
+                  });
+                }}
+              />
+            </div>
 
-          {renderPageNumbers()}
+            <div className="catalog-page__control">
+              <p className="catalog-page__control-label">Items on page</p>
+              <Dropdown
+                label={itemsPerPage === 'All' ? 'All' : itemsPerPage.toString()}
+                options={[
+                  { label: '4' },
+                  { label: '8' },
+                  { label: '16' },
+                  { label: 'All' },
+                ]}
+                onSelect={(option) => {
+                  const newValue =
+                    option.label === 'All' ? 'All' : Number(option.label);
+                  setItemsPerPage(newValue);
+                  setSearchParams((prev) => {
+                    const newParams = new URLSearchParams(prev.toString());
+                    newParams.set('perPage', option.label);
+                    newParams.delete('page');
+                    return newParams;
+                  });
+                }}
+              />
+            </div>
+          </div>
 
-          <PaginationButton
-            onClick={handleNext}
-            disabled={pageParam === pageCount}
-          >
-            <ArrowRightIcon />
-          </PaginationButton>
-        </div>
+          <ProductList products={currentItems} />
+
+          {pageCount > 1 && (
+            <div
+              ref={paginationRef}
+              className="catalog-page__pagination"
+            >
+              <PaginationButton
+                onClick={handlePrevious}
+                disabled={pageParam === 1}
+              >
+                <ArrowLeftIcon />
+              </PaginationButton>
+
+              {renderPageNumbers()}
+
+              <PaginationButton
+                onClick={handleNext}
+                disabled={pageParam === pageCount}
+              >
+                <ArrowRightIcon />
+              </PaginationButton>
+            </div>
+          )}
+        </>
       )}
     </section>
   );
