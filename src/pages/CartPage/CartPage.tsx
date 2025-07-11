@@ -1,7 +1,7 @@
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useNavigate } from 'react-router';
-import { ArrowLeftIcon } from '../../ui/icons/ArrowLeftIcon';
 import { CartProduct } from '../../types/types';
+import { GoBack } from '../../ui/components/GoBack';
 
 import './CartPage.scss';
 
@@ -35,14 +35,10 @@ export const CartPage: React.FC = () => {
 
   return (
     <div className="cart-page">
-      <button
-        className="cart-page__back"
-        onClick={() => navigate(-1)}
-      >
-        {ArrowLeftIcon()} <span className="cart-page__back__text">Back</span>
-      </button>
-
-      <h1 className="cart-page__title">Cart</h1>
+      <div className="cart-page__header">
+        <GoBack />
+        <h1 className="cart-page__title">Cart</h1>
+      </div>
 
       {cartItems.length === 0 ?
         <div className="cart-page__empty">
@@ -82,23 +78,25 @@ export const CartPage: React.FC = () => {
 
                 <div className="cart-page__info-block">
                   <div className="cart-page__info">
-                    <div className="cart-page__name">{item.name}</div>
-                    <div className="cart-page__controls">
-                      <button
-                        className="cart-page__btn"
-                        onClick={() => changeQty(item.itemId, -1)}
-                      >
-                        -
-                      </button>
-                      <span className="cart-page__qty">
-                        {item.quantity ?? 1}
-                      </span>
-                      <button
-                        className="cart-page__btn"
-                        onClick={() => changeQty(item.itemId, 1)}
-                      >
-                        +
-                      </button>
+                    <div className="cart-page__name-and-controls">
+                      <div className="cart-page__name">{item.name}</div>
+                      <div className="cart-page__controls">
+                        <button
+                          className="cart-page__btn"
+                          onClick={() => changeQty(item.itemId, -1)}
+                        >
+                          -
+                        </button>
+                        <span className="cart-page__qty">
+                          {item.quantity ?? 1}
+                        </span>
+                        <button
+                          className="cart-page__btn"
+                          onClick={() => changeQty(item.itemId, 1)}
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
                   </div>
 
