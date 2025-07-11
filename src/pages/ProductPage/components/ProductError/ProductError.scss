@@ -1,6 +1,6 @@
 @use '../../../../styles/utils/mixins.scss' as *;
 
-.product-not-found {
+.product-page__error {
   display: flex;
   flex-direction: column;
   align-items: center;

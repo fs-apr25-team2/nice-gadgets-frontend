@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "name": "Denys Pitsul",
+    "position": " Team Lead, Git & Feature Integration Manager",
+    "photo": "public/img/team/denys-pitsul.PNG",
+    "description": "Denys set up the project infrastructure and managed the workflow using GitHub, including branch strategy, code reviews, and pull request management. Developed the full Product Details page, implementing both layout and logic.",
+    "github": "https://github.com/DenisPitsul",
+    "linkedin": "https://www.linkedin.com/in/denis-pitsul-064594164/",
+    "telegram": "https://t.me/denis_pitsul",
+    "email": "denia.pitsul@gmail.com"
+  },
+  {
+    "id": 2,
+    "name": "Oksana Kuziv",
+    "position": "UI Specialist, PM coordinator",
+    "photo": "img/team/oksana-kuziv.jpg",
+    "description": "Oksana implemented fully responsive Header, Footer, mobile and Breadcrumbs navigation for enhanced UX. Designed and developed complete UI and business logic for the Contacts and Rights pages",
+    "github": "https://github.com/OksanaKuziv",
+    "linkedin": "https://www.linkedin.com/in/oksana-kuziv-0a8a55276/",
+    "telegram": "https://t.me/Oksana_Kuziv",
+    "email": "oksanakuziv25@gmail.com"
+  },
+  {
+    "id": 3,
+    "name": "Yurii Ivanenko",
+    "position": "UI Component Developer",
+    "photo": "/img/team/yurii-ivanenko.jpg",
+    "description": "Yurii contributed a fully adaptive and responsive Button component for the UI Kit, Developed the Catalog Page UI with partial logic implementation, Built a responsive, data-driven 'Shop by Category' block on the Home Page",
+    "github": "https://github.com/deadslowright",
+    "linkedin": "https://www.linkedin.com/in/yurii-ivanenko-b48a0025b/",
+    "telegram": "https://t.me/deadslowright",
+    "email": "ura1408280594@gmail.com"
+  },
+  {
+    "id": 4,
+    "name": "Yana Lunina",
+    "position": "Component & UI Logic Engineer",
+    "photo": "/img/team/yana-lunina.jpg",
+    "description": "Yana Developed a reusable product card component with full UI/UX logic. Created a universal product slider component using Swiper.js. Implemented the full structure and layout of the Home Page. Connected and configured catalog page logic: Implemented pagination with custom-designed buttons.- Added product sorting and filtering logic. Ensured compatibility with dynamic routes and product categories.",
+    "github": "https://github.com/Ynln69",
+    "linkedin": "https://www.linkedin.com/in/yana-lunina/",
+    "telegram": "https://t.me/ynln69",
+    "email": "yanalunina96@gmail.com"
+  },
+  {
+    "id": 5,
+    "name": "Mykyta Iliukhin",
+    "position": "UI Behavior & State Specialist",
+    "photo": "public/img/team/mykyta-iliukhin.jpg",
+    "description": "Developed complete UI and logic for the Favourites, Cart, and Not Found pages, ensuring responsiveness and seamless user experience. Adapted and styled dropdowns and modals using Radix UI, integrating them smoothly into the overall design system.",
+    "github": "https://github.com/Nixita-1",
+    "linkedin": "https://www.linkedin.com/in/mykyta-iliukhin-78a34b368/",
+    "telegram": "https://t.me/Nixita61",
+    "email": "nikiliukhin12@gmail.com"
+  }
+]

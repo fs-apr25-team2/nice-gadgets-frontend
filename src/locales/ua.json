@@ -1,0 +1,123 @@
+{
+  "navLink": {
+    "home": "Головна",
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари",
+    "gitHub": "GitHub",
+    "contacts": "Контакти",
+    "rights": "Права"
+  },
+  "languages": {
+    "en": "EN",
+    "ua": "UA"
+  },
+  "home": {
+    "title": "Ласкаво просимо до магазину Nice Gadgets!",
+    "categories": "Обирайте за категорією"
+  },
+  "slider": {
+    "newModels": "Нові моделі",
+    "hotPrices": "Гарячі ціни",
+    "random": "Вам також може сподобатися"
+  },
+  "breadcrumbs": {
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари",
+    "favourites": "Обране"
+  },
+  "items": {
+    "itemsOne": "{{count}} товар",
+    "itemsFew": "{{count}} товари",
+    "itemsMany": "{{count}} товарів"
+  },
+  "buttons": {
+    "actions": {
+      "toTop": "До початку",
+      "toCart": "До кошика",
+      "inCart": "Додано",
+      "back": "назад",
+      "product": {
+        "colors": "Доступні кольори",
+        "capacity": "Ємність"
+      }
+    }
+  },
+  "catalog": {
+    "phones": {
+      "title": "Телефони"
+    },
+    "tablets": {
+      "title": "Планшети"
+    },
+    "accessories": {
+      "title": "Аксесуари"
+    },
+    "dropdown": {
+      "sortBy": {
+        "label": "Sort by",
+        "options": {
+          "Newest": "Новіші",
+          "Alphabetically": "За лафавітом",
+          "Cheapest": "Найдешевші"
+        }
+      },
+      "perPage": {
+        "label": "Кількість на сторінці",
+        "options": {
+          "4": "4",
+          "8": "8",
+          "16": "16",
+          "All": "Всі"
+        }
+      }
+    }
+  },
+  "product": {
+    "specifications": {
+      "screen": "Екран",
+      "capacity": "Ємність",
+      "display": "Дисплей",
+      "ram": "ОЗП",
+      "resolution": "Роздільна здатність",
+      "processor": "Процесор",
+      "builtInMemory": "Вбудована пам'ять",
+      "camera": "Камера",
+      "zoom": "Зум",
+      "cell": "Мережа",
+      "label": "Технічні характеристикм"
+    },
+    "about": {
+      "title": "Про товар"
+    },
+    "notFound": {
+      "title": "Продукт не знайдено!"
+    }
+  },
+  "cart": {
+    "title": "Кошик",
+    "totalOne": "Разом за {{count}} товар",
+    "totalFew": "Разом за {{count}} товари",
+    "totalMany": "Разом за {{count}} товарів",
+    "checkout": "Checkout",
+    "empty": {
+      "title": "Ваш кошик порожній",
+      "text": "Схоже, ви ще нічого не додали"
+    }
+  },
+  "favourites": {
+    "title": "Обрані",
+    "empty": {
+      "title": "You don't have favourites yet"
+    }
+  },
+  "error": {
+    "unknown": "Ой, щось пішло не так",
+    "retry": "Спробувати знову"
+  },
+  "404": {
+    "title": "404 - Сторінку не знайдено",
+    "text": "Але ж грати все одно можна :)"
+  }
+}
