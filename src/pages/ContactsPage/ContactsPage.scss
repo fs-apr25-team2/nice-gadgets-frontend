@@ -1,0 +1,44 @@
+@use '../../styles/utils/mixins.scss' as *;
+@use '../../styles/typography.scss' as *;
+
+.contacts {
+  padding: 24px 0;
+
+  @include on-tablet {
+    padding: 40px;
+  }
+
+  &__title {
+    padding: 32px 0;
+    color: var(--primary-color);
+    @extend .typography--h1;
+
+    @include on-tablet {
+      padding: 16px 0;
+    }
+  }
+
+  &__about {
+    margin-bottom: 24px;
+    color: var(--secondary-color);
+
+    @include on-tablet {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+
+  &__cards {
+    @include page-grid;
+    gap: 16px;
+    margin-top: 24px;
+  }
+}

@@ -7,9 +7,7 @@ export const RightsPage = () => {
     <div className="rights__wrapper">
       <GoBack />
 
-      <h1 className="rights__title typography typography--h1">
-        Welcome to Nice Gadgets!
-      </h1>
+      <h1 className="rights__title">Welcome to Nice Gadgets!</h1>
 
       <p className="rights__text">
         By using this website, you agree to the following terms and policies.

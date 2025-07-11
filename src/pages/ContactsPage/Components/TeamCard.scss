@@ -1,0 +1,64 @@
+@use '../../../styles/utils/mixins.scss' as *;
+@use '../../../styles/typography.scss' as *;
+
+.team-card {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  grid-column: span 4;
+  width: 100%;
+  gap: 16px;
+  padding: 20px;
+  margin-bottom: 32px;
+  border-radius: 20px;
+  background-color: var(--white-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+
+  &__photo {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  &__name {
+    @extend .typography--h4;
+    color: var(--primary-color);
+  }
+
+  &__position {
+    @extend .typography--body;
+    color: var(--secondary-color);
+  }
+
+  &__description {
+    margin-bottom: 16px;
+    @extend .typography--body;
+    color: var(--primary-color);
+  }
+
+  &__socials {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    gap: 18px;
+
+    a {
+      display: inline-block;
+      transition: transform 0.2s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
