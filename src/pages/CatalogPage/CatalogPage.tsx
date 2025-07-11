@@ -1,7 +1,7 @@
 import './CatalogPage.scss';
 
-import { useEffect, useState } from 'react';
-import { useParams, Navigate } from 'react-router';
+import { useEffect, useRef, useState } from 'react';
+import { useParams, Navigate, useSearchParams } from 'react-router';
 
 import { ProductCategory, Product } from '../../types/types';
 import { getProducts } from '../../utils/api';
@@ -10,13 +10,12 @@ import { ProductList } from '../../components/ProductList';
 import { Heading } from '../../ui/components/Heading';
 import { CATALOG_TITLES } from '../../constants';
 
-import { BreadcrumbButton } from '../../ui/components/BreadcrumbButton';
 import { ArrowRightIcon } from '../../ui/icons/ArrowRightIcon';
 import { ArrowLeftIcon } from '../../ui/icons/ArrowLeftIcon';
-import { HomeIcon } from '../../ui/icons/HomeIcon';
 import { Dropdown } from '../../ui/components/Dropdown';
 import { PaginationButton } from '../../ui/components/PaginationButton';
 import { Button } from '../../ui/components/Button';
+import { Breadcrumbs } from '../../ui/components/Breadcrumbs';
 
 const categories: ProductCategory[] = ['phones', 'tablets', 'accessories'];
 
@@ -24,17 +23,37 @@ function isProductCategory(value: string): value is ProductCategory {
   return categories.includes(value as ProductCategory);
 }
 
+const sortOptionsMap: Record<string, string> = {
+  age: 'Newest',
+  title: 'Alphabetically',
+  price: 'Cheapest',
+};
+
+const sortLabelToParam: Record<string, string> = {
+  Newest: 'age',
+  Alphabetically: 'title',
+  Cheapest: 'price',
+};
+
 export const CatalogPage: React.FC = () => {
   const { category } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const paginationRef = useRef<HTMLDivElement | null>(null);
 
   const categoryParam = category as string;
+
+  const sortParam = searchParams.get('sort') || 'age';
+  const pageParam = Number(searchParams.get('page')) || 1;
+
+  const perPageParam = searchParams.get('perPage') || '16';
+  const initialPerPage = perPageParam === 'All' ? 'All' : Number(perPageParam);
 
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-  const [sortBy, setSortBy] = useState('Newest');
-  const [itemsPerPage, setItemsPerPage] = useState<number | 'All'>(16);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState<number | 'All'>(
+    initialPerPage,
+  );
 
   useEffect(() => {
     getProducts()
@@ -54,16 +73,18 @@ export const CatalogPage: React.FC = () => {
   );
 
   const sortProducts = (productsToSort: Product[]) => {
-    switch (sortBy) {
-      case 'Alphabetically':
+    switch (sortParam) {
+      case 'title':
         return [...productsToSort].sort((firstProduct, secondProduct) =>
           firstProduct.name.localeCompare(secondProduct.name),
         );
-      case 'Cheapest':
+      case 'price':
         return [...productsToSort].sort(
           (firstProduct, secondProduct) =>
             firstProduct.price - secondProduct.price,
         );
+      case 'age':
+        return [...productsToSort].sort((a, b) => b.year - a.year);
       default:
         return productsToSort;
     }
@@ -75,35 +96,44 @@ export const CatalogPage: React.FC = () => {
     itemsPerPage === 'All' ? sortedProducts.length : itemsPerPage;
   const pageCount = Math.ceil(sortedProducts.length / itemsCount);
   const currentItems = sortedProducts.slice(
-    currentPage * itemsCount,
-    currentPage * itemsCount + itemsCount,
+    (pageParam - 1) * itemsCount,
+    (pageParam - 1) * itemsCount + itemsCount,
   );
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [pageParam]);
+
   const handlePageClick = (page: number) => {
-    setCurrentPage(page);
+    setSearchParams((prev) => {
+      const newParams = new URLSearchParams(prev.toString());
+      newParams.set('page', page.toString());
+      return newParams;
+    });
   };
 
   const renderPageNumbers = () => {
     const visiblePagesCount = 4;
     const totalPageCount = pageCount;
-    const currentPageIndex = currentPage;
+    const currentPageIndex = pageParam;
 
     let startPageIndex = Math.max(
-      0,
+      1,
       currentPageIndex - Math.floor(visiblePagesCount / 2),
     );
     let endPageIndex = startPageIndex + visiblePagesCount;
 
     if (endPageIndex > totalPageCount) {
       endPageIndex = totalPageCount;
-      startPageIndex = Math.max(0, endPageIndex - visiblePagesCount);
+      startPageIndex = Math.max(1, endPageIndex - visiblePagesCount);
     }
 
     const renderedPages = [];
 
     for (
       let pageIndex = startPageIndex;
-      pageIndex < endPageIndex;
+      pageIndex <= endPageIndex;
       pageIndex++
     ) {
       renderedPages.push(
@@ -112,7 +142,7 @@ export const CatalogPage: React.FC = () => {
           selected={pageIndex === currentPageIndex}
           onClick={() => handlePageClick(pageIndex)}
         >
-          {pageIndex + 1}
+          {pageIndex}
         </PaginationButton>,
       );
     }
@@ -121,32 +151,22 @@ export const CatalogPage: React.FC = () => {
   };
 
   const handlePrevious = () => {
-    if (currentPage > 0) {
-      setCurrentPage(currentPage - 1);
+    if (pageParam > 1) {
+      handlePageClick(pageParam - 1);
     }
   };
 
   const handleNext = () => {
-    if (currentPage < pageCount - 1) {
-      setCurrentPage(currentPage + 1);
+    if (pageParam < pageCount) {
+      handlePageClick(pageParam + 1);
     }
   };
 
   return (
     <section className="catalog-page">
-      <nav className="catalog-page__breadcrumb">
-        <BreadcrumbButton
-          icon={<HomeIcon />}
-          onClick={() => console.log('Go home')}
-        />
-        <BreadcrumbButton
-          icon={<ArrowRightIcon />}
-          onClick={() => console.log('Category clicked')}
-          iconColor="var(--secondary-color)"
-        >
-          {safeCategory}
-        </BreadcrumbButton>
-      </nav>
+      <div className="catalog-page__breadcrumb">
+        <Breadcrumbs />
+      </div>
 
       <Heading
         tag="h1"
@@ -158,15 +178,20 @@ export const CatalogPage: React.FC = () => {
         <div className="catalog-page__control">
           <p className="catalog-page__control-label">Sort by</p>
           <Dropdown
-            label={sortBy}
+            label={sortOptionsMap[sortParam]}
             options={[
               { label: 'Newest' },
               { label: 'Alphabetically' },
               { label: 'Cheapest' },
             ]}
             onSelect={(option) => {
-              setSortBy(option.label);
-              setCurrentPage(0);
+              const param = sortLabelToParam[option.label] || 'age';
+              setSearchParams((prev) => {
+                const newParams = new URLSearchParams(prev.toString());
+                newParams.set('sort', param);
+                newParams.delete('page');
+                return newParams;
+              });
             }}
           />
         </div>
@@ -182,10 +207,15 @@ export const CatalogPage: React.FC = () => {
               { label: 'All' },
             ]}
             onSelect={(option) => {
-              setItemsPerPage(
-                option.label === 'All' ? 'All' : Number(option.label),
-              );
-              setCurrentPage(0);
+              const newValue =
+                option.label === 'All' ? 'All' : Number(option.label);
+              setItemsPerPage(newValue);
+              setSearchParams((prev) => {
+                const newParams = new URLSearchParams(prev.toString());
+                newParams.set('perPage', option.label);
+                newParams.delete('page');
+                return newParams;
+              });
             }}
           />
         </div>
@@ -221,10 +251,13 @@ export const CatalogPage: React.FC = () => {
       )}
 
       {pageCount > 1 && (
-        <div className="catalog-page__pagination">
+        <div
+          ref={paginationRef}
+          className="catalog-page__pagination"
+        >
           <PaginationButton
             onClick={handlePrevious}
-            disabled={currentPage === 0}
+            disabled={pageParam === 1}
           >
             <ArrowLeftIcon />
           </PaginationButton>
@@ -233,7 +266,7 @@ export const CatalogPage: React.FC = () => {
 
           <PaginationButton
             onClick={handleNext}
-            disabled={currentPage === pageCount - 1}
+            disabled={pageParam === pageCount}
           >
             <ArrowRightIcon />
           </PaginationButton>

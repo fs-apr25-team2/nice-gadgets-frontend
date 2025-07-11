@@ -4,6 +4,7 @@
   @include page-grid;
   row-gap: 40px;
   justify-items: center;
+  margin-top: 24px;
 
   & > * {
     grid-column: span 4;
