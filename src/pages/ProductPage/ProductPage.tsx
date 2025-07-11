@@ -13,6 +13,7 @@ import { Button } from '../../ui/components/Button';
 import { AddToFavouritesButton } from '../../ui/components/AddToFavouritesButton';
 import { HeartFilledIcon } from '../../ui/icons/HeartFilledIcon';
 import { HeartIcon } from '../../ui/icons/HeartIcon';
+import { ProductError } from './components/ProductError';
 import { ProductNotFound } from './components/ProductNotFound';
 
 export const ProductPage = () => {
@@ -23,6 +24,7 @@ export const ProductPage = () => {
     productDetails,
     productsBySelectedModel,
     isLoading,
+    hasError,
     selectedImage,
     setSelectedImage,
   } = useProductDetails();
@@ -94,18 +96,23 @@ export const ProductPage = () => {
     }
   };
 
+  console.log('error', hasError);
+  console.log('isLoading', isLoading);
+  console.log('product', productDetails);
+
   return (
     <div className="product-page">
-      {!productDetails && isLoading && <Loader />}
-      {!productDetails && !isLoading && <ProductNotFound />}
-      {productDetails && !isLoading && (
-        <>
-          <Breadcrumbs
-            productName={productDetails.name}
-            modification="product"
-          />
-          <GoBack />
+      <Breadcrumbs
+        productName={productDetails?.name}
+        modification="product"
+      />
+      <GoBack />
 
+      {isLoading && <Loader />}
+      {!productDetails && !isLoading && hasError && <ProductError />}
+      {!productDetails && !hasError && !isLoading && <ProductNotFound />}
+      {productDetails && !hasError && !isLoading && (
+        <>
           <h2 className="typography typography--h2 product-page__title">
             {productDetails.name}
           </h2>
@@ -146,7 +153,7 @@ export const ProductPage = () => {
                       <ColorSelectorsButton
                         key={color}
                         selected={color === productDetails.color}
-                        color={color}
+                        color={color.split(' ').join('').toLowerCase()}
                         onClick={() => handleProductChange({ color })}
                       />
                     ))}
