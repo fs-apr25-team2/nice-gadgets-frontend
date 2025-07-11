@@ -8,8 +8,6 @@
     background-color: var(--white-color);
     padding-top: 24px;
 
-    @include content-padding-inline;
-
     @include on-tablet {
       padding-top: 40px;
     }
@@ -18,6 +16,8 @@
   &__title {
     padding: 32px 0;
     color: var(--primary-color);
+    @extend .typography;
+    @extend .typography--h1;
 
     @include on-tablet {
       padding: 16px 0;
