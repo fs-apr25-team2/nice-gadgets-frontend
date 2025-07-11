@@ -12,10 +12,6 @@
     @include on-desktop {
       margin-bottom: 40px;
     }
-
-    .button--breadcrumb {
-      gap: 8px;
-    }
   }
 
   &__error,
@@ -114,4 +110,18 @@
   justify-content: center;
   color: var(--secondary-color);
   font-weight: 600;
+}
+
+.catalog-page:not(:has(.catalog-page__pagination)) {
+  .product-list {
+    margin-bottom: 64px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
 }
