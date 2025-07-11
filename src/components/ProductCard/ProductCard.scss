@@ -2,11 +2,16 @@
   width: 100%;
   padding: 32px;
   border: 1px solid var(--elements-color);
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 8px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   &__image {
     width: 100%;
@@ -26,7 +31,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-
+    margin-top: auto;
     font-weight: 800;
     font-size: 22px;
     line-height: 140%;

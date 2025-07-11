@@ -305,18 +305,22 @@ export const ProductPage = () => {
                     {productDetails.capacity}
                   </span>
                 </div>
-                <div className="tech-specs__feature">
-                  <span className="tech-specs__feature-label">Camera</span>
-                  <span className="tech-specs__feature-value">
-                    {productDetails.camera}
-                  </span>
-                </div>
-                <div className="tech-specs__feature">
-                  <span className="tech-specs__feature-label">Zoom</span>
-                  <span className="tech-specs__feature-value">
-                    {productDetails.zoom}
-                  </span>
-                </div>
+                {productDetails.camera && (
+                  <div className="tech-specs__feature">
+                    <span className="tech-specs__feature-label">Camera</span>
+                    <span className="tech-specs__feature-value">
+                      {productDetails.camera}
+                    </span>
+                  </div>
+                )}
+                {productDetails.zoom && (
+                  <div className="tech-specs__feature">
+                    <span className="tech-specs__feature-label">Zoom</span>
+                    <span className="tech-specs__feature-value">
+                      {productDetails.zoom}
+                    </span>
+                  </div>
+                )}
                 <div className="tech-specs__feature">
                   <span className="tech-specs__feature-label">Cell</span>
                   <span className="tech-specs__feature-value">
