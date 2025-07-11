@@ -15,10 +15,10 @@ export const useProductDetails = () => {
     ProductDetails[]
   >([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
   const [selectedImage, setSelectedImage] = useState(productDetails?.images[0]);
 
   useEffect(() => {
-    setIsLoading(true);
     const fetchData = async () => {
       try {
         const products = await getProducts();
@@ -44,8 +44,7 @@ export const useProductDetails = () => {
         setSelectedImage(selectedProductDetails?.images[0]);
         setProductsBySelectedModel(productsBySelectedModel);
       } catch (error) {
-        setProduct(null);
-        setProductDetails(null);
+        setHasError(true);
       } finally {
         setIsLoading(false);
       }
@@ -60,6 +59,7 @@ export const useProductDetails = () => {
     productDetails,
     productsBySelectedModel,
     isLoading,
+    hasError,
     selectedImage,
     setSelectedImage,
   };

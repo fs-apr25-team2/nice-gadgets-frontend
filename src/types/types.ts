@@ -54,3 +54,15 @@ export type ProductOptions = {
   color?: string;
   capacity?: string;
 };
+
+export interface TeamMember {
+  id: number;
+  name: string;
+  position: string;
+  photo: string;
+  description: string;
+  github: string;
+  linkedin: string;
+  telegram: string;
+  email: string;
+}

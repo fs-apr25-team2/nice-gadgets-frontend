@@ -1,5 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Product, ProductCategory, ProductDetails } from '../types/types';
+import {
+  Product,
+  ProductCategory,
+  ProductDetails,
+  TeamMember,
+} from '../types/types';
 
 const BASE_URL = '/api';
 
@@ -34,6 +39,7 @@ export const getProducts = () => get<Product[]>('/products');
 export const getPhones = () => get<ProductDetails[]>('/phones');
 export const getTablets = () => get<ProductDetails[]>('/tablets');
 export const getAccessories = () => get<ProductDetails[]>('/accessories');
+export const getTeamMembers = () => get<TeamMember[]>('/team');
 
 export async function getProductsByCategory(
   category: ProductCategory,

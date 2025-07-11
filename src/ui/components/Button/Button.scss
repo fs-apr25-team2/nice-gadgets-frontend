@@ -93,4 +93,14 @@
       min-width: 160px;
     }
   }
+
+  &--error {
+    width: 100%;
+    max-width: 288px;
+    height: 40px;
+
+    @include on-tablet {
+      height: 48px;
+    }
+  }
 }
