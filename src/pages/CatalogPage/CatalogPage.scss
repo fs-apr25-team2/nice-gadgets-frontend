@@ -86,32 +86,6 @@
   }
 }
 
-.product-list {
-  @include page-grid;
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.product-card-placeholder {
-  grid-column: span 4;
-
-  @include on-tablet {
-    grid-column: span 6;
-  }
-
-  @include on-desktop {
-    grid-column: span 6;
-  }
-
-  height: 450px;
-  background-color: var(--elements-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--secondary-color);
-  font-weight: 600;
-}
-
 .catalog-page:not(:has(.catalog-page__pagination)) {
   .product-list {
     margin-bottom: 64px;
