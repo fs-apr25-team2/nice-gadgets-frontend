@@ -1,11 +1,16 @@
 @import '../../styles/utils/mixins.scss';
 
 .cart-page {
-  padding: 40px 20px;
+  padding-block: 40px;
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+
+  &__header {
+    width: 100%;
+    margin-bottom: 32px;
+  }
 
   &__back {
     background: none;
@@ -14,7 +19,7 @@
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     display: inline-flex;
     align-items: center;
   }
@@ -32,9 +37,17 @@
   }
 
   &__title {
-    font-size: 48px;
+    font-size: 36px;
     font-weight: 700;
-    margin-bottom: 40px;
+    margin-bottom: 0;
+
+    @include on-tablet {
+      font-size: 44px;
+    }
+
+    @include on-desktop {
+      font-size: 48px;
+    }
   }
 
   &__content {
@@ -42,7 +55,6 @@
     column-gap: 16px;
     row-gap: 40px;
     grid-template-columns: repeat(4, 1fr);
-    flex: 1;
 
     @include on-tablet {
       grid-template-columns: repeat(12, 1fr);
@@ -87,10 +99,10 @@
   }
 
   &__item {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    position: relative;
     background-color: var(--white-color);
     border: 1px solid var(--elements-color);
     padding: 16px;
@@ -99,15 +111,16 @@
     @include on-tablet {
       flex-direction: row;
       align-items: center;
-      padding: 24px 24px 24px 40px;
+      padding: 24px 24px 24px 56px;
       gap: 24px;
     }
   }
 
   &__remove {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
     border: none;
     background: none;
     font-size: 20px;
@@ -120,9 +133,7 @@
     }
 
     @include on-tablet {
-      left: 16px;
-      top: 60px;
-      right: auto;
+      left: 24px;
     }
   }
 
@@ -150,10 +161,21 @@
     flex: 1;
   }
 
+  &__name-and-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
   &__name {
     font-size: 16px;
     font-weight: 600;
-    margin-bottom: 12px;
     word-break: break-word;
   }
 
@@ -191,12 +213,10 @@
     font-size: 18px;
     font-weight: 700;
     text-align: right;
-    align-self: flex-end;
 
     @include on-tablet {
       font-size: 20px;
       min-width: 100px;
-      align-self: auto;
     }
   }
 
@@ -229,6 +249,10 @@
       background-color: var(--elements-color);
       color: black;
     }
+
+    @include on-tablet {
+      font-size: 18px;
+    }
   }
 
   &__empty {
@@ -238,7 +262,7 @@
     justify-content: center;
     text-align: center;
     flex: 1;
-    min-height: 200px;
+    min-height: 300px;
 
     img {
       width: 300px;

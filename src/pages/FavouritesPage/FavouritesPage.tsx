@@ -7,7 +7,7 @@ import { Breadcrumbs } from '../../ui/components/Breadcrumbs';
 import './FavouritesPage.scss';
 
 export const FavouritesPage = () => {
-  const [favourites] = useLocalStorage<Product[]>('favorites', []);
+  const [favourites] = useLocalStorage<Product[]>('favourites', []);
   const navigate = useNavigate();
 
   const hasNoFavorites = favourites.length === 0;
@@ -25,12 +25,12 @@ export const FavouritesPage = () => {
       {hasNoFavorites ?
         <div className="favourites-page__empty">
           <img
-            src="../../../public/img/product-not-found.png"
+            src="/img/product-not-found.png"
             alt="No favorites"
             className="favourites-page__empty-image"
           />
           <p className="favourites-page__empty-text">
-            There are no favorites yet
+            There are no favourites yet
           </p>
           <button
             className="favourites-page__home-button"
