@@ -1,7 +1,7 @@
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useNavigate } from 'react-router';
-import { ArrowLeftIcon } from '../../ui/icons/ArrowLeftIcon';
 import { CartProduct } from '../../types/types';
+import { GoBack } from '../../ui/components/GoBack';
 
 import './CartPage.scss';
 
@@ -36,12 +36,7 @@ export const CartPage: React.FC = () => {
   return (
     <div className="cart-page">
       <div className="cart-page__header">
-        <button
-          className="cart-page__back"
-          onClick={() => navigate(-1)}
-        >
-          {ArrowLeftIcon()} <span className="cart-page__back__text">Back</span>
-        </button>
+        <GoBack />
         <h1 className="cart-page__title">Cart</h1>
       </div>
 

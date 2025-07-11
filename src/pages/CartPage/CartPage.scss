@@ -12,30 +12,6 @@
     margin-bottom: 32px;
   }
 
-  &__back {
-    background: none;
-    border: none;
-    color: var(--primary-color);
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    margin-bottom: 16px;
-    display: inline-flex;
-    align-items: center;
-  }
-
-  &__back__text {
-    font-family: 'Mont', sans-serif;
-    margin-left: 10px;
-    font-weight: 700;
-    color: var(--secondary-color);
-    transition: color 0.3s ease-in-out;
-
-    &:hover {
-      color: var(--primary-color);
-    }
-  }
-
   &__title {
     font-size: 36px;
     font-weight: 700;
