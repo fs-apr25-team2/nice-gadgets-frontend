@@ -4,7 +4,7 @@ import React from 'react';
 
 type ButtonProps = {
   selected?: boolean;
-  variant?: 'home' | 'catalog' | 'product' | 'cart' | 'favourites' | 'error';
+  variant?: 'home' | 'catalog' | 'product' | 'cart' | 'favourites' | 'reload';
   children?: React.ReactNode;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };

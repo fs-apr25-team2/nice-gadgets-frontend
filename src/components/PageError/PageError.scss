@@ -1,6 +1,6 @@
-@use '../../../../styles/utils/mixins.scss' as *;
+@use '../../styles/utils/mixins.scss' as *;
 
-.product-page__error {
+.page__error {
   display: flex;
   flex-direction: column;
   align-items: center;
