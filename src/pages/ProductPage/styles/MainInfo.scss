@@ -66,8 +66,8 @@
       border: 1px solid var(--elements-color);
 
       @include on-tablet {
-        width: 35px;
-        height: 35px;
+        width: 65px;
+        height: 65px;
       }
 
       @include on-desktop {
