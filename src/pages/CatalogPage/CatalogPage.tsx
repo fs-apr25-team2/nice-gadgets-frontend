@@ -243,6 +243,7 @@ export const CatalogPage: React.FC = () => {
               <PaginationButton
                 onClick={handlePrevious}
                 disabled={pageParam === 1}
+                isArrow
               >
                 <ArrowLeftIcon />
               </PaginationButton>
@@ -254,6 +255,7 @@ export const CatalogPage: React.FC = () => {
               <PaginationButton
                 onClick={handleNext}
                 disabled={pageParam === pageCount}
+                isArrow
               >
                 <ArrowRightIcon />
               </PaginationButton>
