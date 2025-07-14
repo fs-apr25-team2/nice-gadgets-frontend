@@ -247,7 +247,9 @@ export const CatalogPage: React.FC = () => {
                 <ArrowLeftIcon />
               </PaginationButton>
 
-              {renderPageNumbers()}
+              <div className="catalog-page__pagination-numbers">
+                {renderPageNumbers()}
+              </div>
 
               <PaginationButton
                 onClick={handleNext}
