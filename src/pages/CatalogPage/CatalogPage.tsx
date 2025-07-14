@@ -124,11 +124,11 @@ export const CatalogPage: React.FC = () => {
       1,
       currentPageIndex - Math.floor(visiblePagesCount / 2),
     );
-    let endPageIndex = startPageIndex + visiblePagesCount;
+    let endPageIndex = startPageIndex + visiblePagesCount - 1;
 
     if (endPageIndex > totalPageCount) {
       endPageIndex = totalPageCount;
-      startPageIndex = Math.max(1, endPageIndex - visiblePagesCount);
+      startPageIndex = Math.max(1, endPageIndex - visiblePagesCount + 1);
     }
 
     const renderedPages = [];
