@@ -1,5 +1,6 @@
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { CartProduct } from '../../types/types';
 import { GoBack } from '../../ui/components/GoBack';
 import { Button } from '../../ui/components/Button';
@@ -7,6 +8,7 @@ import { Button } from '../../ui/components/Button';
 import './CartPage.scss';
 
 export const CartPage: React.FC = () => {
+  const { t } = useTranslation();
   const [cartItems, setCartItems] = useLocalStorage<CartProduct[]>('cart', []);
   const navigate = useNavigate();
 
@@ -38,7 +40,7 @@ export const CartPage: React.FC = () => {
     <div className="cart-page">
       <div className="cart-page__header">
         <GoBack />
-        <h1 className="cart-page__title">Cart</h1>
+        <h1 className="cart-page__title">{t('cart.title')}</h1>
       </div>
 
       {cartItems.length === 0 ?
@@ -47,13 +49,13 @@ export const CartPage: React.FC = () => {
             src="/img/cart-is-empty.png"
             alt="Empty cart"
           />
-          <h2>Your cart is empty</h2>
-          <p>Looks like you haven’t added anything yet.</p>
+          <h2>{t('cart.empty.title')}</h2>
+          <p>{t('cart.empty.text')}</p>
           <Button
             variant="empty"
             onClick={() => navigate('/')}
           >
-            Continue Shopping
+            {t('buttons.actions.shopping')}
           </Button>
         </div>
       : <div className="cart-page__content">
@@ -108,9 +110,11 @@ export const CartPage: React.FC = () => {
           <div className="cart-page__summary">
             <div className="cart-page__total">${total}</div>
             <div className="cart-page__label">
-              Total for {totalQuantity} item{totalQuantity !== 1 && 's'}
+              {t('cart.total', { count: totalQuantity })}
             </div>
-            <button className="cart-page__checkout">Checkout</button>
+            <button className="cart-page__checkout">
+              {t('buttons.actions.checkout')}
+            </button>
           </div>
         </div>
       }

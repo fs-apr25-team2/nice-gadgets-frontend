@@ -5,3 +5,7 @@ export const CATALOG_TITLES: Record<ProductCategory, string> = {
   tablets: 'Tablets',
   accessories: 'Accessories',
 };
+
+export const LANG_KEY = 'language';
+export const CART_KEY = 'cart';
+export const FAVOURITES_KEY = 'favourites';

@@ -1,4 +1,4 @@
-@import '../../styles/utils/mixins.scss';
+@use '../../styles/utils/mixins.scss' as *;
 
 .favourites-page {
   padding-block: 24px;

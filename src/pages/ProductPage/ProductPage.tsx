@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import { Product, ProductOptions } from '../../types/types';
 import { Loader } from '../../components/Loader';
@@ -34,6 +35,7 @@ const getSuggestedProducts = (
 };
 
 export const ProductPage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const {
     category,
@@ -121,7 +123,9 @@ export const ProductPage = () => {
             <div className="features">
               <div className="features__head">
                 <div className="colors">
-                  <span className="colors__label">Available colors</span>
+                  <span className="colors__label">
+                    {t('buttons.actions.product.colors')}
+                  </span>
                   <div className="colors__list">
                     {productDetails.colorsAvailable.map((color) => (
                       <ColorSelectorsButton
@@ -138,7 +142,9 @@ export const ProductPage = () => {
               <div className="features__line"></div>
 
               <div className="capacity">
-                <span className="capacity__label">Capacity</span>
+                <span className="capacity__label">
+                  {t('buttons.actions.product.capacity')}
+                </span>
                 <div className="capacity__list">
                   {productDetails.capacityAvailable.map((capacity) => (
                     <div
@@ -178,7 +184,9 @@ export const ProductPage = () => {
                     }
                   }}
                 >
-                  {isInCart(product) ? 'Added to Cart' : 'Add to Cart'}
+                  {isInCart(product) ?
+                    t('buttons.actions.product.inCart')
+                  : t('buttons.actions.product.toCart')}
                 </Button>
 
                 <AddToFavouritesButton
@@ -201,25 +209,33 @@ export const ProductPage = () => {
 
               <div className="descriptions">
                 <div className="description">
-                  <span className="description__label">Screen</span>
+                  <span className="description__label">
+                    {t('product.specifications.screen')}
+                  </span>
                   <span className="description__value">
                     {productDetails.screen}
                   </span>
                 </div>
                 <div className="description">
-                  <span className="description__label">Resolution</span>
+                  <span className="description__label">
+                    {t('product.specifications.resolution')}
+                  </span>
                   <span className="description__value">
                     {productDetails.resolution}
                   </span>
                 </div>
                 <div className="description">
-                  <span className="description__label">Processor</span>
+                  <span className="description__label">
+                    {t('product.specifications.processor')}
+                  </span>
                   <span className="description__value">
                     {productDetails.processor}
                   </span>
                 </div>
                 <div className="description">
-                  <span className="description__label">RAM</span>
+                  <span className="description__label">
+                    {t('product.specifications.ram')}
+                  </span>
                   <span className="description__value">
                     {productDetails.ram}
                   </span>
@@ -230,7 +246,7 @@ export const ProductPage = () => {
 
           <section className="details">
             <div className="about">
-              <h3 className="about__title">About</h3>
+              <h3 className="about__title">{t('product.about.title')}</h3>
 
               <div className="details__line"></div>
 
@@ -255,38 +271,48 @@ export const ProductPage = () => {
             </div>
 
             <div className="tech-specs">
-              <h3 className="tech-specs__title">Tech specs</h3>
+              <h3 className="tech-specs__title">
+                {t('product.specifications.label')}
+              </h3>
 
               <div className="details__line"></div>
 
               <div className="tech-specs__features">
                 <div className="tech-specs__feature">
-                  <span className="tech-specs__feature-label">Screen</span>
+                  <span className="tech-specs__feature-label">
+                    {t('product.specifications.screen')}
+                  </span>
                   <span className="tech-specs__feature-value">
                     {productDetails.screen}
                   </span>
                 </div>
                 <div className="tech-specs__feature">
-                  <span className="tech-specs__feature-label">Resolution</span>
+                  <span className="tech-specs__feature-label">
+                    {t('product.specifications.resolution')}
+                  </span>
                   <span className="tech-specs__feature-value">
                     {productDetails.resolution}
                   </span>
                 </div>
                 <div className="tech-specs__feature">
-                  <span className="tech-specs__feature-label">Processor</span>
+                  <span className="tech-specs__feature-label">
+                    {t('product.specifications.processor')}
+                  </span>
                   <span className="tech-specs__feature-value">
                     {productDetails.processor}
                   </span>
                 </div>
                 <div className="tech-specs__feature">
-                  <span className="tech-specs__feature-label">RAM</span>
+                  <span className="tech-specs__feature-label">
+                    {t('product.specifications.ram')}
+                  </span>
                   <span className="tech-specs__feature-value">
                     {productDetails.ram}
                   </span>
                 </div>
                 <div className="tech-specs__feature">
                   <span className="tech-specs__feature-label">
-                    Build in memory
+                    {t('product.specifications.builtInMemory')}
                   </span>
                   <span className="tech-specs__feature-value">
                     {productDetails.capacity}
@@ -294,7 +320,9 @@ export const ProductPage = () => {
                 </div>
                 {productDetails.camera && (
                   <div className="tech-specs__feature">
-                    <span className="tech-specs__feature-label">Camera</span>
+                    <span className="tech-specs__feature-label">
+                      {t('product.specifications.camera')}
+                    </span>
                     <span className="tech-specs__feature-value">
                       {productDetails.camera}
                     </span>
@@ -302,14 +330,18 @@ export const ProductPage = () => {
                 )}
                 {productDetails.zoom && (
                   <div className="tech-specs__feature">
-                    <span className="tech-specs__feature-label">Zoom</span>
+                    <span className="tech-specs__feature-label">
+                      {t('product.specifications.screen')}
+                    </span>
                     <span className="tech-specs__feature-value">
                       {productDetails.zoom}
                     </span>
                   </div>
                 )}
                 <div className="tech-specs__feature">
-                  <span className="tech-specs__feature-label">Cell</span>
+                  <span className="tech-specs__feature-label">
+                    {t('product.specifications.cell')}
+                  </span>
                   <span className="tech-specs__feature-value">
                     {productDetails.cell.join(', ')}
                   </span>
@@ -320,7 +352,7 @@ export const ProductPage = () => {
         </>
       )}
       <ProductSlider
-        title="You may also like"
+        title={t('slider.suggested')}
         products={suggestedProducts}
         isInCart={isInCart}
         isAddedToFavourites={isAddedToFavourites}

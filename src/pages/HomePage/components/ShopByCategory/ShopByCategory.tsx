@@ -1,12 +1,13 @@
-import './ShopByCategory.scss';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router';
+import { useTranslation } from 'react-i18next';
 import {
   CatalogCategory,
   Product,
   ProductCategory,
 } from '../../../../types/types';
 import { getProducts } from '../../../../utils/api';
-import { useEffect, useState } from 'react';
+import './ShopByCategory.scss';
 
 type CategoryConfig = {
   name: string;
@@ -16,6 +17,7 @@ type CategoryConfig = {
 };
 
 export const ShopByCategory: React.FC = () => {
+  const { t } = useTranslation();
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -50,7 +52,7 @@ export const ShopByCategory: React.FC = () => {
   return (
     <section className="shop-category">
       <h2 className="shop-category__title typography typography--h2">
-        Shop by category
+        {t('home.categories')}
       </h2>
 
       <div className="shop-category__grid">

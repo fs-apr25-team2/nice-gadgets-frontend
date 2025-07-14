@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "name": "Денис Піцул",
+    "position": "Тімлід, Менеджер з Git та інтеграції фіч",
+    "photo": "/img/team/denys-pitsul.PNG",
+    "description": "Денис налаштував інфраструктуру проекту та керував робочим процесом через GitHub, включно зі стратегією гілок, код-рев’ю та управлінням pull request-ами. Розробив повну сторінку деталей продукту, реалізувавши і розмітку, і логіку.",
+    "github": "https://github.com/DenisPitsul",
+    "linkedin": "https://www.linkedin.com/in/denis-pitsul-064594164/",
+    "telegram": "https://t.me/denis_pitsul",
+    "email": "denia.pitsul@gmail.com"
+  },
+  {
+    "id": 2,
+    "name": "Оксана Кузів",
+    "position": "UI-спеціаліст, Координатор PM",
+    "photo": "/img/team/oksana-kuziv.jpg",
+    "description": "Оксана реалізувала повністю адаптивні Header, Footer, мобільну та Breadcrumbs-навігацію для покращення UX. Запроєктувала і розробила повний UI та бізнес-логіку для сторінок Контактів та Права.",
+    "github": "https://github.com/OksanaKuziv",
+    "linkedin": "https://www.linkedin.com/in/oksana-kuziv-0a8a55276/",
+    "telegram": "https://t.me/Oksana_Kuziv",
+    "email": "oksanakuziv25@gmail.com"
+  },
+  {
+    "id": 3,
+    "name": "Юрій Іваненко",
+    "position": "Розробник UI-компонентів",
+    "photo": "/img/team/yurii-ivanenko.jpg",
+    "description": "Юрій створив повністю адаптивний та респонсивний компонент кнопки для UI-киту, розробив інтерфейс сторінки каталогу з частковою логікою, а також реалізував респонсивний блок 'Shop by Category' на головній сторінці, що працює з даними.",
+    "github": "https://github.com/deadslowright",
+    "linkedin": "https://www.linkedin.com/in/yurii-ivanenko-b48a0025b/",
+    "telegram": "https://t.me/deadslowright",
+    "email": "ura1408280594@gmail.com"
+  },
+  {
+    "id": 4,
+    "name": "Яна Луніна",
+    "position": "Інженер компонентів та UI-логіки",
+    "photo": "/img/team/yana-lunina.jpg",
+    "description": "Яна розробила багаторазовий компонент картки продукту з повною UI/UX логікою. Створила універсальний слайдер продуктів із використанням Swiper.js. Реалізувала повну структуру і розмітку головної сторінки. Підключила та налаштувала логіку сторінки каталогу: імплементувала пагінацію з кастомними кнопками, додала сортування і фільтрацію продуктів. Забезпечила сумісність з динамічними маршрутами та категоріями продуктів.",
+    "github": "https://github.com/Ynln69",
+    "linkedin": "https://www.linkedin.com/in/yana-lunina/",
+    "telegram": "https://t.me/ynln69",
+    "email": "yanalunina96@gmail.com"
+  },
+  {
+    "id": 5,
+    "name": "Микита Ілюхін",
+    "position": "Спеціаліст з поведінки UI та станів",
+    "photo": "/img/team/mykyta-iliukhin.jpg",
+    "description": "Микита розробив повну UI та логіку для сторінок Обраного, Кошика та Сторінки 404, забезпечивши адаптивність та безшовний користувацький досвід. Адаптував і стилізував dropdown-и та модальні вікна з Radix UI, плавно інтегрувавши їх у загальну дизайн-систему.",
+    "github": "https://github.com/Nixita-1",
+    "linkedin": "https://www.linkedin.com/in/mykyta-iliukhin-78a34b368/",
+    "telegram": "https://t.me/Nixita61",
+    "email": "nikiliukhin12@gmail.com"
+  }
+]

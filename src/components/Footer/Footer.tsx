@@ -1,9 +1,12 @@
 import { NavLink } from 'react-router';
+import { useTranslation } from 'react-i18next';
 import { ArrowUpIcon } from '../../ui/icons/ArrowUpIcon';
 
 import './Footer.scss';
 
 export const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="footer__container page-container">
@@ -25,20 +28,20 @@ export const Footer = () => {
             href="https://github.com/fs-apr25-team2/nice-gadgets-frontend"
             className="footer__link typography typography--uppercase"
           >
-            Github
+            {t('navLink.gitHub')}
           </a>
           <NavLink
             to="contacts"
             className="footer__link typography typography--uppercase"
           >
-            Contacts
+            {t('navLink.contacts')}
           </NavLink>
 
           <NavLink
             to="rights"
             className="footer__link typography typography--uppercase"
           >
-            Rights
+            {t('navLink.rights')}
           </NavLink>
         </nav>
 
@@ -48,7 +51,7 @@ export const Footer = () => {
             aria-label="Scroll back to top"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <span>Back to top</span>
+            <span>{t('buttons.actions.toTop')}</span>
             <span className="footer__back-btn">
               <ArrowUpIcon />
             </span>

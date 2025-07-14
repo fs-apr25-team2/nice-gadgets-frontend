@@ -4,6 +4,7 @@ import { useLocalStorage } from '../../../../hooks/useLocalStorage';
 import { HeartIcon } from '../../../../ui/icons/HeartIcon';
 import { ShoppingCartIcon } from '../../../../ui/icons/ShoppingCartIcon';
 import { CartProduct, Product } from '../../../../types/types';
+import { CART_KEY, FAVOURITES_KEY } from '../../../../constants';
 
 import './HeaderIcons.scss';
 
@@ -12,8 +13,8 @@ interface HeaderIconsProps {
 }
 
 export const HeaderIcons = ({ onClick }: HeaderIconsProps) => {
-  const [favouritesItems] = useLocalStorage<Product[]>('favourites', []);
-  const [cartItems] = useLocalStorage<CartProduct[]>('cart', []);
+  const [favouritesItems] = useLocalStorage<Product[]>(FAVOURITES_KEY, []);
+  const [cartItems] = useLocalStorage<CartProduct[]>(CART_KEY, []);
 
   const totalCartQuantity = cartItems.reduce(
     (total, cartItem) => cartItem.quantity + total,
