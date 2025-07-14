@@ -1,0 +1,187 @@
+{
+  "navLink": {
+    "home": "Home",
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "gitHub": "GitHub",
+    "contacts": "Contacts",
+    "rights": "Rights"
+  },
+  "languages": {
+    "en": "EN",
+    "ua": "UA"
+  },
+  "home": {
+    "title": "Welcome to Nice Gadgets store!",
+    "categories": "Shop by category"
+  },
+  "slider": {
+    "newModels": "Brand new models",
+    "hotPrices": "Hot prices",
+    "suggested": "You may also like"
+  },
+  "breadcrumbs": {
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "favourites": "Favourites"
+  },
+  "models": {
+    "total": "{{count}} model",
+    "total_other": "{{count}} models"
+  },
+  "items": {
+    "total": "{{count}} item",
+    "total_other": "{{count}} items"
+  },
+  "buttons": {
+    "actions": {
+      "toTop": "Back to top",
+      "toCart": "Add to cart",
+      "inCart": "Added",
+      "back": "Back",
+      "product": {
+        "colors": "Available colors",
+        "capacity": "Capacity",
+        "toCart": "Add to cart",
+        "inCart": "Added to cart"
+      },
+      "shopping": "Continue Shopping",
+      "checkout": "Checkout",
+      "goHome": "Go Home",
+      "reload": "Reload"
+    }
+  },
+  "catalog": {
+    "phones": {
+      "title": "Mobile phones"
+    },
+    "tablets": {
+      "title": "Tablets"
+    },
+    "accessories": {
+      "title": "Accessories"
+    },
+    "dropdown": {
+      "sortBy": {
+        "label": "Sort by",
+        "options": {
+          "newest": "Newest",
+          "alphabetically": "Alphabetically",
+          "cheapest": "Cheapest"
+        }
+      },
+      "perPage": {
+        "label": "Items per page",
+        "options": {
+          "4": "4",
+          "8": "8",
+          "16": "16",
+          "all": "All"
+        }
+      }
+    },
+    "empty": "There are no {{category}} yet"
+  },
+  "product": {
+    "specifications": {
+      "screen": "Screen",
+      "capacity": "Capacity",
+      "display": "Display",
+      "ram": "RAM",
+      "resolution": "Resolution",
+      "processor": "Processor",
+      "builtInMemory": "Built-in Memory",
+      "camera": "Camera",
+      "zoom": "Zoom",
+      "cell": "Cell",
+      "label": "Tech specs"
+    },
+    "about": {
+      "title": "About"
+    },
+    "notFound": {
+      "title": "Product wasn't found!"
+    }
+  },
+  "cart": {
+    "title": "Cart",
+    "total": "Total for {{count}} item",
+    "total_other": "Total for {{count}} items",
+    "empty": {
+      "title": "Your cart is empty",
+      "text": "Looks like you haven't added anything yet"
+    }
+  },
+  "favourites": {
+    "title": "Favourites",
+    "empty": {
+      "text": "You don't have favourites yet"
+    }
+  },
+  "error": {
+    "unknown": "Sorry, something went wrong",
+    "retry": "Try again"
+  },
+  "404": {
+    "title": "404 - Page not found",
+    "text": "But you can still play :)",
+    "textNotAvailable": "This game is not available on phones :("
+  },
+  "contacts": {
+    "title": "Our Team",
+    "text": "We are a team of passionate Front-End Developers who collaborated on this project following real-life workflows and role distributions. Our team combined strengths in UI/UX, state management, component architecture, and project coordination, simulating a professional development environment."
+  },
+  "rights": {
+    "title": "Welcome to Nice Gadgets!",
+    "text": "By using this website, you agree to the following terms and policies.\nPlease read them carefully before using the site.",
+    "list": [
+      {
+        "id": "ownership-and-copyright",
+        "title": "1. Ownership & Copyright",
+        "content": "All materials posted on the site, including text, graphics, images, logos, design, software, trademarks, domain names and other content elements, are the property of the Nice Gadgets team and are protected by copyright and intellectual property laws."
+      },
+      {
+        "id": "use-of-content",
+        "title": "2. Use of Content",
+        "content": "You re allowed to view and share content for personal, non-commercial use only. Any copying, re-posting, or commercial use of our materials without written permission is not allowed."
+      },
+      {
+        "id": "data-protection",
+        "title": "3. Data Protection",
+        "content": "We respect your privacy. We only collect the information needed to process orders and improve your shopping experience. We don’t sell or share your personal data with third parties."
+      },
+      {
+        "id": "placing-orders",
+        "title": "4. Placing Orders",
+        "content": "To place an order, just add items to your cart and proceed to checkout. After confirming your order, you’ll receive an email with the details. We reserve the right to cancel or limit any order in case of stock or payment issues."
+      },
+      {
+        "id": "prices-and-payments",
+        "title": "5. Prices & Payments",
+        "content": "All prices include taxes (if applicable). Payments can be made securely via credit card, PayPal, or other available methods shown at checkout."
+      },
+      {
+        "id": "shipping-and-delivery",
+        "title": "6. Shipping & Delivery",
+        "content": "We ship orders on working days. Delivery times depend on your location and chosen shipping method. You’ll receive tracking details once your order is on its way."
+      },
+      {
+        "id": "returns-and-refunds",
+        "title": "7. Returns & Refunds",
+        "content": "Not happy with your purchase? You can return most products within 14 days after delivery. Returned items must be in original condition and packaging. For full details, check our Return Policy page."
+      },
+      {
+        "id": "account-security",
+        "title": "8. Account Security",
+        "content": "If you create an account, keep your login details safe. You’re responsible for all activity under your account."
+      },
+      {
+        "id": "questions-or-feedback",
+        "title": "9. Questions or Feedback?",
+        "content": "Were always happy to help. Visit our Contact page to reach us via email, phone, or live chat."
+      }
+    ]
+  }
+}

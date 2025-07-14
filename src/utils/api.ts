@@ -39,7 +39,8 @@ export const getProducts = () => get<Product[]>('/products');
 export const getPhones = () => get<ProductDetails[]>('/phones');
 export const getTablets = () => get<ProductDetails[]>('/tablets');
 export const getAccessories = () => get<ProductDetails[]>('/accessories');
-export const getTeamMembers = () => get<TeamMember[]>('/team');
+export const getTeamMembersEN = () => get<TeamMember[]>('/teamEN');
+export const getTeamMembersUA = () => get<TeamMember[]>('/teamUA');
 
 export async function getProductsByCategory(
   category: ProductCategory,

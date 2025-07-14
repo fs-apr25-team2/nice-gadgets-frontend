@@ -1,8 +1,11 @@
-import { Link, useLocation } from 'react-router';
+import { Link } from 'react-router';
 import { ArrowRightIcon } from '../../../ui/icons/ArrowRightIcon';
 import { HomeIcon } from '../../../ui/icons/HomeIcon';
 import cn from 'classnames';
 import './Breadcrumbs.scss';
+import { useParams } from 'react-router';
+import { ProductCategory } from '../../../types/types';
+import { useTranslation } from 'react-i18next';
 
 interface BreadcrumbsProps {
   productName?: string;
@@ -13,13 +16,12 @@ export const Breadcrumbs = ({
   productName,
   modification,
 }: BreadcrumbsProps) => {
-  const location = useLocation();
+  const { t } = useTranslation();
+  const { category } = useParams();
 
-  const rawPathnames = location.pathname.split('/').filter(Boolean);
-  const pathnames = productName ? rawPathnames.slice(0, -1) : rawPathnames;
+  const safeCategory = category as ProductCategory;
 
-  const capitalize = (str: string) =>
-    str.charAt(0).toUpperCase() + str.slice(1);
+  const categoryTitle = t(`navLink.${safeCategory}`);
 
   return (
     <nav
@@ -35,27 +37,25 @@ export const Breadcrumbs = ({
         {HomeIcon()}
       </Link>
 
-      {pathnames.map((name, index) => {
-        const routeTo = '/' + pathnames.slice(0, index + 1).join('/');
-        const isLast = index === pathnames.length - 1;
-
-        return (
-          <span
-            key={routeTo}
-            className="breadcrumbs__item"
+      {productName ?
+        <span className="breadcrumbs__item">
+          <span className="breadcrumbs__separator">{ArrowRightIcon()}</span>
+          <Link
+            to={`/${safeCategory}`}
+            className={`breadcrumbs__link ${
+              !productName ? 'breadcrumbs__link--active' : ''
+            }`}
           >
-            <span className="breadcrumbs__separator">{ArrowRightIcon()}</span>
-            <Link
-              to={routeTo}
-              className={`breadcrumbs__link ${
-                isLast && !productName ? 'breadcrumbs__link--active' : ''
-              }`}
-            >
-              {capitalize(name)}
-            </Link>
+            {categoryTitle}
+          </Link>
+        </span>
+      : <>
+          <span className="breadcrumbs__separator">
+            <ArrowRightIcon />
           </span>
-        );
-      })}
+          <span className="breadcrumbs__current">{categoryTitle}</span>
+        </>
+      }
 
       {productName && (
         <>

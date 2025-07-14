@@ -1,4 +1,5 @@
 import { HeaderIcons } from '../HeaderIcons/HeaderIcons';
+import { LangSwitcher } from '../LangSwitcher';
 import { NavigationTabs } from '../NavigationTabs/NavigationTabs';
 import './BurgerMenu.scss';
 
@@ -18,6 +19,9 @@ export const BurgerMenu = ({ onClose }: BurgerMenuProps) => {
           onClick={onClose}
         />
       </nav>
+      <div className="burger-menu__lang">
+        <LangSwitcher mobile={true} />
+      </div>
       <div className="burger-menu__icons">
         <HeaderIcons onClick={onClose} />
       </div>

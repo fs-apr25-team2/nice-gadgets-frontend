@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Denys Pitsul",
-    "position": " Team Lead, Git & Feature Integration Manager",
+    "position": "Team Lead, Git & Feature Integration Manager",
     "photo": "/img/team/denys-pitsul.PNG",
     "description": "Denys set up the project infrastructure and managed the workflow using GitHub, including branch strategy, code reviews, and pull request management. Developed the full Product Details page, implementing both layout and logic.",
     "github": "https://github.com/DenisPitsul",

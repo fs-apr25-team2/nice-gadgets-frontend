@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header/Header';
+import { SignupOfferModal } from '../../components/SignupOfferModal';
 import './AppLayout.scss';
 
 export const AppLayout = () => {
@@ -17,6 +18,8 @@ export const AppLayout = () => {
   return (
     <div className="page">
       <Header />
+
+      <SignupOfferModal />
 
       <main className="main page-container">
         <Outlet />

@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-// import { useParams } from 'react-router';
+import cn from 'classnames';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { CartProduct, Product } from '../../types/types';
 import { ProductCard } from '../ProductCard';
-import cn from 'classnames';
+import { CART_KEY, FAVOURITES_KEY } from '../../constants';
 import './ProductList.scss';
 
 type Props = {
@@ -12,10 +12,12 @@ type Props = {
 };
 
 export const ProductList: React.FC<Props> = ({ products, className }) => {
-  // const { category, productId } = useParams();
-  const [cartItems, setCartItems] = useLocalStorage<CartProduct[]>('cart', []);
+  const [cartItems, setCartItems] = useLocalStorage<CartProduct[]>(
+    CART_KEY,
+    [],
+  );
   const [favouritesItems, setFavouritesItems] = useLocalStorage<Product[]>(
-    'favourites',
+    FAVOURITES_KEY,
     [],
   );
 

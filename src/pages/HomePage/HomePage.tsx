@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ProductSlider } from '../../components/ProductSlider';
 import { Hero } from '../../components/Hero';
 import { ShopByCategory } from './components/ShopByCategory';
@@ -9,6 +10,7 @@ import { useProductStorage } from '../../hooks/useProductStorage';
 import './HomePage.scss';
 
 export const HomePage: React.FC = () => {
+  const { t } = useTranslation();
   const [products, setProducts] = useState<Product[]>([]);
   const {
     isInCart,
@@ -45,7 +47,7 @@ export const HomePage: React.FC = () => {
       <Hero />
 
       <ProductSlider
-        title="Brand new models"
+        title={t('slider.newModels')}
         products={brandNewProducts}
         isInCart={isInCart}
         isAddedToFavourites={isAddedToFavourites}
@@ -58,7 +60,7 @@ export const HomePage: React.FC = () => {
       <ShopByCategory />
 
       <ProductSlider
-        title="Hot prices"
+        title={t('slider.hotPrices')}
         products={hotPriceProducts}
         isInCart={isInCart}
         isAddedToFavourites={isAddedToFavourites}

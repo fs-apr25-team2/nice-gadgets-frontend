@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { BurgerMenu } from './components/BurgerMenu';
 import { NavigationTabs } from './components/NavigationTabs';
 import { HeaderIcons } from './components/HeaderIcons';
+import { LangSwitcher } from './components/LangSwitcher';
 
 import { BurgerMenuIcon } from '../../ui/icons/BurgerMenuIcon';
 import { CloseIcon } from '../../ui/icons/CloseIcon';
@@ -55,6 +56,7 @@ export const Header = () => {
         </button>
 
         <div className="header__right">
+          <LangSwitcher mobile={false} />
           <HeaderIcons />
         </div>
       </div>
