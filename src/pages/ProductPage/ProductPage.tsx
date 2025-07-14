@@ -1,8 +1,7 @@
+import { useMemo } from 'react';
 import { useNavigate } from 'react-router';
 import classNames from 'classnames';
-import { ProductOptions } from '../../types/types';
-import './styles//ProductPage.scss';
-
+import { Product, ProductOptions } from '../../types/types';
 import { Loader } from '../../components/Loader';
 import { useProductDetails } from '../../hooks/useProductDetails';
 import { Breadcrumbs } from '../../ui/components/Breadcrumbs';
@@ -16,6 +15,23 @@ import { PageError } from '../../components/PageError';
 import { ProductNotFound } from './components/ProductNotFound';
 import { useProductStorage } from '../../hooks/useProductStorage';
 import { ProductSlider } from '../../components/ProductSlider';
+import './styles/ProductPage.scss';
+
+const getSuggestedProducts = (
+  products: Product[],
+  productId: string | undefined,
+  count: number,
+) => {
+  const filteredProducts = products.filter(
+    (product) => product.itemId !== productId,
+  );
+
+  const shuffledProducts = [...filteredProducts].sort(
+    () => 0.5 - Math.random(),
+  );
+
+  return shuffledProducts.slice(0, count);
+};
 
 export const ProductPage = () => {
   const navigate = useNavigate();
@@ -55,17 +71,9 @@ export const ProductPage = () => {
     }
   };
 
-  const getSuggestedProducts = (count: number) => {
-    const filteredProducts = products.filter(
-      (product) => product.itemId !== productDetails?.id,
-    );
-
-    const shuffledProducts = [...filteredProducts].sort(
-      () => 0.5 - Math.random(),
-    );
-
-    return shuffledProducts.slice(0, count);
-  };
+  const suggestedProducts = useMemo(() => {
+    return getSuggestedProducts(products, productDetails?.id, 12);
+  }, [productDetails?.id, products]);
 
   return (
     <div className="product-page">
@@ -312,8 +320,8 @@ export const ProductPage = () => {
         </>
       )}
       <ProductSlider
-        title="Hot prices"
-        products={getSuggestedProducts(12)}
+        title="You may also like"
+        products={suggestedProducts}
         isInCart={isInCart}
         isAddedToFavourites={isAddedToFavourites}
         addToCart={addToCart}
