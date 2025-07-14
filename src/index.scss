@@ -3,6 +3,7 @@
 @use './styles/utils/variables' as *;
 @use './styles/utils/mixins' as *;
 @use './styles/typography' as *;
+@use './styles/utils/toasts' as *;
 
 :root {
   --primary-color: #313237;

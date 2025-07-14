@@ -15,6 +15,7 @@ import { HeartFilledIcon } from '../../ui/icons/HeartFilledIcon';
 import { HeartIcon } from '../../ui/icons/HeartIcon';
 import { PageError } from '../../components/PageError';
 import { ProductNotFound } from './components/ProductNotFound';
+import { toast } from 'react-toastify';
 
 export const ProductPage = () => {
   const navigate = useNavigate();
@@ -68,31 +69,55 @@ export const ProductPage = () => {
 
   const handleAddToCart = () => {
     if (product) {
+      toast.dismiss(`cart-add-${product.id}`);
+      toast.dismiss(`cart-remove-${product.id}`);
       setCartItems((prev) => [...prev, { ...product, quantity: 1 }]);
+      toast.success(`${product.name} added to cart`, {
+        toastId: `cart-add-${product.id}`,
+        className: 'toast-add-and-remove',
+      });
     }
   };
 
   const handleRemoveFromCart = () => {
     if (product) {
+      toast.dismiss(`cart-add-${product.id}`);
+      toast.dismiss(`cart-remove-${product.id}`);
       setCartItems(
         cartItems.filter((cartItem) => cartItem.itemId !== product.itemId),
       );
+      toast.error(`${product.name} removed from cart`, {
+        toastId: `cart-remove-${product.id}`,
+        className: 'toast-add-and-remove',
+      });
     }
   };
 
   const handleAddToFavourites = () => {
     if (product) {
+      toast.dismiss(`fav-add-${product.id}`);
+      toast.dismiss(`fav-remove-${product.id}`);
       setFavouritesItems((prev) => [...prev, product]);
+      toast.success(`${product.name} added to favourites`, {
+        toastId: `fav-add-${product.id}`,
+        className: 'toast-add-and-remove',
+      });
     }
   };
 
   const handleRemoveFromFavourites = () => {
     if (product) {
+      toast.dismiss(`fav-add-${product.id}`);
+      toast.dismiss(`fav-remove-${product.id}`);
       setFavouritesItems(
         favouritesItems.filter(
           (favouritesItem) => favouritesItem.itemId !== product.itemId,
         ),
       );
+      toast.error(`${product.name} removed from favourites`, {
+        toastId: `fav-remove-${product.id}`,
+        className: 'toast-add-and-remove',
+      });
     }
   };
 
