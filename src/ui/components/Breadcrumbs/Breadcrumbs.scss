@@ -4,6 +4,19 @@
   display: flex;
   gap: 8px;
 
+  &__link-to-home {
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary-color);
+
+    text-decoration: none;
+
+    &:hover {
+      color: var(--secondary-color);
+    }
+  }
+
   &--product {
     padding-bottom: 24px;
 
@@ -26,7 +39,6 @@
     line-height: 20px;
     font-size: 12px;
     font-weight: 700;
-
     text-decoration: none;
   }
 
@@ -34,12 +46,17 @@
     color: var(--primary-color);
     transition: color 0.3s;
 
-    &--active:hover {
+    &:hover {
       color: var(--secondary-color);
+    }
+
+    &--active {
+      color: var(--secondary-color);
+      cursor: default;
     }
   }
 
-  &__current--disabled {
+  &__current {
     color: var(--secondary-color);
     cursor: default;
   }
