@@ -1,28 +1,24 @@
 @import '../../styles/utils/mixins.scss';
 
 .favourites-page {
-  padding-block: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-
+  padding-block: 24px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
 
   &__header {
     width: 100%;
     margin-bottom: 32px;
-    align-self: stretch;
   }
 
   &__title {
+    margin-top: 8px;
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 8px;
     text-align: left;
 
     @include on-tablet {
+      margin-top: 8px;
       font-size: 44px;
     }
 
@@ -38,84 +34,25 @@
     text-align: left;
   }
 
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-
-  @include on-big-tablet {
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  }
-
-  @include on-desktop {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  }
-
-  @include on-big-desktop {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  }
-
   &__empty {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-block: 60px;
     text-align: center;
-    min-height: 50vh;
-    width: 100%;
-    align-self: center;
+    flex-grow: 1;
+    min-height: 300px;
 
-    @include on-tablet {
-      min-height: 40vh;
+    img {
+      min-height: 256px;
+      max-width: 288px;
+      margin-bottom: 24px;
     }
 
-    @include on-desktop {
-      min-height: 35vh;
-    }
-  }
-
-  &__empty-image {
-    width: 220px;
-    height: auto;
-    margin-bottom: 24px;
-
-    @include on-tablet {
-      width: 280px;
-    }
-
-    @include on-desktop {
-      width: 400px;
-    }
-  }
-
-  &__empty-text {
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--secondary-color);
-    margin-bottom: 24px;
-
-    @include on-tablet {
-      font-size: 20px;
-    }
-  }
-
-  &__home-button {
-    background-color: var(--primary-color);
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      color: black;
-      background-color: var(--hover-background-color);
-    }
-
-    @include on-tablet {
-      font-size: 18px;
-      padding: 14px 28px;
+    p {
+      font-size: 16px;
+      color: var(--secondary-color);
+      margin-bottom: 24px;
     }
   }
 }

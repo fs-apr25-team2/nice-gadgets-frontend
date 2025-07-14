@@ -3,6 +3,7 @@ import { Product } from '../../types/types';
 import { ProductList } from '../../components/ProductList/ProductList';
 import { useNavigate } from 'react-router';
 import { Breadcrumbs } from '../../ui/components/Breadcrumbs';
+import { Button } from '../../ui/components/Button';
 
 import './FavouritesPage.scss';
 
@@ -27,17 +28,14 @@ export const FavouritesPage = () => {
           <img
             src="/img/product-not-found.png"
             alt="No favorites"
-            className="favourites-page__empty-image"
           />
-          <p className="favourites-page__empty-text">
-            There are no favourites yet
-          </p>
-          <button
-            className="favourites-page__home-button"
+          <p>There are no favourites yet</p>
+          <Button
+            variant="empty"
             onClick={() => navigate('/')}
           >
             Go Home
-          </button>
+          </Button>
         </div>
       : <ProductList products={favourites} />}
     </div>

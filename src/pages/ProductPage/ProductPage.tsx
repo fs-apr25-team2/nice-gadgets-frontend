@@ -1,11 +1,10 @@
 import { useNavigate } from 'react-router';
 import classNames from 'classnames';
-import { CartProduct, Product, ProductOptions } from '../../types/types';
+import { ProductOptions } from '../../types/types';
 import './styles//ProductPage.scss';
 
 import { Loader } from '../../components/Loader';
 import { useProductDetails } from '../../hooks/useProductDetails';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { Breadcrumbs } from '../../ui/components/Breadcrumbs';
 import { GoBack } from '../../ui/components/GoBack';
 import { ColorSelectorsButton } from '../../ui/components/ColorSelectorsButton';
@@ -15,11 +14,14 @@ import { HeartFilledIcon } from '../../ui/icons/HeartFilledIcon';
 import { HeartIcon } from '../../ui/icons/HeartIcon';
 import { PageError } from '../../components/PageError';
 import { ProductNotFound } from './components/ProductNotFound';
+import { useProductStorage } from '../../hooks/useProductStorage';
+import { ProductSlider } from '../../components/ProductSlider';
 
 export const ProductPage = () => {
   const navigate = useNavigate();
   const {
     category,
+    products,
     product,
     productDetails,
     productsBySelectedModel,
@@ -28,11 +30,14 @@ export const ProductPage = () => {
     selectedImage,
     setSelectedImage,
   } = useProductDetails();
-  const [cartItems, setCartItems] = useLocalStorage<CartProduct[]>('cart', []);
-  const [favouritesItems, setFavouritesItems] = useLocalStorage<Product[]>(
-    'favourites',
-    [],
-  );
+  const {
+    isInCart,
+    isAddedToFavourites,
+    addToCart,
+    removeFromCart,
+    addToFavourites,
+    removeFromFavourites,
+  } = useProductStorage();
 
   const handleProductChange = (options: ProductOptions) => {
     const targetProduct = productsBySelectedModel.find(
@@ -50,55 +55,17 @@ export const ProductPage = () => {
     }
   };
 
-  const isProductInCart = () => {
-    const foundProduct = cartItems.find(
-      (cartItem) => cartItem.itemId === productDetails?.id,
+  const getSuggestedProducts = (count: number) => {
+    const filteredProducts = products.filter(
+      (product) => product.itemId !== productDetails?.id,
     );
 
-    return Boolean(foundProduct);
-  };
-
-  const isProductAddedToFavourites = () => {
-    const foundProduct = favouritesItems.find(
-      (favouritesItem) => favouritesItem.itemId === productDetails?.id,
+    const shuffledProducts = [...filteredProducts].sort(
+      () => 0.5 - Math.random(),
     );
 
-    return Boolean(foundProduct);
+    return shuffledProducts.slice(0, count);
   };
-
-  const handleAddToCart = () => {
-    if (product) {
-      setCartItems((prev) => [...prev, { ...product, quantity: 1 }]);
-    }
-  };
-
-  const handleRemoveFromCart = () => {
-    if (product) {
-      setCartItems(
-        cartItems.filter((cartItem) => cartItem.itemId !== product.itemId),
-      );
-    }
-  };
-
-  const handleAddToFavourites = () => {
-    if (product) {
-      setFavouritesItems((prev) => [...prev, product]);
-    }
-  };
-
-  const handleRemoveFromFavourites = () => {
-    if (product) {
-      setFavouritesItems(
-        favouritesItems.filter(
-          (favouritesItem) => favouritesItem.itemId !== product.itemId,
-        ),
-      );
-    }
-  };
-
-  console.log('error', hasError);
-  console.log('isLoading', isLoading);
-  console.log('product', productDetails);
 
   return (
     <div className="product-page">
@@ -107,11 +74,10 @@ export const ProductPage = () => {
         modification="product"
       />
       <GoBack />
-
       {isLoading && <Loader />}
       {!productDetails && !isLoading && hasError && <PageError />}
       {!productDetails && !hasError && !isLoading && <ProductNotFound />}
-      {productDetails && !hasError && !isLoading && (
+      {productDetails && product && !hasError && !isLoading && (
         <>
           <h2 className="typography typography--h2 product-page__title">
             {productDetails.name}
@@ -195,27 +161,33 @@ export const ProductPage = () => {
               <div className="buttons">
                 <Button
                   variant="product"
-                  selected={isProductInCart()}
-                  onClick={
-                    isProductInCart() ? handleRemoveFromCart : handleAddToCart
-                  }
+                  selected={isInCart(product)}
+                  onClick={() => {
+                    if (isInCart(product)) {
+                      removeFromCart(product);
+                    } else {
+                      addToCart(product);
+                    }
+                  }}
                 >
-                  {isProductInCart() ? 'Added to Cart' : 'Add to Cart'}
+                  {isInCart(product) ? 'Added to Cart' : 'Add to Cart'}
                 </Button>
 
                 <AddToFavouritesButton
-                  selected={isProductAddedToFavourites()}
+                  selected={isAddedToFavourites(product)}
                   variant="product"
                   icon={
-                    isProductAddedToFavourites() ?
+                    isAddedToFavourites(product) ?
                       <HeartFilledIcon />
                     : <HeartIcon />
                   }
-                  onClick={
-                    isProductAddedToFavourites() ?
-                      handleRemoveFromFavourites
-                    : handleAddToFavourites
-                  }
+                  onClick={() => {
+                    if (isAddedToFavourites(product)) {
+                      removeFromFavourites(product);
+                    } else {
+                      addToFavourites(product);
+                    }
+                  }}
                 />
               </div>
 
@@ -339,6 +311,16 @@ export const ProductPage = () => {
           </section>
         </>
       )}
+      <ProductSlider
+        title="Hot prices"
+        products={getSuggestedProducts(12)}
+        isInCart={isInCart}
+        isAddedToFavourites={isAddedToFavourites}
+        addToCart={addToCart}
+        addToFavourites={addToFavourites}
+        removeFromCart={removeFromCart}
+        removeFromFavourites={removeFromFavourites}
+      />
     </div>
   );
 };
