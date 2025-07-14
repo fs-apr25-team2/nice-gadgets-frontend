@@ -7,6 +7,7 @@ type PaginationButtonProps = {
   children?: React.ReactNode;
   onClick?: () => void;
   disabled?: boolean;
+  isArrow?: boolean;
 };
 
 export const PaginationButton: React.FC<PaginationButtonProps> = ({
@@ -14,6 +15,7 @@ export const PaginationButton: React.FC<PaginationButtonProps> = ({
   children = 'Button',
   onClick,
   disabled = false,
+  isArrow = false,
 }) => {
   return (
     <button
@@ -26,6 +28,7 @@ export const PaginationButton: React.FC<PaginationButtonProps> = ({
         'typography--buttons',
         {
           'button--pagination-selected': selected,
+          'button--pagination-arrow': isArrow,
         },
       )}
       onClick={onClick}

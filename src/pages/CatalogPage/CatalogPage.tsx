@@ -124,11 +124,11 @@ export const CatalogPage: React.FC = () => {
       1,
       currentPageIndex - Math.floor(visiblePagesCount / 2),
     );
-    let endPageIndex = startPageIndex + visiblePagesCount;
+    let endPageIndex = startPageIndex + visiblePagesCount - 1;
 
     if (endPageIndex > totalPageCount) {
       endPageIndex = totalPageCount;
-      startPageIndex = Math.max(1, endPageIndex - visiblePagesCount);
+      startPageIndex = Math.max(1, endPageIndex - visiblePagesCount + 1);
     }
 
     const renderedPages = [];
@@ -243,15 +243,19 @@ export const CatalogPage: React.FC = () => {
               <PaginationButton
                 onClick={handlePrevious}
                 disabled={pageParam === 1}
+                isArrow
               >
                 <ArrowLeftIcon />
               </PaginationButton>
 
-              {renderPageNumbers()}
+              <div className="catalog-page__pagination-numbers">
+                {renderPageNumbers()}
+              </div>
 
               <PaginationButton
                 onClick={handleNext}
                 disabled={pageParam === pageCount}
+                isArrow
               >
                 <ArrowRightIcon />
               </PaginationButton>
