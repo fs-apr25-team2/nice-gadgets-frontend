@@ -28,5 +28,11 @@
       color: var(--white-color);
       transition: 0.3s ease;
     }
+
+    &:disabled {
+      border: 1px solid var(--elements-color);
+      color: var(--icons-color);
+      cursor: not-allowed;
+    }
   }
 }
