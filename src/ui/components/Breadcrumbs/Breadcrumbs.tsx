@@ -30,7 +30,7 @@ export const Breadcrumbs = ({
     >
       <Link
         to="/"
-        className="breadcrumbs__link"
+        className="breadcrumbs__link-to-home"
       >
         {HomeIcon()}
       </Link>
@@ -62,9 +62,7 @@ export const Breadcrumbs = ({
           <span className="breadcrumbs__separator">
             <ArrowRightIcon />
           </span>
-          <span className="breadcrumbs__current breadcrumbs__current--disabled">
-            {productName}
-          </span>
+          <span className="breadcrumbs__current">{productName}</span>
         </>
       )}
     </nav>
