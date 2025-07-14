@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import './ProductCard.scss';
 import { Product } from '../../types/types';
@@ -26,6 +27,7 @@ export const ProductCard: React.FC<Props> = ({
   removeFromCart,
   removeFromFavourites,
 }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const handleCardClick = () => {
@@ -52,15 +54,21 @@ export const ProductCard: React.FC<Props> = ({
 
       <ul className="card__specs">
         <li className="card__spec">
-          <span className="card__spec-label">Screen</span>
+          <span className="card__spec-label">
+            {t('product.specifications.screen')}
+          </span>
           <span className="card__spec-value">{product.screen}</span>
         </li>
         <li className="card__spec">
-          <span className="card__spec-label">Capacity</span>
+          <span className="card__spec-label">
+            {t('product.specifications.capacity')}
+          </span>
           <span className="card__spec-value">{product.capacity}</span>
         </li>
         <li className="card__spec">
-          <span className="card__spec-label">RAM</span>
+          <span className="card__spec-label">
+            {t('product.specifications.ram')}
+          </span>
           <span className="card__spec-value">{product.ram}</span>
         </li>
       </ul>
@@ -81,7 +89,9 @@ export const ProductCard: React.FC<Props> = ({
             }
           }}
         >
-          {isInCart(product) ? 'Added' : 'Add to cart'}
+          {isInCart(product) ?
+            t('buttons.actions.inCart')
+          : t('buttons.actions.toCart')}
         </Button>
 
         <AddToFavouritesButton

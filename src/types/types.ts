@@ -66,3 +66,8 @@ export interface TeamMember {
   telegram: string;
   email: string;
 }
+
+export enum Language {
+  EN = 'en',
+  UA = 'ua',
+}

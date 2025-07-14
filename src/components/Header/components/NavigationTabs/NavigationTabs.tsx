@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router';
+import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 import './NavigationTabs.scss';
 
@@ -11,11 +12,13 @@ export const NavigationTabs = ({
   direction = 'horizontal',
   onClick,
 }: NavigationTabsProps) => {
+  const { t } = useTranslation();
+
   const tabs = [
-    { to: '/', label: 'Home' },
-    { to: '/phones', label: 'Phones' },
-    { to: '/tablets', label: 'Tablets' },
-    { to: '/accessories', label: 'Accessories' },
+    { to: '/', key: 'home' },
+    { to: '/phones', key: 'phones' },
+    { to: '/tablets', key: 'tablets' },
+    { to: '/accessories', key: 'accessories' },
   ];
 
   return (
@@ -25,7 +28,7 @@ export const NavigationTabs = ({
         'nav-tabs--vertical': direction === 'vertical',
       })}
     >
-      {tabs.map(({ to, label }) => (
+      {tabs.map(({ to, key }) => (
         <li
           key={to}
           className="nav-tabs__item"
@@ -39,7 +42,7 @@ export const NavigationTabs = ({
               }`
             }
           >
-            {label}
+            {t(`navLink.${key}`)}
           </NavLink>
         </li>
       ))}

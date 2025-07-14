@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 import './NotFoundPage.scss';
 
 export const NotFoundPage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
@@ -20,12 +22,10 @@ export const NotFoundPage = () => {
 
   return (
     <div className="not-found">
-      <h1 className="not-found__title">404 - Page Not Found</h1>
+      <h1 className="not-found__title">{t('404.title')}</h1>
 
       <p className="not-found__text">
-        {isSmallScreen ?
-          'This game is not available on phones :('
-        : 'But hey, you can still play :)'}
+        {isSmallScreen ? t('404.textNotAvailable') : t('404.text')}
       </p>
 
       {!isSmallScreen && (
@@ -45,7 +45,7 @@ export const NotFoundPage = () => {
         className="not-found__btn"
         onClick={() => navigate('/')}
       >
-        Go Home
+        {t('buttons.actions.goHome')}
       </button>
     </div>
   );

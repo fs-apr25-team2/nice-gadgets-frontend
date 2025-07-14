@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -38,9 +39,11 @@ const slides = [
 ];
 
 export const Hero: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="hero">
-      <h1 className="hero__title">Welcome to Nice Gadgets store!</h1>
+      <h1 className="hero__title">{t('home.title')}</h1>
 
       <button
         className="hero__arrow hero__arrow--prev"
