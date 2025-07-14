@@ -19,7 +19,7 @@ export type Product = {
   image: string;
 };
 
-export type CartProduct = Product & { quantity?: number };
+export type CartProduct = Product & { quantity: number };
 
 export type ProductCategory = 'phones' | 'tablets' | 'accessories';
 

@@ -2,6 +2,7 @@ import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useNavigate } from 'react-router';
 import { CartProduct } from '../../types/types';
 import { GoBack } from '../../ui/components/GoBack';
+import { Button } from '../../ui/components/Button';
 
 import './CartPage.scss';
 
@@ -43,18 +44,17 @@ export const CartPage: React.FC = () => {
       {cartItems.length === 0 ?
         <div className="cart-page__empty">
           <img
-            src="../../../img/cart-is-empty.png"
+            src="/img/cart-is-empty.png"
             alt="Empty cart"
-            className="cart-page__empty-img"
           />
           <h2>Your cart is empty</h2>
           <p>Looks like you haven’t added anything yet.</p>
-          <button
-            className="cart-page__checkout"
+          <Button
+            variant="empty"
             onClick={() => navigate('/')}
           >
             Continue Shopping
-          </button>
+          </Button>
         </div>
       : <div className="cart-page__content">
           <div className="cart-page__items">
@@ -63,41 +63,38 @@ export const CartPage: React.FC = () => {
                 key={item.itemId}
                 className="cart-page__item"
               >
-                <button
-                  className="cart-page__remove"
-                  onClick={() => removeFromCart(item.itemId)}
-                >
-                  ×
-                </button>
+                <div className="cart-page__item-left">
+                  <button
+                    className="cart-page__remove"
+                    onClick={() => removeFromCart(item.itemId)}
+                  >
+                    ×
+                  </button>
+                  <div className="cart-page__image-wrapper">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="cart-page__image"
+                    />
+                  </div>
+                  <div className="cart-page__name">{item.name}</div>
+                </div>
 
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="cart-page__image"
-                />
-
-                <div className="cart-page__info-block">
-                  <div className="cart-page__info">
-                    <div className="cart-page__name-and-controls">
-                      <div className="cart-page__name">{item.name}</div>
-                      <div className="cart-page__controls">
-                        <button
-                          className="cart-page__btn"
-                          onClick={() => changeQty(item.itemId, -1)}
-                        >
-                          -
-                        </button>
-                        <span className="cart-page__qty">
-                          {item.quantity ?? 1}
-                        </span>
-                        <button
-                          className="cart-page__btn"
-                          onClick={() => changeQty(item.itemId, 1)}
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
+                <div className="cart-page__item-right">
+                  <div className="cart-page__controls">
+                    <button
+                      className="cart-page__btn"
+                      onClick={() => changeQty(item.itemId, -1)}
+                    >
+                      -
+                    </button>
+                    <span className="cart-page__qty">{item.quantity ?? 1}</span>
+                    <button
+                      className="cart-page__btn"
+                      onClick={() => changeQty(item.itemId, 1)}
+                    >
+                      +
+                    </button>
                   </div>
 
                   <div className="cart-page__price">

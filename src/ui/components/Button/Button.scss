@@ -103,4 +103,14 @@
       height: 48px;
     }
   }
+
+  &--empty {
+    width: 100%;
+    max-width: 288px;
+    height: 40px;
+
+    @include on-tablet {
+      height: 48px;
+    }
+  }
 }
