@@ -7,6 +7,7 @@ import { getProducts, getProductsByCategory } from '../utils/api';
 export const useProductDetails = () => {
   const { category, productId } = useParams();
 
+  const [products, setProducts] = useState<Product[]>([]);
   const [product, setProduct] = useState<Product | null>(null);
   const [productDetails, setProductDetails] = useState<ProductDetails | null>(
     null,
@@ -39,6 +40,7 @@ export const useProductDetails = () => {
             )
           : [];
 
+        setProducts(products);
         setProduct(selectedProduct);
         setProductDetails(selectedProductDetails);
         setSelectedImage(selectedProductDetails?.images[0]);
@@ -55,6 +57,7 @@ export const useProductDetails = () => {
 
   return {
     category,
+    products,
     product,
     productDetails,
     productsBySelectedModel,

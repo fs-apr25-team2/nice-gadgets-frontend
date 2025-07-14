@@ -17,4 +17,16 @@
     display: flex;
     gap: 12px;
   }
+
+  &__slide {
+    min-height: 486px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.swiper-button-disabled {
+  border: 1px solid var(--elements-color);
+  color: var(--elements-color);
+  pointer-events: none;
 }

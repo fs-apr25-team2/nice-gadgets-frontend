@@ -3,6 +3,7 @@ import { useLocalStorage } from '../../../../hooks/useLocalStorage';
 
 import { HeartIcon } from '../../../../ui/icons/HeartIcon';
 import { ShoppingCartIcon } from '../../../../ui/icons/ShoppingCartIcon';
+import { CartProduct, Product } from '../../../../types/types';
 
 import './HeaderIcons.scss';
 
@@ -11,8 +12,13 @@ interface HeaderIconsProps {
 }
 
 export const HeaderIcons = ({ onClick }: HeaderIconsProps) => {
-  const [favourites] = useLocalStorage<string[]>('favourites', []);
-  const [cart] = useLocalStorage<string[]>('cart', []);
+  const [favouritesItems] = useLocalStorage<Product[]>('favourites', []);
+  const [cartItems] = useLocalStorage<CartProduct[]>('cart', []);
+
+  const totalCartQuantity = cartItems.reduce(
+    (total, cartItem) => cartItem.quantity + total,
+    0,
+  );
 
   return (
     <div className="header-icons">
@@ -24,8 +30,8 @@ export const HeaderIcons = ({ onClick }: HeaderIconsProps) => {
       >
         <HeartIcon />
 
-        {favourites.length > 0 && (
-          <span className="icon-badge">{favourites.length}</span>
+        {favouritesItems.length > 0 && (
+          <span className="icon-badge">{favouritesItems.length}</span>
         )}
       </NavLink>
 
@@ -36,7 +42,9 @@ export const HeaderIcons = ({ onClick }: HeaderIconsProps) => {
         onClick={onClick}
       >
         <ShoppingCartIcon />
-        {cart.length > 0 && <span className="icon-badge">{cart.length}</span>}
+        {totalCartQuantity > 0 && (
+          <span className="icon-badge">{totalCartQuantity}</span>
+        )}
       </NavLink>
     </div>
   );

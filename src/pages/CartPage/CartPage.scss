@@ -1,11 +1,13 @@
-@import '../../styles/utils/mixins.scss';
+@use '../../styles/utils/mixins.scss' as *;
 
 .cart-page {
-  padding-block: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding-block: 24px;
   display: flex;
   flex-direction: column;
+
+  @include on-tablet {
+    padding-block: 40px;
+  }
 
   &__header {
     width: 100%;
@@ -13,11 +15,13 @@
   }
 
   &__title {
+    margin-top: 24px;
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 0;
 
     @include on-tablet {
+      margin-top: 16px;
       font-size: 44px;
     }
 
@@ -78,7 +82,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     background-color: var(--white-color);
     border: 1px solid var(--elements-color);
     padding: 16px;
@@ -86,17 +89,25 @@
 
     @include on-tablet {
       flex-direction: row;
-      align-items: center;
-      padding: 24px 24px 24px 56px;
+      justify-content: space-between;
+      padding: 24px;
+      gap: 24px;
+    }
+  }
+
+  &__item-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
       gap: 24px;
     }
   }
 
   &__remove {
-    position: absolute;
     left: 16px;
     top: 50%;
-    transform: translateY(-50%);
     border: none;
     background: none;
     font-size: 20px;
@@ -107,52 +118,36 @@
     &:hover {
       color: #000;
     }
+  }
 
-    @include on-tablet {
-      left: 24px;
-    }
+  &__image-wrapper {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
   }
 
   &__image {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-  }
-
-  &__info-block {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
     width: 100%;
-
-    @include on-tablet {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
-
-  &__info {
-    flex: 1;
-  }
-
-  &__name-and-controls {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-
-    @include on-tablet {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
+    height: 100%;
+    padding: 7px;
   }
 
   &__name {
+    flex-grow: 1;
     font-size: 16px;
     font-weight: 600;
     word-break: break-word;
+  }
+
+  &__item-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 24px;
+      justify-content: flex-start;
+    }
   }
 
   &__controls {
@@ -241,7 +236,8 @@
     min-height: 300px;
 
     img {
-      width: 300px;
+      min-height: 256px;
+      max-width: 288px;
       margin-bottom: 24px;
     }
 

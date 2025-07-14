@@ -3,51 +3,25 @@ import { ProductSlider } from '../../components/ProductSlider';
 import { Hero } from '../../components/Hero';
 import { ShopByCategory } from './components/ShopByCategory';
 import { getProducts } from '../../utils/api';
-import { Product, CartProduct } from '../../types/types';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { Product } from '../../types/types';
+import { useProductStorage } from '../../hooks/useProductStorage';
 
 import './HomePage.scss';
 
 export const HomePage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
-
-  const [cartItems, setCartItems] = useLocalStorage<CartProduct[]>('cart', []);
-  const [favouritesItems, setFavouritesItems] = useLocalStorage<Product[]>(
-    'favourites',
-    [],
-  );
+  const {
+    isInCart,
+    isAddedToFavourites,
+    addToCart,
+    removeFromCart,
+    addToFavourites,
+    removeFromFavourites,
+  } = useProductStorage();
 
   useEffect(() => {
     getProducts().then(setProducts);
   }, []);
-
-  const isInCart = (product: Product) => {
-    return cartItems.some((item) => item.id === product.id);
-  };
-
-  const isAddedToFavourites = (product: Product) => {
-    return favouritesItems.some((item) => item.id === product.id);
-  };
-
-  const addToCart = (product: Product) => {
-    if (!isInCart(product)) {
-      setCartItems((prev) => [...prev, { ...product, quantity: 1 }]);
-    }
-  };
-
-  const removeFromCart = (product: Product) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== product.id));
-  };
-
-  const addToFavourites = (product: Product) => {
-    if (!isAddedToFavourites(product)) {
-      setFavouritesItems((prev) => [...prev, product]);
-    }
-  };
-
-  const removeFromFavourites = (product: Product) => {
-    setFavouritesItems((prev) => prev.filter((item) => item.id !== product.id));
-  };
 
   const brandNewProducts = products
     .filter(
