@@ -73,7 +73,9 @@
     border: none;
     padding: 0;
     cursor: pointer;
-    color: var(--primary-color) svg {
+    color: var(--primary-color);
+
+    svg {
       width: 24px;
       height: 24px;
     }
