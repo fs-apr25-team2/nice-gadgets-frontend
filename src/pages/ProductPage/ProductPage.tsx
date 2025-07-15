@@ -17,6 +17,7 @@ import { ProductNotFound } from './components/ProductNotFound';
 import { useProductStorage } from '../../hooks/useProductStorage';
 import { ProductSlider } from '../../components/ProductSlider';
 import './styles/ProductPage.scss';
+import { toast } from 'react-toastify';
 
 const getSuggestedProducts = (
   products: Product[],
@@ -180,10 +181,20 @@ export const ProductPage = () => {
                   variant="product"
                   selected={isInCart(product)}
                   onClick={() => {
+                    toast.dismiss(`cart-add-${product.id}`);
+                    toast.dismiss(`cart-remove-${product.id}`);
                     if (isInCart(product)) {
                       removeFromCart(product);
+                      toast.error(`${product.name} removed from cart`, {
+                        toastId: `cart-remove-${product.id}`,
+                        className: 'toast-add-and-remove',
+                      });
                     } else {
                       addToCart(product);
+                      toast.success(`${product.name} added to cart`, {
+                        toastId: `cart-add-${product.id}`,
+                        className: 'toast-add-and-remove',
+                      });
                     }
                   }}
                 >
@@ -201,10 +212,20 @@ export const ProductPage = () => {
                     : <HeartIcon />
                   }
                   onClick={() => {
+                    toast.dismiss(`fav-add-${product.id}`);
+                    toast.dismiss(`fav-remove-${product.id}`);
                     if (isAddedToFavourites(product)) {
                       removeFromFavourites(product);
+                      toast.error(`${product.name} removed from favourites`, {
+                        toastId: `fav-remove-${product.id}`,
+                        className: 'toast-add-and-remove',
+                      });
                     } else {
                       addToFavourites(product);
+                      toast.success(`${product.name} added to favourites`, {
+                        toastId: `fav-add-${product.id}`,
+                        className: 'toast-add-and-remove',
+                      });
                     }
                   }}
                 />
