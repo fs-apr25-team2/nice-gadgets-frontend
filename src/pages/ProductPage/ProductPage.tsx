@@ -185,16 +185,22 @@ export const ProductPage = () => {
                     toast.dismiss(`cart-remove-${product.id}`);
                     if (isInCart(product)) {
                       removeFromCart(product);
-                      toast.error(`${product.name} removed from cart`, {
-                        toastId: `cart-remove-${product.id}`,
-                        className: 'toast-add-and-remove',
-                      });
+                      toast.error(
+                        t('toast.removedFromCart', { name: product.name }),
+                        {
+                          toastId: `cart-remove-${product.id}`,
+                          className: 'toast-add-and-remove',
+                        },
+                      );
                     } else {
                       addToCart(product);
-                      toast.success(`${product.name} added to cart`, {
-                        toastId: `cart-add-${product.id}`,
-                        className: 'toast-add-and-remove',
-                      });
+                      toast.success(
+                        t('toast.addedToCart', { name: product.name }),
+                        {
+                          toastId: `cart-add-${product.id}`,
+                          className: 'toast-add-and-remove',
+                        },
+                      );
                     }
                   }}
                 >
@@ -216,16 +222,24 @@ export const ProductPage = () => {
                     toast.dismiss(`fav-remove-${product.id}`);
                     if (isAddedToFavourites(product)) {
                       removeFromFavourites(product);
-                      toast.error(`${product.name} removed from favourites`, {
-                        toastId: `fav-remove-${product.id}`,
-                        className: 'toast-add-and-remove',
-                      });
+                      toast.error(
+                        t('toast.removedFromFavourites', {
+                          name: product.name,
+                        }),
+                        {
+                          toastId: `fav-remove-${product.id}`,
+                          className: 'toast-add-and-remove',
+                        },
+                      );
                     } else {
                       addToFavourites(product);
-                      toast.success(`${product.name} added to favourites`, {
-                        toastId: `fav-add-${product.id}`,
-                        className: 'toast-add-and-remove',
-                      });
+                      toast.success(
+                        t('toast.addedToFavourites', { name: product.name }),
+                        {
+                          toastId: `fav-add-${product.id}`,
+                          className: 'toast-add-and-remove',
+                        },
+                      );
                     }
                   }}
                 />

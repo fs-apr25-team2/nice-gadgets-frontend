@@ -126,8 +126,8 @@
   },
   "404": {
     "title": "404 - Page not found",
-    "text": "But you can still play :)",
-    "textNotAvailable": "This game is not available on phones :("
+    "text": "The page you’re looking for doesn’t exist.",
+    "textWithGame": "The page you’re looking for doesn’t exist. But you can play a game!"
   },
   "contacts": {
     "title": "Our Team",
@@ -183,5 +183,11 @@
         "content": "Were always happy to help. Visit our Contact page to reach us via email, phone, or live chat."
       }
     ]
+  },
+  "toast": {
+    "addedToCart": "{{name}} added to cart",
+    "removedFromCart": "{{name}} removed from cart",
+    "addedToFavourites": "{{name}} added to favourites",
+    "removedFromFavourites": "{{name}} removed from favourites"
   }
 }

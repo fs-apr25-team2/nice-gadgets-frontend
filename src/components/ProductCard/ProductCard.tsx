@@ -93,13 +93,16 @@ export const ProductCard: React.FC<Props> = ({
             setTimeout(() => {
               if (isInCart(product)) {
                 removeFromCart(product);
-                toast.error(`${product.name} removed from cart`, {
-                  toastId: cartRemoveToastId,
-                  className: 'toast-add-and-remove',
-                });
+                toast.error(
+                  t('toast.removedFromCart', { name: product.name }),
+                  {
+                    toastId: cartRemoveToastId,
+                    className: 'toast-add-and-remove',
+                  },
+                );
               } else {
                 addToCart(product);
-                toast.success(`${product.name} added to cart`, {
+                toast.success(t('toast.addedToCart', { name: product.name }), {
                   toastId: cartAddToastId,
                   className: 'toast-add-and-remove',
                 });
@@ -128,16 +131,22 @@ export const ProductCard: React.FC<Props> = ({
             setTimeout(() => {
               if (isAddedToFavourites(product)) {
                 removeFromFavourites(product);
-                toast.error(`${product.name} removed from favourites`, {
-                  toastId: favRemoveToastId,
-                  className: 'toast-add-and-remove',
-                });
+                toast.error(
+                  t('toast.removedFromFavourites', { name: product.name }),
+                  {
+                    toastId: favRemoveToastId,
+                    className: 'toast-add-and-remove',
+                  },
+                );
               } else {
                 addToFavourites(product);
-                toast.success(`${product.name} added to favourites`, {
-                  toastId: favAddToastId,
-                  className: 'toast-add-and-remove',
-                });
+                toast.success(
+                  t('toast.addedToFavourites', { name: product.name }),
+                  {
+                    toastId: favAddToastId,
+                    className: 'toast-add-and-remove',
+                  },
+                );
               }
             }, 50);
           }}

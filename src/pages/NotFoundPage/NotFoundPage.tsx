@@ -11,7 +11,7 @@ export const NotFoundPage = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 600);
+      setIsSmallScreen(window.innerWidth < 640);
     };
 
     handleResize();
@@ -25,11 +25,16 @@ export const NotFoundPage = () => {
       <h1 className="not-found__title">{t('404.title')}</h1>
 
       <p className="not-found__text">
-        {isSmallScreen ? t('404.textNotAvailable') : t('404.text')}
+        {isSmallScreen ? t('404.text') : t('404.textWithGame')}
       </p>
 
-      {!isSmallScreen && (
-        <div className="not-found__game">
+      {isSmallScreen ?
+        <img
+          src="/img/page-not-found.png"
+          alt="Page not found"
+          className="not-found__image"
+        />
+      : <div className="not-found__game">
           <iframe
             src="https://kculmback.github.io/react-chrome-dino-ts/"
             width="600"
@@ -39,7 +44,7 @@ export const NotFoundPage = () => {
             tabIndex={-1}
           />
         </div>
-      )}
+      }
 
       <button
         className="not-found__btn"
