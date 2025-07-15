@@ -1,0 +1,8 @@
+@use '../../styles/typography.scss' as *;
+
+.Toastify__toast.toast-add-and-remove {
+  font-family: 'Mont', sans-serif;
+  color: var(--primary-color);
+  font-weight: $regular-weight;
+  font-size: 16px;
+}

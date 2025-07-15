@@ -73,6 +73,9 @@ export const ProductPage = () => {
     }
   };
 
+  console.log('error', hasError);
+  console.log('isLoading', isLoading);
+  console.log('product', productDetails);
   const suggestedProducts = useMemo(() => {
     return getSuggestedProducts(products, productDetails?.id, 12);
   }, [productDetails?.id, products]);

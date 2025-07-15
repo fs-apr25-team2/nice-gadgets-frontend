@@ -7,6 +7,7 @@ import { Button } from '../../ui/components/Button';
 import { AddToFavouritesButton } from '../../ui/components/AddToFavouritesButton';
 import { HeartIcon } from '../../ui/icons/HeartIcon';
 import { HeartFilledIcon } from '../../ui/icons/HeartFilledIcon';
+import { toast } from 'react-toastify';
 
 type Props = {
   product: Product;
@@ -33,6 +34,11 @@ export const ProductCard: React.FC<Props> = ({
   const handleCardClick = () => {
     navigate(`/${product.category}/${product.itemId}`);
   };
+
+  const cartAddToastId = `cart-add-${product.itemId}`;
+  const cartRemoveToastId = `cart-remove-${product.itemId}`;
+  const favAddToastId = `fav-add-${product.itemId}`;
+  const favRemoveToastId = `fav-remove-${product.itemId}`;
 
   return (
     <li
@@ -80,13 +86,25 @@ export const ProductCard: React.FC<Props> = ({
           onClick={(event) => {
             if (event) {
               event.stopPropagation();
+              toast.dismiss(cartAddToastId);
+              toast.dismiss(cartRemoveToastId);
             }
 
-            if (isInCart(product)) {
-              removeFromCart(product);
-            } else {
-              addToCart(product);
-            }
+            setTimeout(() => {
+              if (isInCart(product)) {
+                removeFromCart(product);
+                toast.error(`${product.name} removed from cart`, {
+                  toastId: cartRemoveToastId,
+                  className: 'toast-add-and-remove',
+                });
+              } else {
+                addToCart(product);
+                toast.success(`${product.name} added to cart`, {
+                  toastId: cartAddToastId,
+                  className: 'toast-add-and-remove',
+                });
+              }
+            }, 50);
           }}
         >
           {isInCart(product) ?
@@ -103,13 +121,25 @@ export const ProductCard: React.FC<Props> = ({
           onClick={(event) => {
             if (event) {
               event.stopPropagation();
+              toast.dismiss(favAddToastId);
+              toast.dismiss(favRemoveToastId);
             }
 
-            if (isAddedToFavourites(product)) {
-              removeFromFavourites(product);
-            } else {
-              addToFavourites(product);
-            }
+            setTimeout(() => {
+              if (isAddedToFavourites(product)) {
+                removeFromFavourites(product);
+                toast.error(`${product.name} removed from favourites`, {
+                  toastId: favRemoveToastId,
+                  className: 'toast-add-and-remove',
+                });
+              } else {
+                addToFavourites(product);
+                toast.success(`${product.name} added to favourites`, {
+                  toastId: favAddToastId,
+                  className: 'toast-add-and-remove',
+                });
+              }
+            }, 50);
           }}
         />
       </div>

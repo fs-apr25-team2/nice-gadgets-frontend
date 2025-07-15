@@ -9,6 +9,8 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { CatalogPage } from './pages/CatalogPage';
 import { ContactsPage } from './pages/ContactsPage';
 import { RightsPage } from './pages/RightsPage';
+import { Bounce, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Root: React.FC = () => (
   <HashRouter>
@@ -54,5 +56,19 @@ export const Root: React.FC = () => (
         />
       </Route>
     </Routes>
+    <ToastContainer
+      position="bottom-right"
+      autoClose={2000}
+      limit={5}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick={false}
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      transition={Bounce}
+    />
   </HashRouter>
 );
