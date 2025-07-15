@@ -183,5 +183,11 @@
         "content": "Were always happy to help. Visit our Contact page to reach us via email, phone, or live chat."
       }
     ]
+  },
+  "toast": {
+    "addedToCart": "{{name}} added to cart",
+    "removedFromCart": "{{name}} removed from cart",
+    "addedToFavourites": "{{name}} added to favourites",
+    "removedFromFavourites": "{{name}} removed from favourites"
   }
 }
