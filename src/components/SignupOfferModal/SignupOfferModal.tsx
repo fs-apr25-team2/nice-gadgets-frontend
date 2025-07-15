@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { GiftIcon } from '../../ui/icons/GiftIcon';
 import { NavLink } from 'react-router';
 import './SignupOfferModal.scss';
+import { CloseIcon } from '../../ui/icons/CloseIcon';
 
 export const SignupOfferModal = () => {
   const [open, setOpen] = useState(false);
@@ -36,6 +37,10 @@ export const SignupOfferModal = () => {
           <div className="signup-offer__image-wrapper">
             <GiftIcon />
           </div>
+
+          <Dialog.Close className="signup-offer__close">
+            <CloseIcon />
+          </Dialog.Close>
 
           <Dialog.Title className="signup-offer__title">
             Sign Up For 10% Off
