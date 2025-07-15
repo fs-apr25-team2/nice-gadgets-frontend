@@ -28,6 +28,16 @@
     outline: none;
   }
 
+  &__close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    padding: 4px;
+    outline: none;
+    cursor: pointer;
+  }
+
   &__title {
     @extend .typography--h3;
     color: var(--primary-color);
