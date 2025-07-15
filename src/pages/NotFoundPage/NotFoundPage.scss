@@ -10,6 +10,12 @@
   text-align: center;
   flex-grow: 1;
 
+  &__image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 32px;
+  }
+
   @include on-desktop {
     min-height: calc(100vh - 165px);
   }
