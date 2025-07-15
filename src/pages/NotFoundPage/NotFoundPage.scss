@@ -13,7 +13,6 @@
   &__image {
     max-width: 100%;
     height: auto;
-    margin-bottom: 32px;
   }
 
   @include on-desktop {
@@ -62,7 +61,6 @@
     font-size: 16px;
     font-weight: 600;
     border: none;
-    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s;
 
