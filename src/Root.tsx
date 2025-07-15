@@ -11,6 +11,7 @@ import { ContactsPage } from './pages/ContactsPage';
 import { RightsPage } from './pages/RightsPage';
 import { Bounce, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { CheckoutPage } from './pages/CheckoutPage';
 
 export const Root: React.FC = () => (
   <HashRouter>
@@ -33,6 +34,10 @@ export const Root: React.FC = () => (
         <Route
           path="/cart"
           element={<CartPage />}
+        />
+        <Route
+          path="/checkout"
+          element={<CheckoutPage />}
         />
         <Route
           path="/favourites"
