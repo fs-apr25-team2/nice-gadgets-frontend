@@ -21,7 +21,8 @@ export const Breadcrumbs = ({
 
   const safeCategory = category as ProductCategory;
 
-  const categoryTitle = t(`navLink.${safeCategory}`);
+  const categoryTitle =
+    category ? t(`breadcrumbs.${safeCategory}`) : t('breadcrumbs.favourites');
 
   return (
     <nav
