@@ -17,7 +17,7 @@ export const HeaderIcons = ({ onClick }: HeaderIconsProps) => {
   const [cartItems] = useLocalStorage<CartProduct[]>(CART_KEY, []);
 
   const totalCartQuantity = cartItems.reduce(
-    (total, cartItem) => cartItem.quantity + total,
+    (total, cartItem) => total + (cartItem.quantity || 1),
     0,
   );
 
