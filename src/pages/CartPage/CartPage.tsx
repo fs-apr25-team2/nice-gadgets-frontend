@@ -112,7 +112,10 @@ export const CartPage: React.FC = () => {
             <div className="cart-page__label">
               {t('cart.total', { count: totalQuantity })}
             </div>
-            <button className="cart-page__checkout">
+            <button
+              className="cart-page__checkout"
+              onClick={() => navigate('/checkout')}
+            >
               {t('buttons.actions.checkout')}
             </button>
           </div>
