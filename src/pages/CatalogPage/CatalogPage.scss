@@ -27,7 +27,7 @@
   &__subtitle {
     font-size: 14px;
     line-height: 21px;
-    color: var(--secondary-color);
+    color: var(--main-text-color-secondary);
     margin-top: 8px;
 
     margin-bottom: 32px;
@@ -44,18 +44,18 @@
   &__top-controls {
     display: flex;
     gap: 16px;
+  }
+
+  &__control {
+    display: flex;
+    flex-direction: column;
 
     &-label {
       font-size: 12px;
       line-height: 100%;
-      color: var(--secondary-color);
+      color: var(--main-text-color-secondary);
       font-weight: 700;
       padding-bottom: 4px;
-    }
-
-    &-control {
-      display: flex;
-      flex-direction: column;
     }
   }
 

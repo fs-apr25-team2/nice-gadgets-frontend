@@ -36,6 +36,12 @@ export const CartPage: React.FC = () => {
     0,
   );
 
+  const getItemQuantity = (itemId: string) => {
+    const foundItem = cartItems.find((item) => item.itemId === itemId);
+
+    return foundItem?.quantity;
+  };
+
   return (
     <div className="cart-page">
       <div className="cart-page__header">
@@ -86,6 +92,7 @@ export const CartPage: React.FC = () => {
                   <div className="cart-page__controls">
                     <button
                       className="cart-page__btn"
+                      disabled={getItemQuantity(item.itemId) === 1}
                       onClick={() => changeQty(item.itemId, -1)}
                     >
                       -

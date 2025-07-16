@@ -13,7 +13,7 @@
       align-items: center;
       justify-content: center;
       height: 48px;
-      color: var(--secondary-color);
+      color: var(--main-text-color-secondary);
       position: relative;
       transition: color 0.3s;
 
@@ -22,11 +22,11 @@
       }
 
       &:hover {
-        color: var(--primary-color);
+        color: var(--main-text-color-primary);
       }
 
       &.active {
-        color: var(--primary-color);
+        color: var(--main-text-color-primary);
 
         &::after {
           content: '';

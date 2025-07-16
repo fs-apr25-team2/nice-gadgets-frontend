@@ -16,7 +16,31 @@
   --red-color: #eb5757;
 
   --main-background-color: var(--white-color);
-  --title-color: var(--primary-color);
+  --buttons-background-color: var(--primary-color);
+  --buttons-background-color-hover: var(--primary-color);
+  --buttons-shadow-color-hover: #17203166;
+  --buttons-background-color-active: var(--white-color);
+  --buttons-text-color: var(--white-color);
+  --buttons-text-color-active: var(--green-color);
+  --main-text-color-primary: var(--primary-color);
+  --main-text-color-secondary: var(--secondary-color);
+  --surface-color: var(--white-color);
+  --card-border-color: var(--elements-color);
+  --border-color: var(--elements-color);
+
+  --icons-primary-color: var(--icons-color);
+  --icons-hover-color: var(--primary-color);
+  --icons-disabled-color: var(--elements-color);
+  --icons-background-primary-color: var(--white-color);
+  --icons-background-hover-color: var(--white-color);
+  --icons-background-disabled-color: var(--white-color);
+  --icons-border-primary-color: var(--icons-color);
+  --icons-border-hover-color: var(--primary-color);
+  --icons-border-disabled-color: var(--elements-color);
+
+  --navigation-primary-color: var(--secondary-color);
+  --navigation-background-primary-color: var(--white-color);
+  --navigation-border-color: var(--elements-color);
 
   font-family: 'Mont', sans-serif;
   line-height: 1.5;
@@ -24,9 +48,12 @@
 
   background-color: var(--main-background-color);
   color: var(--title-color);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
-.theme--dark {
+[data-theme='dark'] {
   --primary-color: #f1f2f9;
   --secondary-color: #75767f;
   --icons-color: #4a4d58;
@@ -41,5 +68,29 @@
   --red-color: #eb5757;
 
   --main-background-color: var(--black-color);
-  --title-color: var(--white-color);
+  --buttons-background-color: var(--purple-accent-color);
+  --buttons-background-color-hover: var(--purple-hover-color);
+  --buttons-shadow-color-hover: #17203166;
+  --buttons-background-color-active: var(--white-color);
+  --buttons-text-color: var(--primary-color);
+  --buttons-text-color-active: var(--surface2-color);
+  --main-text-color-primary: var(--primary-color);
+  --main-text-color-secondary: var(--secondary-color);
+  --surface-color: var(--surface1-color);
+  --card-border-color: var(--surface1-color);
+  --border-color: var(--surface2-color);
+
+  --icons-primary-color: var(--primary-color);
+  --icons-hover-color: var(--primary-color);
+  --icons-disabled-color: var(--icons-color);
+  --icons-background-primary-color: var(--surface2-color);
+  --icons-background-hover-color: var(--icons-color);
+  --icons-background-disabled-color: var(--black-color);
+  --icons-border-primary-color: var(--surface2-color);
+  --icons-border-hover-color: var(--icons-color);
+  --icons-border-disabled-color: var(--elements-color);
+
+  --navigation-primary-color: var(--primary-color);
+  --navigation-background-primary-color: var(--surface1-color);
+  --navigation-border-color: var(--surface1-color);
 }

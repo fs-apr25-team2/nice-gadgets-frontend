@@ -10,6 +10,7 @@ import { BurgerMenuIcon } from '../../ui/icons/BurgerMenuIcon';
 import { CloseIcon } from '../../ui/icons/CloseIcon';
 
 import './Header.scss';
+import { ThemeSwitcher } from './components/ThemeSwitcher/ThemeSwitcher';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -56,6 +57,7 @@ export const Header = () => {
         </button>
 
         <div className="header__right">
+          <ThemeSwitcher />
           <LangSwitcher mobile={false} />
           <HeaderIcons />
         </div>

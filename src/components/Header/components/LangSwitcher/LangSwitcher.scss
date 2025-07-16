@@ -6,8 +6,8 @@
   align-items: center;
   padding: 4px;
   font-weight: 400;
-  color: var(--secondary-color);
-  border-left: 1px solid var(--elements-color);
+  color: var(--main-text-color-secondary);
+  border-left: 1px solid var(--border-color);
 
   @include on-tablet {
     display: flex;
@@ -25,14 +25,22 @@
   font-weight: 400;
   line-height: 11px;
   color: var(--secondary-color);
-  background-color: var(--white-color);
+  background-color: transparent;
   padding: 4px;
   cursor: pointer;
 
   &--active {
-    color: var(--primary-color);
+    color: var(--main-text-color-primary);
     transition: color 0.3s;
     font-weight: 800;
     text-decoration: underline;
+  }
+
+  @include on-tablet {
+    font-size: 10px;
+  }
+
+  @include on-desktop {
+    font-size: 12px;
   }
 }
