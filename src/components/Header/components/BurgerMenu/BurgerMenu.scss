@@ -14,7 +14,7 @@
   justify-content: space-between;
   transition: ease 0.3s;
 
-  @include on-tablet {
+  @include on-big-tablet {
     display: none;
   }
 

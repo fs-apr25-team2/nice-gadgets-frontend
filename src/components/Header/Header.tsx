@@ -27,6 +27,7 @@ export const Header = () => {
   const handleCloseMenu = () => {
     setIsMenuOpen(false);
   };
+
   return (
     <header className="header">
       <div className="container">
@@ -67,7 +68,7 @@ export const Header = () => {
           <ThemeSwitcher />
           <LangSwitcher mobile={false} />
           <HeaderIcons />
-          <UserMenu />
+          <UserMenu onClick={handleCloseMenu} />
         </div>
       </div>
 

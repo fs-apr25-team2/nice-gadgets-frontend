@@ -25,14 +25,11 @@ export const BurgerMenu = ({ onClose }: BurgerMenuProps) => {
         <LangSwitcher mobile={true} />
         <ThemeSwitcher />
       </div>
-      <div className="burger-menu__user">
-        <UserMenu />
-      </div>
       <div className="burger-menu__icons">
         <HeaderIcons onClick={onClose} />
       </div>
       <div className="burger-menu__user">
-        <UserMenu />
+        <UserMenu onClick={onClose} />
       </div>
     </div>
   );
