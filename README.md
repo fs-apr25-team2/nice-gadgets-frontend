@@ -30,6 +30,7 @@ The app provides a smooth shopping experience with features like **home page sli
 - **Radix UI** – Modals, dropdowns, checkout
 - **i18next** – Multi-language support (EN / UA)
 - **localStorage** – Store user data, cart, favorites, theme, and language
+- **React Toastify** - User action notifications
 - **Custom Hooks** – Reusable business logic
 
 ## Getting Started
