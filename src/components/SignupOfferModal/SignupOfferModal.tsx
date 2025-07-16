@@ -1,28 +1,33 @@
 import * as Dialog from '@radix-ui/react-dialog';
-import { useEffect, useState } from 'react';
-import { GiftIcon } from '../../ui/icons/GiftIcon';
 import { NavLink } from 'react-router';
-import './SignupOfferModal.scss';
+import { useEffect, useState } from 'react';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { GiftIcon } from '../../ui/icons/GiftIcon';
 import { CloseIcon } from '../../ui/icons/CloseIcon';
+import './SignupOfferModal.scss';
 
 export const SignupOfferModal = () => {
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    const isLoggedIn = localStorage.getItem('user') !== null;
-    const alreadyShown = localStorage.getItem('SignupOfferModal');
+  const [user] = useLocalStorage('user', null);
+  const [alreadyShown, setAlreadyShown] = useLocalStorage<string | null>(
+    'SignupOfferModal',
+    null,
+  );
+  const isLoggedIn = Boolean(user);
 
+  useEffect(() => {
     if (isLoggedIn || alreadyShown) {
       return;
     }
 
     const timer = setTimeout(() => {
       setOpen(true);
-      localStorage.setItem('SignupOfferModal', 'true');
+      setAlreadyShown('true');
     }, 30000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [isLoggedIn, alreadyShown, setAlreadyShown]);
 
   if (!open) return null;
 
@@ -53,10 +58,10 @@ export const SignupOfferModal = () => {
 
           <NavLink
             className="signup-offer__login"
-            to="/login"
+            to="/register"
             onClick={() => setOpen(false)}
           >
-            Login
+            Register
           </NavLink>
 
           <Dialog.Close className="signup-offer__no-thanks">
