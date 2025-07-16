@@ -4,25 +4,33 @@ import { useNavigate } from 'react-router';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { CartProduct } from '../../types/types';
 import { GoBack } from '../../ui/components/GoBack';
+import { useAuth } from '../../context/useAuth';
 
 import './CheckoutPage.scss';
 
 export const CheckoutPage: React.FC = () => {
   const [cartItems, setCartItems] = useLocalStorage<CartProduct[]>('cart', []);
   const navigate = useNavigate();
+  const { user, isAuthenticated } = useAuth();
 
   const [submitted, setSubmitted] = useState(false);
 
   const [form, setForm] = useState({
-    name: '',
+    name: isAuthenticated ? user?.displayName || '' : '',
+    email: isAuthenticated ? user?.email || '' : '',
     phone: '',
     address: '',
   });
 
-  const totalPrice = cartItems.reduce(
+  const discountRate = isAuthenticated ? 0.1 : 0;
+
+  const subtotal = cartItems.reduce(
     (sum, item) => sum + item.price * (item.quantity || 1),
     0,
   );
+
+  const discountAmount = subtotal * discountRate;
+  const totalPrice = subtotal - discountAmount;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -32,7 +40,9 @@ export const CheckoutPage: React.FC = () => {
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    if (!form.name || !form.phone || !form.address) return;
+    if (!form.name || !form.email || !form.phone || !form.address) {
+      return;
+    }
 
     setSubmitted(true);
     setCartItems([]);
@@ -78,6 +88,31 @@ export const CheckoutPage: React.FC = () => {
                   className="checkout-page__error"
                 >
                   Please enter your name.
+                </Form.Message>
+              </Form.Field>
+
+              <Form.Field
+                name="email"
+                className="checkout-page__field"
+              >
+                <Form.Label className="checkout-page__label">Email</Form.Label>
+                <Form.Control asChild>
+                  <input
+                    className="checkout-page__input"
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
+                    autoComplete="email"
+                    placeholder="Enter your email"
+                  />
+                </Form.Control>
+                <Form.Message
+                  match="valueMissing"
+                  className="checkout-page__error"
+                >
+                  Please enter your email.
                 </Form.Message>
               </Form.Field>
 
@@ -153,15 +188,48 @@ export const CheckoutPage: React.FC = () => {
                     />
                     <div className="checkout-page__product-info">
                       <span className="checkout-page__product-name">
-                        {item.name}
+                        {item.quantity && item.quantity > 1 ?
+                          `${item.quantity} × ${item.name}`
+                        : item.name}
                       </span>
                       <span className="checkout-page__product-price">
-                        ${item.price.toFixed(2)}
+                        ${((item.quantity || 1) * item.price).toFixed(2)}
                       </span>
                     </div>
                   </li>
                 ))}
               </ul>
+
+              {isAuthenticated ?
+                <div className="checkout-page__discount-banner checkout-page__discount-banner--auth">
+                  You’re logged in! A 10% discount has been applied to your
+                  total.
+                </div>
+              : <div
+                  className="checkout-page__discount-banner checkout-page__discount-banner--promo"
+                  onClick={() => navigate('/login')}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      navigate('/login');
+                    }
+                  }}
+                  style={{ cursor: 'pointer' }}
+                >
+                  Log in to get 10% off your order!
+                </div>
+              }
+
+              <div className="checkout-page__totals">
+                {isAuthenticated && <p>Subtotal: ${subtotal.toFixed(2)}</p>}
+                {isAuthenticated && (
+                  <p>Discount: -${discountAmount.toFixed(2)}</p>
+                )}
+                <p className="checkout-page__totals-final">
+                  Total: ${totalPrice.toFixed(2)}
+                </p>
+              </div>
             </div>
           )}
 
@@ -170,7 +238,7 @@ export const CheckoutPage: React.FC = () => {
             className="checkout-page__confirm"
             onClick={handleButtonClick}
           >
-            Confirm Purchase — Total: ${totalPrice.toFixed(2)}
+            Confirm Purchase
           </button>
         </div>
       : <div className="checkout-page__success">
