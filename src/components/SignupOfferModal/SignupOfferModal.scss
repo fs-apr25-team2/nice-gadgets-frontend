@@ -17,7 +17,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: var(--white-color);
+    background-color: var(--main-background-color);
     padding: 24px;
     border-radius: 12px;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
@@ -36,17 +36,18 @@
     padding: 4px;
     outline: none;
     cursor: pointer;
+    color: var(--main-text-color-primary);
   }
 
   &__title {
     @extend .typography--h3;
-    color: var(--primary-color);
+    color: var(--main-text-color-primary);
     cursor: default;
   }
 
   &__desc {
     @extend .typography--body;
-    color: var(--secondary-color);
+    color: var(--main-text-color-secondary);
     cursor: default;
   }
 
@@ -70,10 +71,10 @@
   }
 
   &__no-thanks {
-    color: var(--primary-color);
+    color: var(--main-text-color-primary);
     @extend .typography--body;
     text-decoration: underline;
-    background-color: var(--white-color);
+    background-color: var(--main-background-color);
     cursor: pointer;
     outline: none;
 

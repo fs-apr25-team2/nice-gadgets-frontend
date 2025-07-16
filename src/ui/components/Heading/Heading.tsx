@@ -13,7 +13,7 @@ export const Heading: React.FC<Props> = ({ tag, title }) => {
   const Tag = tag;
 
   return (
-    <Tag className={classNames('typography', `typography--${tag}`)}>
+    <Tag className={classNames('typography', `typography--${tag}`, 'text')}>
       {title}
     </Tag>
   );

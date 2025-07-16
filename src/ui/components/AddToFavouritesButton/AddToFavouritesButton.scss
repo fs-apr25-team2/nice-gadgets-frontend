@@ -5,20 +5,22 @@
     justify-content: center;
     width: 40px;
     height: 40px;
-    border: 1px solid var(--icons-color);
-    color: var(--primary-color);
+    border: 1px solid var(--icons-border-primary-color);
+    color: var(--icons-primary-color);
     cursor: pointer;
-    background-color: var(--white-color);
+    background-color: var(--icons-background-primary-color);
     transition: 0.3s ease;
 
-    &:hover:not(&-selected) {
-      border: 1px solid var(--primary-color);
+    &:hover {
+      border: 1px solid var(--icons-border-hover-color);
+      color: var(--icons-hover-color);
+      background-color: var(--icons-background-hover-color);
       transition: 0.3s ease;
     }
 
     &-selected {
-      background-color: var(--white-color);
-      border: 1px solid var(--elements-color);
+      background-color: var(--icons-background-disable-color);
+      border: 1px solid var(--icons-border-disabled-color);
       transition: 0.3s ease;
     }
 

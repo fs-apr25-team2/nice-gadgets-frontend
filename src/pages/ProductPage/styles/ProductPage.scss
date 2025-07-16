@@ -16,6 +16,8 @@
   &__title {
     margin-top: 16px;
     margin-bottom: 32px;
+    color: var(--main-text-color-primary);
+    transition: ease 0.3s;
 
     @include on-tablet {
       margin-bottom: 40px;

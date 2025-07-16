@@ -3,10 +3,11 @@
 
 .header {
   background-color: var(--main-background-color);
-  border-bottom: 1px solid var(--elements-color);
+  border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
   z-index: 1000;
+  transition: ease 0.3s;
 
   .container {
     display: flex;
@@ -72,7 +73,7 @@
     border: none;
     padding: 0;
     cursor: pointer;
-    color: var(--primary-color);
+    color: var(--main-text-color-primary);
 
     svg {
       width: 24px;

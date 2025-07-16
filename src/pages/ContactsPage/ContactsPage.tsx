@@ -46,14 +46,16 @@ export const ContactsPage = () => {
       <p className="contacts__about">{t('contacts.text')}</p>
       {isLoading && <Loader />}
       {hasError && <PageError />}
-      <div className="contacts__cards">
-        {team.map((person) => (
-          <TeamCard
-            person={person}
-            key={person.id}
-          />
-        ))}
-      </div>
+      {!isLoading && !hasError && team.length > 0 && (
+        <div className="contacts__cards">
+          {team.map((person) => (
+            <TeamCard
+              person={person}
+              key={person.id}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
