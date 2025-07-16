@@ -67,6 +67,11 @@
     "accessories": {
       "title": "Аксесуари"
     },
+    "search": {
+      "label": "Пошук",
+      "noResults": "Нічого не знайдено за цим запитом",
+      "clear": "Очистити пошук"
+    },
     "dropdown": {
       "sortBy": {
         "label": "Сортувати за",

@@ -1,0 +1,46 @@
+.search-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 120px;
+
+  &__field {
+    width: 100%;
+    padding: 8px 32px 8px 28px;
+    border: 1px solid var(--elements-color);
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--primary-color);
+    outline: none;
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: var(--secondary-color);
+    }
+
+    &:hover {
+      border-color: var(--secondary-color);
+    }
+  }
+
+  & > svg {
+    position: absolute;
+    left: 8px;
+    pointer-events: none;
+  }
+
+  &__clear {
+    position: absolute;
+    right: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
