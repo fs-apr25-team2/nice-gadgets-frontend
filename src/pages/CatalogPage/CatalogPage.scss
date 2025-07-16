@@ -43,21 +43,16 @@
 
   &__top-controls {
     display: flex;
+    flex-wrap: wrap;
     gap: 16px;
   }
 
-  &__control {
-    display: flex;
-    flex-direction: column;
-
-    &-label {
-      font-size: 12px;
-      line-height: 100%;
-      color: var(--main-text-color-secondary);
-      font-weight: 700;
-      padding-bottom: 4px;
-      transition: ease 0.3s;
-    }
+  &__control-label {
+    font-size: 12px;
+    line-height: 100%;
+    color: var(--main-text-color-secondary);
+    font-weight: 600;
+    padding-bottom: 4px;
   }
 
   &__pagination {
@@ -83,6 +78,20 @@
       gap: 8px;
       justify-content: center;
       align-items: center;
+    }
+  }
+
+  &__not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 32px 0;
+
+    &-message {
+      font-size: 16px;
+      color: var(--main-text-color-secondary);
+      text-align: center;
     }
   }
 }

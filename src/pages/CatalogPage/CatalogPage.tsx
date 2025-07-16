@@ -18,6 +18,8 @@ import { Loader } from '../../components/Loader';
 import { CatalogEmpty } from './components/CatalogEmpty/CatalogEmpty';
 
 import './CatalogPage.scss';
+import { SearchInput } from '../../ui/components/SearchInput.tsx';
+import { Button } from '../../ui/components/Button';
 
 const categories: ProductCategory[] = ['phones', 'tablets', 'accessories'];
 
@@ -73,9 +75,13 @@ export const CatalogPage: React.FC = () => {
 
   const safeCategory: ProductCategory = categoryParam;
 
-  const filteredProducts = products.filter(
-    (product) => product.category === safeCategory,
-  );
+  const searchQuery = searchParams.get('search')?.toLowerCase() || '';
+
+  const filteredProducts = products.filter((product) => {
+    const matchesCategory = product.category === safeCategory;
+    const matchesSearch = product.name.toLowerCase().includes(searchQuery);
+    return matchesCategory && matchesSearch;
+  });
 
   const sortProducts = (productsToSort: Product[]) => {
     switch (sortParam) {
@@ -178,7 +184,7 @@ export const CatalogPage: React.FC = () => {
       {!isLoading && !hasError && products.length === 0 && (
         <CatalogEmpty category={safeCategory} />
       )}
-      {!isLoading && !hasError && filteredProducts.length > 0 && (
+      {!isLoading && !hasError && (
         <>
           <p className="catalog-page__subtitle">
             {t('models.total', { count: filteredProducts.length })}
@@ -235,11 +241,39 @@ export const CatalogPage: React.FC = () => {
                 }}
               />
             </div>
+
+            <div className="catalog-page__control">
+              <p className="catalog-page__control-label">
+                {t('catalog.search.label')}
+              </p>
+              <SearchInput />
+            </div>
           </div>
 
-          <ProductList products={currentItems} />
+          {filteredProducts.length > 0 ?
+            <ProductList products={currentItems} />
+          : <div className="catalog-page__not-found">
+              <p className="catalog-page__not-found-message">
+                {t('catalog.search.noResults')}
+              </p>
 
-          {pageCount > 1 && (
+              <Button
+                variant="empty"
+                onClick={() => {
+                  const newParams = new URLSearchParams(
+                    searchParams.toString(),
+                  );
+                  newParams.delete('search');
+                  newParams.delete('page');
+                  setSearchParams(newParams);
+                }}
+              >
+                {t('catalog.search.clear')}
+              </Button>
+            </div>
+          }
+
+          {pageCount > 1 && filteredProducts.length > 0 && (
             <div
               ref={paginationRef}
               className="catalog-page__pagination"

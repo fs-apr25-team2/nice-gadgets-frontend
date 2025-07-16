@@ -63,6 +63,11 @@
     "accessories": {
       "title": "Accessories"
     },
+    "search": {
+      "label": "Search",
+      "noResults": "Nothing found for this query",
+      "clear": "Clear search"
+    },
     "dropdown": {
       "sortBy": {
         "label": "Sort by",
