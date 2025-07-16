@@ -6,8 +6,8 @@
   align-items: center;
   padding: 4px;
   font-weight: 400;
-  color: var(--secondary-color);
-  border-left: 1px solid var(--elements-color);
+  color: var(--main-text-color-secondary);
+  transition: ease 0.3s;
 
   @include on-tablet {
     display: flex;
@@ -17,6 +17,20 @@
     display: flex;
     padding: 0;
   }
+
+  @include on-big-tablet {
+    width: 48px;
+    height: 48px;
+    padding: 2px;
+    border-left: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+  }
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+    padding: 4px;
+  }
 }
 
 .lang-option {
@@ -25,14 +39,23 @@
   font-weight: 400;
   line-height: 11px;
   color: var(--secondary-color);
-  background-color: var(--white-color);
+  background-color: transparent;
   padding: 4px;
   cursor: pointer;
+  transition: ease 0.3s;
 
   &--active {
-    color: var(--primary-color);
+    color: var(--main-text-color-primary);
     transition: color 0.3s;
     font-weight: 800;
     text-decoration: underline;
+  }
+
+  @include on-big-tablet {
+    font-size: 10px;
+  }
+
+  @include on-desktop {
+    font-size: 11px;
   }
 }

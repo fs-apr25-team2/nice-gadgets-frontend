@@ -33,7 +33,7 @@ export const LangSwitcher: React.FC<Props> = ({ mobile }) => {
           >
             {lang}
           </button>
-          {index < arr.length - 1 && <span> / </span>}
+          {index < arr.length - 1 && <span>/</span>}
         </React.Fragment>
       ))}
     </div>

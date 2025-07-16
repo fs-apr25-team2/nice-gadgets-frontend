@@ -1,0 +1,114 @@
+@use '../../../../styles/utils/mixins.scss' as *;
+
+.theme-switcher {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--main-text-color-secondary);
+  transition: ease 0.3s;
+
+  @include on-big-tablet {
+    width: 48px;
+    height: 48px;
+    padding: 4px;
+    border-left: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+  }
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+    padding: 4px 4px 4px 6px;
+  }
+}
+
+.switch {
+  width: 48px;
+  height: 24px;
+  border-radius: 12px;
+  background-color: var(--main-text-color-primary);
+  position: relative;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+
+  &__thumb {
+    width: 20px;
+    height: 20px;
+    background-color: var(--main-background-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: left 0.3s;
+    z-index: 2;
+  }
+
+  &__icon {
+    font-size: 12px;
+    z-index: 1;
+    pointer-events: none;
+
+    &--sun,
+    &--moon {
+      color: #facc15;
+    }
+  }
+
+  &--dark {
+    .switch__thumb {
+      left: 26px;
+    }
+  }
+
+  @include on-big-tablet {
+    width: 36px;
+    height: 18px;
+    padding: 0 3px;
+    border-radius: 9px;
+
+    &__thumb {
+      width: 14px;
+      height: 14px;
+      top: 2px;
+      left: 2px;
+    }
+
+    &--dark {
+      .switch__thumb {
+        left: 20px;
+      }
+    }
+
+    &__icon {
+      font-size: 9px;
+    }
+  }
+
+  @include on-desktop {
+    width: 48px;
+    height: 24px;
+    padding: 0 4px;
+    border-radius: 50px;
+
+    &__thumb {
+      width: 20px;
+      height: 20px;
+      top: 2px;
+      left: 2px;
+    }
+
+    &--dark {
+      .switch__thumb {
+        left: 26px;
+      }
+    }
+
+    &__icon {
+      font-size: 12px;
+    }
+  }
+}

@@ -8,12 +8,13 @@
     line-height: 20px;
     font-size: 12px;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--main-text-color-primary);
+    transition: ease 0.3s;
 
     text-decoration: none;
 
     &:hover {
-      color: var(--secondary-color);
+      color: var(--main-text-color-secondary);
     }
   }
 
@@ -26,7 +27,7 @@
   }
 
   &__separator {
-    color: var(--secondary-color);
+    color: var(--main-text-color-secondary);
   }
 
   &__item {
@@ -43,21 +44,21 @@
   }
 
   &__link {
-    color: var(--primary-color);
+    color: var(--main-text-color-primary);
     transition: color 0.3s;
 
     &:hover {
-      color: var(--secondary-color);
+      color: var(--main-text-color-secondary);
     }
 
     &--active {
-      color: var(--secondary-color);
+      color: var(--main-text-color-secondary);
       cursor: default;
     }
   }
 
   &__current {
-    color: var(--secondary-color);
+    color: var(--main-text-color-secondary);
     cursor: default;
   }
 }

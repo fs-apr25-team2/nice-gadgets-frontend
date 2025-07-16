@@ -2,11 +2,12 @@
 @use '../../styles/typography.scss' as *;
 
 .footer {
-  background-color: var(--white-color);
-  border-top: 1px solid var(--elements-color);
+  background-color: var(--main-background-color);
+  border-top: 1px solid var(--border-color);
   font-size: 14px;
-  color: var(--secondary-color);
+  color: var(--main-text-color-secondary);
   padding: 32px 0px;
+  transition: ease 0.3s;
 
   &__container {
     display: flex;
@@ -40,7 +41,7 @@
     color: inherit;
 
     &:hover {
-      color: var(--primary-color);
+      color: var(--main-text-color-primary);
     }
   }
 
@@ -60,7 +61,7 @@
     font-family: inherit;
 
     &:hover {
-      color: var(--primary-color);
+      color: var(--main-text-color-primary);
     }
   }
 
@@ -69,17 +70,24 @@
     display: flex;
     width: 32px;
     height: 32px;
-    border: 1px solid var(--icons-color);
-    background: none;
+    border: 1px solid var(--icons-border-primary-color);
     align-items: center;
     justify-content: center;
+    background-color: var(--icons-background-primary-color);
+    transition: ease 0.3s;
 
     svg {
-      color: var(--primary-color);
+      color: var(--icons-primary-color);
     }
   }
 
   &__back:hover &__back-btn {
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--icons-border-hover-color);
+    background-color: var(--icons-background-hover-color);
+    transition: ease 0.3s;
+
+    svg {
+      color: var(--icons-hover-color);
+    }
   }
 }

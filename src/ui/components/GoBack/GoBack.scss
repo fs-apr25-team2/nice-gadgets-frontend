@@ -6,20 +6,22 @@
   align-items: center;
   border: none;
   background: none;
-  color: var(--primary-color);
+  color: var(--main-text-color-primary);
   font-family: inherit;
   cursor: pointer;
+  transition: ease 0.3s;
 
   &__text {
     margin-left: 4px;
     height: 16px;
     font-size: 12px;
     font-weight: 700;
-    color: var(--secondary-color);
+    color: var(--main-text-color-secondary);
     transition: color 0.3s ease-in-out;
+    transition: ease 0.3s;
 
     &:hover {
-      color: var(--primary-color);
+      color: var(--main-text-color-primary);
     }
   }
 }

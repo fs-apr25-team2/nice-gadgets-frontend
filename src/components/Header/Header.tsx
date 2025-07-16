@@ -1,6 +1,10 @@
 import { NavLink } from 'react-router';
 import { useState } from 'react';
 
+import { ThemeSwitcher } from './components/ThemeSwitcher/ThemeSwitcher';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { THEME_KEY } from '../../constants';
+import { Theme } from '../../types/types';
 import { BurgerMenu } from './components/BurgerMenu';
 import { NavigationTabs } from './components/NavigationTabs';
 import { HeaderIcons } from './components/HeaderIcons';
@@ -13,6 +17,7 @@ import { CloseIcon } from '../../ui/icons/CloseIcon';
 import './Header.scss';
 
 export const Header = () => {
+  const [theme] = useLocalStorage<Theme>(THEME_KEY, Theme.Light);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleToggleMenu = () => {
@@ -22,6 +27,7 @@ export const Header = () => {
   const handleCloseMenu = () => {
     setIsMenuOpen(false);
   };
+
   return (
     <header className="header">
       <div className="container">
@@ -33,7 +39,9 @@ export const Header = () => {
           >
             <img
               className="logo"
-              src="/logo/Logo.svg"
+              src={
+                theme === Theme.Dark ? '/logo/Logo-dark.svg' : '/logo/Logo.svg'
+              }
               alt="Nice & Gadgets logo"
             />
           </NavLink>
@@ -57,9 +65,10 @@ export const Header = () => {
         </button>
 
         <div className="header__right">
+          <ThemeSwitcher />
           <LangSwitcher mobile={false} />
           <HeaderIcons />
-          <UserMenu />
+          <UserMenu onClick={handleCloseMenu} />
         </div>
       </div>
 

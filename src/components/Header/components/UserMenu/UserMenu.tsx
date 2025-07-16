@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GuestIcon } from '../../../../ui/icons/GuestIcon';
@@ -7,7 +8,11 @@ import { UserSidebar } from '../../../UserSidebar';
 
 import './UserMenu.scss';
 
-export const UserMenu = () => {
+type UserMenuProps = {
+  onClick: () => void;
+};
+
+export const UserMenu: React.FC<UserMenuProps> = ({ onClick }) => {
   const { user, isAuthenticated } = useAuth();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const navigate = useNavigate();
@@ -16,6 +21,7 @@ export const UserMenu = () => {
     if (isAuthenticated) {
       setIsSidebarOpen(true);
     } else {
+      onClick();
       navigate('/login');
     }
   };
