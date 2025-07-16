@@ -10,7 +10,7 @@
 
   &__title {
     padding: 32px 0;
-    color: var(--primary-color);
+    color: var(--main-text-color-primary);
     @extend .typography--h1;
 
     @include on-tablet {
@@ -20,7 +20,7 @@
 
   &__about {
     margin-bottom: 24px;
-    color: var(--secondary-color);
+    color: var(--main-text-color-secondary);
 
     @include on-tablet {
       margin-bottom: 16px;

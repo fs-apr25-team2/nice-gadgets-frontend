@@ -6,7 +6,7 @@
   align-items: center;
   border: none;
   background: none;
-  color: var(--primary-color);
+  color: var(--main-text-color-primary);
   font-family: inherit;
   cursor: pointer;
 
@@ -15,11 +15,11 @@
     height: 16px;
     font-size: 12px;
     font-weight: 700;
-    color: var(--secondary-color);
+    color: var(--main-text-color-secondary);
     transition: color 0.3s ease-in-out;
 
     &:hover {
-      color: var(--primary-color);
+      color: var(--main-text-color-primary);
     }
   }
 }

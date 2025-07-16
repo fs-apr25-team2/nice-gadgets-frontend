@@ -16,6 +16,7 @@
     font-weight: 700;
     margin-bottom: 8px;
     text-align: left;
+    color: var(--main-text-color-primary);
 
     @include on-tablet {
       margin-top: 8px;
@@ -29,7 +30,7 @@
 
   &__count {
     font-size: 16px;
-    color: var(--secondary-color);
+    color: var(--main-text-color-secondary);
     margin-bottom: 0;
     text-align: left;
   }
@@ -51,7 +52,7 @@
 
     p {
       font-size: 16px;
-      color: var(--secondary-color);
+      color: var(--main-text-color-secondary);
       margin-bottom: 24px;
     }
   }

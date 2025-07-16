@@ -6,8 +6,8 @@
   justify-content: space-between;
   padding: 8px 12px;
   font-size: 14px;
-  color: var(--primary-color);
-  border: 1px solid var(--elements-color);
+  color: var(--main-text-color-primary);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   background-color: white;
   cursor: pointer;
@@ -15,7 +15,7 @@
   transition: border-color 0.2s;
 
   &:hover {
-    border-color: var(--secondary-color);
+    border-color: var(--main-text-color-secondary);
   }
 
   &:focus {
@@ -26,7 +26,7 @@
 .dropdown-content {
   margin-top: 6px;
   background-color: white;
-  border: 1px solid var(--elements-color);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   padding: 4px 0;
@@ -37,18 +37,18 @@
 .dropdown-item {
   padding: 8px 12px;
   font-size: 14px;
-  color: var(--primary-color);
+  color: var(--main-text-color-primary);
   cursor: pointer;
   user-select: none;
 
   &:hover,
   &:focus {
-    background-color: var(--elements-color);
+    background-color: var(--border-color);
     outline: none;
   }
 
   &[data-disabled] {
-    color: var(--secondary-color);
+    color: var(--main-text-color-secondary);
     cursor: not-allowed;
   }
 }

@@ -8,17 +8,17 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 1px solid var(--elements-color);
+    border: 1px solid var(--border-color);
     cursor: pointer;
-    background-color: var(--white-color);
+    background-color: var(--main-background-color);
     transition: 0.3s ease;
 
     &:hover:not(&-selected) {
-      border: 1px solid var(--icons-color);
+      border: 1px solid var(--main-text-color-secondary);
     }
 
     &-selected {
-      border: 1px solid var(--primary-color);
+      border: 1px solid var(--main-text-color-primary);
     }
   }
 
@@ -26,7 +26,7 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    border: 2px solid var(--white-color);
+    border: 2px solid var(--main-background-color);
     box-sizing: border-box;
 
     $colors: (

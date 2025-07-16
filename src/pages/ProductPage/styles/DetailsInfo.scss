@@ -21,7 +21,7 @@
   &__line {
     width: 100%;
     height: 1px;
-    background-color: var(--elements-color);
+    background-color: var(--border-color);
     margin-top: 16px;
     margin-bottom: 32px;
   }
@@ -38,7 +38,7 @@
     font-weight: 800;
     font-size: 20px;
     line-height: 100%;
-    color: var(--primary-color);
+    color: var(--main-text-color-primary);
 
     @include on-tablet {
       font-weight: 800;
@@ -63,7 +63,7 @@
       font-weight: 600;
       font-size: 16px;
       line-height: 100%;
-      color: var(--primary-color);
+      color: var(--main-text-color-primary);
     }
 
     &-description {
@@ -71,7 +71,7 @@
       font-size: 14px;
       line-height: 21px;
       letter-spacing: 0%;
-      color: var(--secondary-color);
+      color: var(--main-text-color-secondary);
     }
   }
 }
@@ -87,7 +87,7 @@
     font-weight: 800;
     font-size: 20px;
     line-height: 100%;
-    color: var(--primary-color);
+    color: var(--main-text-color-primary);
 
     @include on-tablet {
       font-weight: 800;
@@ -112,7 +112,7 @@
       font-size: 14px;
       line-height: 21px;
       letter-spacing: 0%;
-      color: var(--secondary-color);
+      color: var(--main-text-color-secondary);
     }
 
     &-value {
@@ -121,7 +121,7 @@
       font-size: 13px;
       line-height: 21px;
       letter-spacing: 0%;
-      color: var(--primary-color);
+      color: var(--main-text-color-primary);
     }
   }
 }

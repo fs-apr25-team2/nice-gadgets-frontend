@@ -73,6 +73,7 @@
     align-items: center;
     justify-content: center;
     background-color: var(--icons-background-primary-color);
+    transition: ease 0.3s;
 
     svg {
       color: var(--icons-primary-color);
@@ -82,6 +83,7 @@
   &__back:hover &__back-btn {
     border: 1px solid var(--icons-border-hover-color);
     background-color: var(--icons-background-hover-color);
+    transition: ease 0.3s;
 
     svg {
       color: var(--icons-hover-color);

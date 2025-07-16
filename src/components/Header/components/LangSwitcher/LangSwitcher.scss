@@ -8,6 +8,7 @@
   font-weight: 400;
   color: var(--main-text-color-secondary);
   border-left: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
 
   @include on-tablet {
     display: flex;
@@ -16,6 +17,18 @@
   &--mobile {
     display: flex;
     padding: 0;
+  }
+
+  @include on-tablet {
+    width: 48px;
+    height: 48px;
+    padding: 2px;
+  }
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+    padding: 4px;
   }
 }
 
@@ -41,6 +54,6 @@
   }
 
   @include on-desktop {
-    font-size: 12px;
+    font-size: 11px;
   }
 }
