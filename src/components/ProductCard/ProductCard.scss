@@ -67,14 +67,15 @@
 
     font-weight: 700;
     font-size: 12px;
-    transition: ease 0.3s;
 
     &-label {
       color: var(--main-text-color-secondary);
+      transition: ease 0.3s;
     }
 
     &-value {
       color: var(--main-text-color-primary);
+      transition: ease 0.3s;
     }
   }
 
