@@ -9,6 +9,7 @@
     @extend .typography--h1;
     margin-bottom: clamp(1.5rem, 2.857vw + 0.929rem, 3.5rem);
     color: var(--main-text-color-primary);
+    transition: ease 0.3s;
   }
 
   &__arrow {

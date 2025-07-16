@@ -28,6 +28,7 @@
     border-radius: 50%;
     border: 2px solid var(--main-background-color);
     box-sizing: border-box;
+    transition: ease 0.3s;
 
     $colors: (
       'black': $black,

@@ -17,6 +17,7 @@
     color: var(--main-text-color-primary);
     @extend .typography;
     @extend .typography--h1;
+    transition: ease 0.3s;
 
     @include on-tablet {
       padding: 16px 0;
@@ -30,10 +31,12 @@
   &__section-title {
     margin-bottom: 16px;
     color: var(--main-text-color-primary);
+    transition: ease 0.3s;
   }
 
   &__text {
     margin-bottom: 16px;
     color: var(--main-text-color-secondary);
+    transition: ease 0.3s;
   }
 }

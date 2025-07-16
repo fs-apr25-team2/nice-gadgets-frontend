@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   background-color: var(--main-background-color);
+  transition: ease 0.3s;
 
   &__mobile {
     padding: 16px;
@@ -33,11 +34,13 @@
   &__name {
     @extend .typography--h4;
     color: var(--main-text-color-primary);
+    transition: ease 0.3s;
   }
 
   &__email {
     @extend .typography--body;
     color: var(--main-text-color-primary);
+    transition: ease 0.3s;
   }
 
   &__login-link {
@@ -52,6 +55,7 @@
     border-radius: 12px;
     cursor: pointer;
     outline: none;
+    transition: ease 0.3s;
   }
 
   &__desktop {
@@ -75,6 +79,7 @@
     background: none;
     padding: 0;
     cursor: pointer;
+    transition: ease 0.3s;
 
     @include on-tablet {
       width: 48px;

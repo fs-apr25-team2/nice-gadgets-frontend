@@ -36,6 +36,7 @@
     flex-direction: column;
     color: var(--main-text-color-primary);
     transition: transform 0.3s ease-in-out;
+    transition: ease 0.3s;
 
     &:hover {
       transform: scale(1.05);
@@ -44,6 +45,7 @@
 
   &__title {
     color: var(--main-text-color-primary);
+    transition: ease 0.3s;
   }
 
   &__image-wrapper {
@@ -67,5 +69,6 @@
 
   &__models {
     color: var(--main-text-color-secondary);
+    transition: ease 0.3s;
   }
 }

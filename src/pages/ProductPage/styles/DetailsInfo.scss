@@ -40,6 +40,7 @@
     font-size: 20px;
     line-height: 100%;
     color: var(--main-text-color-primary);
+    transition: ease 0.3s;
 
     @include on-tablet {
       font-weight: 800;
@@ -65,6 +66,7 @@
       font-size: 16px;
       line-height: 100%;
       color: var(--main-text-color-primary);
+      transition: ease 0.3s;
     }
 
     &-description {
@@ -73,6 +75,7 @@
       line-height: 21px;
       letter-spacing: 0%;
       color: var(--main-text-color-secondary);
+      transition: ease 0.3s;
     }
   }
 }
@@ -89,6 +92,7 @@
     font-size: 20px;
     line-height: 100%;
     color: var(--main-text-color-primary);
+    transition: ease 0.3s;
 
     @include on-tablet {
       font-weight: 800;
@@ -114,6 +118,7 @@
       line-height: 21px;
       letter-spacing: 0%;
       color: var(--main-text-color-secondary);
+      transition: ease 0.3s;
     }
 
     &-value {
@@ -123,6 +128,7 @@
       line-height: 21px;
       letter-spacing: 0%;
       color: var(--main-text-color-primary);
+      transition: ease 0.3s;
     }
   }
 }

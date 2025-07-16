@@ -13,6 +13,7 @@
   border-radius: 20px;
   background-color: var(--surface-color);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: ease 0.3s;
 
   @include on-tablet {
     grid-column: span 6;
@@ -33,17 +34,20 @@
   &__name {
     @extend .typography--h4;
     color: var(--main-text-color-primary);
+    transition: ease 0.3s;
   }
 
   &__position {
     @extend .typography--body;
     color: var(--main-text-color-secondary);
+    transition: ease 0.3s;
   }
 
   &__description {
     margin-bottom: 16px;
     @extend .typography--body;
     color: var(--main-text-color-primary);
+    transition: ease 0.3s;
   }
 
   &__socials {
@@ -54,8 +58,8 @@
 
     a {
       display: inline-block;
-      transition: transform 0.2s;
       color: var(--main-text-color-primary);
+      transition: ease 0.3s;
 
       &:hover {
         transform: scale(1.1);

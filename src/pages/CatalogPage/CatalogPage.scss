@@ -29,8 +29,8 @@
     line-height: 21px;
     color: var(--main-text-color-secondary);
     margin-top: 8px;
-
     margin-bottom: 32px;
+    transition: ease 0.3s;
 
     @include on-tablet {
       margin-bottom: 40px;
@@ -56,6 +56,7 @@
       color: var(--main-text-color-secondary);
       font-weight: 700;
       padding-bottom: 4px;
+      transition: ease 0.3s;
     }
   }
 

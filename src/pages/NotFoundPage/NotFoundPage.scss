@@ -24,6 +24,7 @@
     font-weight: 800;
     color: var(--main-text-color-primary);
     margin-bottom: 8px;
+    transition: ease 0.3s;
 
     @include on-tablet {
       font-size: 48px;
@@ -34,6 +35,7 @@
     font-size: 16px;
     color: var(--main-text-color-secondary);
     margin-bottom: 32px;
+    transition: ease 0.3s;
 
     @include on-tablet {
       font-size: 18px;
@@ -62,7 +64,7 @@
     font-weight: 600;
     border: none;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: ease 0.3s;
 
     &:hover {
       background-color: var(--buttons-background-color-hover);

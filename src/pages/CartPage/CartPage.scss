@@ -20,6 +20,7 @@
     font-weight: 700;
     margin-bottom: 0;
     color: var(--main-text-color-primary);
+    transition: ease 0.3s;
 
     @include on-tablet {
       margin-top: 16px;
@@ -69,6 +70,7 @@
     text-align: center;
     min-width: 250px;
     height: fit-content;
+    transition: ease 0.3s;
 
     @include on-tablet {
       grid-column: 1 / span 12;
@@ -87,6 +89,7 @@
     border: 1px solid var(--card-border-color);
     padding: 16px;
     gap: 16px;
+    transition: ease 0.3s;
 
     @include on-tablet {
       flex-direction: row;
@@ -139,6 +142,7 @@
     font-weight: 600;
     word-break: break-word;
     color: var(--main-text-color-primary);
+    transition: ease 0.3s;
   }
 
   &__item-right {
@@ -191,6 +195,7 @@
     min-width: 20px;
     text-align: center;
     color: var(--main-text-color-primary);
+    transition: ease 0.3s;
   }
 
   &__price {
@@ -198,6 +203,7 @@
     font-weight: 700;
     text-align: right;
     color: var(--main-text-color-primary);
+    transition: ease 0.3s;
 
     @include on-tablet {
       font-size: 20px;
@@ -210,12 +216,14 @@
     font-weight: 700;
     margin-bottom: 8px;
     color: var(--main-text-color-primary);
+    transition: ease 0.3s;
   }
 
   &__label {
     font-size: 14px;
     color: var(--main-text-color-secondary);
     margin-bottom: 24px;
+    transition: ease 0.3s;
   }
 
   &__checkout {
@@ -264,6 +272,7 @@
       font-size: 16px;
       color: var(--secondary-color);
       margin-bottom: 24px;
+      transition: ease 0.3s;
     }
   }
 }

@@ -6,6 +6,7 @@
   border-radius: 10px;
   background-color: var(--surface-color);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: ease 0.3s;
 
   h1 {
     font-size: 1.75rem;
@@ -46,6 +47,7 @@
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    transition: ease 0.3s;
 
     &:hover {
       background-color: var(--buttons-background-color-hover);
@@ -71,6 +73,7 @@
   font-size: 0.875rem;
   margin: 1.5rem 0;
   position: relative;
+  transition: ease 0.3s;
 
   &::before,
   &::after {
