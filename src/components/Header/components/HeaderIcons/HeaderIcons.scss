@@ -7,7 +7,7 @@
   &--mobile {
     display: flex;
 
-    @media (max-width: 639px) {
+    @media (max-width: 767px) {
       display: none;
     }
   }
@@ -27,7 +27,7 @@
     cursor: pointer;
     transition: ease 0.3s;
 
-    @include on-tablet {
+    @include on-big-tablet {
       width: 48px;
       height: 48px;
     }
@@ -67,7 +67,7 @@
         display: none;
       }
 
-      @include on-tablet {
+      @include on-big-tablet {
         top: 10px;
         right: 8px;
       }

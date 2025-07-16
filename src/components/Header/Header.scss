@@ -26,7 +26,7 @@
     padding: 0 16px;
     gap: 24px;
 
-    @include on-tablet {
+    @include on-big-tablet {
       gap: 32px;
     }
 
@@ -48,7 +48,7 @@
   .header__nav {
     display: none;
 
-    @include on-tablet {
+    @include on-big-tablet {
       display: flex;
       flex: 1;
       justify-content: center;
@@ -58,7 +58,7 @@
   &__right {
     display: none;
 
-    @include on-tablet {
+    @include on-big-tablet {
       display: flex;
     }
   }
@@ -80,7 +80,7 @@
       height: 24px;
     }
 
-    @include on-tablet {
+    @include on-big-tablet {
       display: none;
     }
   }
