@@ -50,7 +50,7 @@
   &__control-label {
     font-size: 12px;
     line-height: 100%;
-    color: var(--secondary-color);
+    color: var(--main-text-color-secondary);
     font-weight: 600;
     padding-bottom: 4px;
   }
@@ -90,7 +90,7 @@
 
     &-message {
       font-size: 16px;
-      color: var(--secondary-color);
+      color: var(--main-text-color-secondary);
       text-align: center;
     }
   }
