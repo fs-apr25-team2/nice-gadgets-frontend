@@ -58,10 +58,10 @@ export const SignupOfferModal = () => {
 
           <NavLink
             className="signup-offer__login"
-            to="/login"
+            to="/register"
             onClick={() => setOpen(false)}
           >
-            Login
+            Register
           </NavLink>
 
           <Dialog.Close className="signup-offer__no-thanks">
