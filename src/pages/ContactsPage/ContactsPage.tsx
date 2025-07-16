@@ -42,6 +42,8 @@ export const ContactsPage = () => {
   return (
     <div className="contacts">
       <GoBack />
+      <h1 className="contacts__title">{t('contacts.title')}</h1>
+      <p className="contacts__about">{t('contacts.text')}</p>
       {isLoading && <Loader />}
       {hasError && <PageError />}
       {!isLoading && !hasError && team.length > 0 && (
