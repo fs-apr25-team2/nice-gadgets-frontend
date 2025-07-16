@@ -4,11 +4,12 @@
 .hero {
   padding-top: clamp(1.5rem, 2.857vw + 0.929rem, 3.5rem);
   padding-bottom: clamp(3.5rem, 2.143vw + 3.071rem, 5rem);
-  @include content-padding-inline;
 
   &__title {
     @extend .typography--h1;
     margin-bottom: clamp(1.5rem, 2.857vw + 0.929rem, 3.5rem);
+    color: var(--main-text-color-primary);
+    transition: ease 0.3s;
   }
 
   &__arrow {
@@ -16,8 +17,15 @@
     position: absolute;
     width: 32px;
     height: 189px;
-    background-color: transparent;
-    border: 1px solid var(--icons-color);
+    background-color: var(--icons-background-primary-color);
+    border: 1px solid var(--icons-border-primary-color);
+    color: var(--main-text-color-primary);
+    transition: 0.3s ease;
+
+    &:hover {
+      background-color: var(--icons-background-hover-color);
+      border: 1px solid var(--icons-border-hover-color);
+    }
 
     &--prev {
       left: 32px;
@@ -69,13 +77,13 @@
   &__bullet {
     width: 14px;
     height: 4px;
-    background-color: var(--elements-color);
+    background-color: var(--main-text-color-secondary);
     border-radius: 0;
     cursor: pointer;
     transition: background-color 0.3s;
 
     &.swiper-pagination-bullet-active {
-      background-color: var(--primary-color);
+      background-color: var(--main-text-color-primary);
     }
   }
 

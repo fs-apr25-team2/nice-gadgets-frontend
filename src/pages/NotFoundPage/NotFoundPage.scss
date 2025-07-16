@@ -22,8 +22,9 @@
   &__title {
     font-size: 32px;
     font-weight: 800;
-    color: var(--primary-color);
+    color: var(--main-text-color-primary);
     margin-bottom: 8px;
+    transition: ease 0.3s;
 
     @include on-tablet {
       font-size: 48px;
@@ -32,8 +33,9 @@
 
   &__text {
     font-size: 16px;
-    color: var(--secondary-color);
+    color: var(--main-text-color-secondary);
     margin-bottom: 32px;
+    transition: ease 0.3s;
 
     @include on-tablet {
       font-size: 18px;
@@ -54,19 +56,19 @@
   }
 
   &__btn {
-    background-color: var(--primary-color);
-    color: var(--white-color);
+    background-color: var(--buttons-background-color);
+    color: var(--buttons-text-color);
     margin-top: 32px;
     padding: 12px 24px;
     font-size: 16px;
     font-weight: 600;
     border: none;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: ease 0.3s;
 
     &:hover {
-      background-color: var(--elements-color);
-      color: black;
+      background-color: var(--buttons-background-color-hover);
+      box-shadow: 0 3px 13px var(--buttons-shadow-color-hover);
     }
   }
 }

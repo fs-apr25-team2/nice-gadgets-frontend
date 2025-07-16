@@ -5,7 +5,6 @@
   &__wrapper {
     display: flex;
     flex-direction: column;
-    background-color: var(--white-color);
     padding-top: 24px;
 
     @include on-tablet {
@@ -15,9 +14,10 @@
 
   &__title {
     padding: 32px 0;
-    color: var(--primary-color);
+    color: var(--main-text-color-primary);
     @extend .typography;
     @extend .typography--h1;
+    transition: ease 0.3s;
 
     @include on-tablet {
       padding: 16px 0;
@@ -30,11 +30,13 @@
 
   &__section-title {
     margin-bottom: 16px;
-    color: var(--primary-color);
+    color: var(--main-text-color-primary);
+    transition: ease 0.3s;
   }
 
   &__text {
     margin-bottom: 16px;
-    color: var(--secondary-color);
+    color: var(--main-text-color-secondary);
+    transition: ease 0.3s;
   }
 }

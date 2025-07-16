@@ -6,6 +6,7 @@ export const CATALOG_TITLES: Record<ProductCategory, string> = {
   accessories: 'Accessories',
 };
 
+export const THEME_KEY = 'theme';
 export const LANG_KEY = 'language';
 export const CART_KEY = 'cart';
 export const FAVOURITES_KEY = 'favourites';

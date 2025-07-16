@@ -71,3 +71,8 @@ export enum Language {
   EN = 'en',
   UA = 'ua',
 }
+
+export enum Theme {
+  Light = 'light',
+  Dark = 'dark',
+}

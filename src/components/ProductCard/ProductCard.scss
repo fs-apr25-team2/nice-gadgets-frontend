@@ -1,7 +1,8 @@
 .card {
   width: 100%;
   padding: 32px;
-  border: 1px solid var(--elements-color);
+  border: 1px solid var(--card-border-color);
+  background-color: var(--surface-color);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -10,6 +11,7 @@
   gap: 8px;
   transition: 0.3s ease;
   cursor: pointer;
+  transition: ease 0.3s;
 
   &:hover {
     box-shadow: 0px 2px 16px 0px #0000001a;
@@ -27,6 +29,8 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 150%;
+    color: var(--main-text-color-primary);
+    transition: ease 0.3s;
   }
 
   &__price {
@@ -37,9 +41,12 @@
     font-weight: 800;
     font-size: 22px;
     line-height: 140%;
+    color: var(--main-text-color-primary);
+    transition: ease 0.3s;
+
     &--old {
       text-decoration: line-through;
-      color: var(--secondary-color);
+      color: var(--main-text-color-secondary);
     }
   }
 
@@ -48,8 +55,9 @@
     flex-direction: column;
     gap: 8px;
 
-    border-top: 1px solid var(--elements-color);
+    border-top: 1px solid var(--border-color);
     padding-top: 8px;
+    transition: ease 0.3s;
   }
 
   &__spec {
@@ -59,13 +67,14 @@
 
     font-weight: 700;
     font-size: 12px;
+    transition: ease 0.3s;
 
     &-label {
-      color: var(--secondary-color);
+      color: var(--main-text-color-secondary);
     }
 
     &-value {
-      color: var(--primary-color);
+      color: var(--main-text-color-primary);
     }
   }
 
