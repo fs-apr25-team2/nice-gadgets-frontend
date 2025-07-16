@@ -1,11 +1,15 @@
 import { NavLink } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { THEME_KEY } from '../../constants';
+import { Theme } from '../../types/types';
 import { ArrowUpIcon } from '../../ui/icons/ArrowUpIcon';
 
 import './Footer.scss';
 
 export const Footer = () => {
   const { t } = useTranslation();
+  const [theme] = useLocalStorage<Theme>(THEME_KEY, Theme.Light);
 
   return (
     <footer className="footer">
@@ -16,7 +20,9 @@ export const Footer = () => {
         >
           <img
             className="footer__logo"
-            src="/logo/Logo.svg"
+            src={
+              theme === Theme.Dark ? '/logo/Logo-dark.svg' : '/logo/Logo.svg'
+            }
             alt="Nice & Gadgets logo"
           />
         </NavLink>

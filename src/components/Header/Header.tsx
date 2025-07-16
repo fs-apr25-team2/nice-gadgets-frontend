@@ -1,6 +1,10 @@
 import { NavLink } from 'react-router';
 import { useState } from 'react';
 
+import { ThemeSwitcher } from './components/ThemeSwitcher/ThemeSwitcher';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { THEME_KEY } from '../../constants';
+import { Theme } from '../../types/types';
 import { BurgerMenu } from './components/BurgerMenu';
 import { NavigationTabs } from './components/NavigationTabs';
 import { HeaderIcons } from './components/HeaderIcons';
@@ -11,9 +15,9 @@ import { BurgerMenuIcon } from '../../ui/icons/BurgerMenuIcon';
 import { CloseIcon } from '../../ui/icons/CloseIcon';
 
 import './Header.scss';
-import { ThemeSwitcher } from './components/ThemeSwitcher/ThemeSwitcher';
 
 export const Header = () => {
+  const [theme] = useLocalStorage<Theme>(THEME_KEY, Theme.Light);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleToggleMenu = () => {
@@ -34,7 +38,9 @@ export const Header = () => {
           >
             <img
               className="logo"
-              src="/logo/Logo.svg"
+              src={
+                theme === Theme.Dark ? '/logo/Logo-dark.svg' : '/logo/Logo.svg'
+              }
               alt="Nice & Gadgets logo"
             />
           </NavLink>
