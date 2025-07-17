@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import {
-  CatalogCategory,
-  Product,
-  ProductCategory,
-} from '../../../../types/types';
+import { Product, ProductCategory } from '../../../../types/types';
 import { getProducts } from '../../../../utils/api';
 import './ShopByCategory.scss';
 
@@ -30,19 +26,19 @@ export const ShopByCategory: React.FC = () => {
 
   const categories: CategoryConfig[] = [
     {
-      name: CatalogCategory.phones,
+      name: t('categories.phones'),
       path: 'phones',
       modelsCount: getCount('phones'),
       image: '/img/phones-shop-by-category.svg',
     },
     {
-      name: CatalogCategory.Tablets,
+      name: t('categories.tablets'),
       path: 'tablets',
       modelsCount: getCount('tablets'),
       image: '/img/tablets-shop-by-category.svg',
     },
     {
-      name: CatalogCategory.Accessories,
+      name: t('categories.accessories'),
       path: 'accessories',
       modelsCount: getCount('accessories'),
       image: '/img/accessories-shop-by-category.svg',
@@ -76,7 +72,7 @@ export const ShopByCategory: React.FC = () => {
               </p>
 
               <p className="shop-category__models typography typography--small">
-                {modelsCount} models
+                {t('home.models.total', { count: modelsCount })}
               </p>
             </div>
           </NavLink>

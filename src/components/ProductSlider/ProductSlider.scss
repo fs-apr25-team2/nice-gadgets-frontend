@@ -1,5 +1,15 @@
+@use '../../styles/utils/mixins.scss' as *;
+
 .product-slider {
-  padding-block: 32px;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
 
   &__header {
     display: flex;

@@ -14,7 +14,18 @@
   },
   "home": {
     "title": "Ласкаво просимо до магазину Nice Gadgets!",
-    "categories": "Купуйте за категоріями"
+    "categories": "Купуйте за категоріями",
+    "models": {
+      "total": "{{count}} модель",
+      "total_few": "{{count}} моделі",
+      "total_many": "{{count}} моделей",
+      "total_other": "{{count}} моделей"
+    }
+  },
+  "categories": {
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари"
   },
   "slider": {
     "newModels": "Нові моделі",

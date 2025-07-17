@@ -14,7 +14,16 @@
   },
   "home": {
     "title": "Welcome to Nice Gadgets store!",
-    "categories": "Shop by category"
+    "categories": "Shop by category",
+    "models": {
+      "total": "{{count}} model",
+      "total_other": "{{count}} models"
+    }
+  },
+  "categories": {
+    "phones": "Mobile phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories"
   },
   "slider": {
     "newModels": "Brand new models",
