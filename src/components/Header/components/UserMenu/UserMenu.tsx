@@ -26,7 +26,6 @@ export const UserMenu: React.FC<UserMenuProps> = ({ onClick }) => {
     }
   };
 
-  // логіка рендера
   const renderIcon = () => {
     if (!isAuthenticated) {
       return <GuestIcon />;

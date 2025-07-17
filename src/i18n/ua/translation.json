@@ -25,7 +25,9 @@
     "phones": "Телефони",
     "tablets": "Планшети",
     "accessories": "Аксесуари",
-    "favourites": "Обране"
+    "favourites": "Обране",
+    "register": "Реєстрація",
+    "login": "Вхід"
   },
   "models": {
     "total": "{{count}} модель",

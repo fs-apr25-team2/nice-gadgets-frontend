@@ -25,7 +25,9 @@
     "phones": "Phones",
     "tablets": "Tablets",
     "accessories": "Accessories",
-    "favourites": "Favourites"
+    "favourites": "Favourites",
+    "register": "Sign Up",
+    "login": "Sign In"
   },
   "models": {
     "total": "{{count}} model",

@@ -1,114 +1,92 @@
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import { updateProfile } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
+
 import {
   register as registerUser,
   loginWithGoogle,
 } from '../../utils/authService';
-import { updateProfile } from 'firebase/auth';
 import { auth } from '../../utils/firebase';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './RegisterPage.scss';
-
-type FormData = {
-  email: string;
-  password: string;
-};
+import { FormData } from '../../types/types';
+import { AuthForm } from './components/AuthForm';
+import { Breadcrumbs } from '../../ui/components/Breadcrumbs';
 
 export const RegisterPage = () => {
-  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { errors, isSubmitting },
   } = useForm<FormData>();
 
-  const onSubmit = async (data: FormData) => {
+  const handleRegister = async (data: FormData) => {
     try {
       await registerUser(data.email, data.password);
 
       if (auth.currentUser) {
         await updateProfile(auth.currentUser, {
-          displayName: 'User',
+          displayName: data.name,
           photoURL: '/img/default-user.png',
         });
       }
 
-      toast.success('Реєстрація пройшла успішно!');
-
+      toast.success('Registration successful!');
       navigate('/');
     } catch (err: unknown) {
+      const errorMessages: Record<string, string> = {
+        'auth/email-already-in-use':
+          'An account with this email already exists.',
+        'auth/invalid-email': 'Invalid email format.',
+        'auth/weak-password': 'Password must be at least 6 characters.',
+        'auth/unauthorized-domain': 'This domain is not authorized.',
+        'auth/network-request-failed':
+          'Network error. Please check your connection.',
+      };
+
       if (
         typeof err === 'object' &&
         err !== null &&
         'code' in err &&
-        err.code === 'auth/email-already-in-use'
+        typeof err.code === 'string'
       ) {
-        toast.error(
-          'Користувач з таким email вже існує. Увійдіть або використайте інший email.',
-        );
+        toast.error(errorMessages[err.code] || 'Registration failed.');
       } else if (err instanceof Error) {
         toast.error(err.message);
       } else {
-        toast.error('Сталася помилка при реєстрації');
+        toast.error('Unknown registration error.');
       }
     }
   };
 
   const handleGoogle = async () => {
     try {
-      setError(null);
       await loginWithGoogle();
-
       navigate('/');
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError('Google login failed');
-      }
+    } catch {
+      toast.error('Google login failed');
     }
   };
 
   return (
-    <div className="register-page">
-      <h1>Create Account</h1>
-
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="register-form"
-      >
-        <input
-          type="email"
-          placeholder="Email"
-          {...register('email', { required: true })}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          {...register('password', { required: true, minLength: 6 })}
-        />
-
-        {error && <p className="form-error">{error}</p>}
-
-        <button
-          type="submit"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? 'Creating...' : 'Register'}
-        </button>
-      </form>
-
-      <div className="divider">or</div>
-
-      <button
-        onClick={handleGoogle}
-        className="google-button"
-      >
-        Sign up with Google
-      </button>
-    </div>
+    <section>
+      <div className="catalog-page__breadcrumb">
+        <Breadcrumbs />
+      </div>
+      <AuthForm
+        title="Sign Up"
+        register={register}
+        handleSubmit={handleSubmit}
+        errors={errors}
+        onSubmit={handleRegister}
+        isRegister
+        isSubmitting={isSubmitting}
+        linkPath="/login"
+        linkText="Already have an account?"
+        buttonText="Sign Up"
+        onGoogleClick={handleGoogle}
+      />
+    </section>
   );
 };
