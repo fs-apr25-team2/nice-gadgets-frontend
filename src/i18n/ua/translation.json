@@ -31,10 +31,14 @@
   },
   "models": {
     "total": "{{count}} модель",
+    "total_few": "{{count}} моделі",
+    "total_many": "{{count}} моделей",
     "total_other": "{{count}} моделей"
   },
   "items": {
     "total": "{{count}} товар",
+    "total_few": "{{count}} товари",
+    "total_many": "{{count}} товарів",
     "total_other": "{{count}} товарів"
   },
   "buttons": {
@@ -167,8 +171,10 @@
   },
   "cart": {
     "title": "Кошик",
-    "total": "Всього {{count}} товар",
-    "total_other": "Всього {{count}} товарів",
+    "total": "Разом за {{count}} товар",
+    "total_few": "Разом за {{count}} товари",
+    "total_many": "Разом за {{count}} товарів",
+    "total_other": "Разом за {{count}} товарів",
     "empty": {
       "title": "Ваш кошик порожній",
       "text": "Схоже, ви ще нічого не додали"
