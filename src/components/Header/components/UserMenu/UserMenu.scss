@@ -81,7 +81,7 @@
     cursor: pointer;
     transition: ease 0.3s;
 
-    @include on-tablet {
+    @include on-big-tablet {
       width: 48px;
       height: 48px;
     }
