@@ -24,6 +24,7 @@ export const Breadcrumbs = ({
   const staticRoutes: Record<string, string> = {
     register: t('breadcrumbs.register'),
     login: t('breadcrumbs.login'),
+    favourites: t('breadcrumbs.favourites'),
   };
 
   const pathSegment = location.pathname.split('/').filter(Boolean)[0];
