@@ -22,16 +22,17 @@ The app provides a smooth shopping experience with features like **home page sli
 
 ## Tech Stack
 
-- **React + TypeScript** – Core framework
-- **React Router** – Navigation
-- **React Hook Form** – Form handling and validation
-- **Firebase Authentication** – Secure user management
+- **React + TypeScript** – The core of the application
+- **React Router** – For navigation on pages
+- **React Hook Form** – For login and registration with validation
+- **Firebase Authentication** – Securing user management with sign-up, login and logout
 - **SCSS (Sass)** – Styling with variables and mixins
-- **Radix UI** – Modals, dropdowns, checkout
+- **Radix UI** – Modals, dropdowns and checkout
 - **i18next** – Multi-language support (EN / UA)
-- **localStorage** – Store user data, cart, favorites, theme, and language
+- **localStorage** – Storing user data, cart, favorites, theme, and language
 - **React Toastify** - User action notifications
 - **Custom Hooks** – Reusable business logic
+- **Mobile-First design** – For full responsiveness
 
 ## Getting Started
 
