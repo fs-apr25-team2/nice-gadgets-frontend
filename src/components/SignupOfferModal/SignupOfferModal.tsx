@@ -1,4 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog';
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router';
 import { useEffect, useState } from 'react';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
@@ -7,6 +8,8 @@ import { CloseIcon } from '../../ui/icons/CloseIcon';
 import './SignupOfferModal.scss';
 
 export const SignupOfferModal = () => {
+  const { t } = useTranslation();
+
   const [open, setOpen] = useState(false);
 
   const [user] = useLocalStorage('user', null);
@@ -48,12 +51,11 @@ export const SignupOfferModal = () => {
           </Dialog.Close>
 
           <Dialog.Title className="signup-offer__title">
-            Sign Up For 10% Off
+            {t('signUpOffer.title')}
           </Dialog.Title>
 
           <Dialog.Description className="signup-offer__desc">
-            Create an account now and enjoy a 10% discount on your first
-            purchase
+            {t('signUpOffer.text')}
           </Dialog.Description>
 
           <NavLink
@@ -61,11 +63,11 @@ export const SignupOfferModal = () => {
             to="/register"
             onClick={() => setOpen(false)}
           >
-            Register
+            {t('signUpOffer.registerBtn')}
           </NavLink>
 
           <Dialog.Close className="signup-offer__no-thanks">
-            <span>No thanks</span>
+            <span>{t('signUpOffer.noThanks')}</span>
           </Dialog.Close>
         </Dialog.Content>
       </Dialog.Portal>

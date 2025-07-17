@@ -52,7 +52,60 @@
       "shopping": "Continue Shopping",
       "checkout": "Checkout",
       "goHome": "Go Home",
-      "reload": "Reload"
+      "reload": "Reload",
+      "logoutBtn": "Log out",
+      "confirmPurchase": "Confirm Purchase"
+    }
+  },
+  "signUpOffer": {
+    "title": "Sign Up For 10% Off",
+    "text": "Create an account now and enjoy a 10% discount on your purchase",
+    "registerBtn": "Register",
+    "noThanks": "No thanks"
+  },
+  "form": {
+    "signInTitle": "Sign In",
+    "signUpTitle": "Sign Up",
+    "loginBtn": "Sign In",
+    "registerBtn": "Sign Up",
+    "haveAccount": "Already have an account?",
+    "noAccount": "Don't have an account?",
+    "submitting": "Submitting...",
+    "orContinue": "Or continue with",
+    "label": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "password": "Password"
+    },
+    "placeHolder": {
+      "name": "Enter your name",
+      "email": "Enter your email",
+      "phone": "Enter your phone number",
+      "password": "Enter your password"
+    },
+    "error": {
+      "emailAlreadyInUse": "An account with this email already exists.",
+      "invalidEmail": "Invalid email format.",
+      "weekPassword": "Password must be at least 6 characters.",
+      "unauthorized-domain": "This domain is not authorized.",
+      "networkRequestFailed": "Network error. Please check your connection.",
+      "registrationFailed": "Registration failed.",
+      "unknownRegistration": "Unknown registration error.",
+      "userNotFound": "No user found with this email. Please register.",
+      "wrongPassword": "Incorrect password. Please try again.",
+      "invalidCredential": "Invalid credentials or account does not exist.",
+      "unknownLogin": "An error occurred during login.",
+      "googleLoginFailed": "Google login failed",
+      "requiredName": "Name is required",
+      "requiredNameTwoChars": "Name must be at least 2 characters",
+      "emptyName": "Name cannot be empty or spaces only",
+      "requiredEmail": "Email is required",
+      "invalidEmailAddress": "Invalid email address",
+      "emptyEmail": "Email cannot be empty or spaces only",
+      "requiredPassword": "Password is required",
+      "requiredPasswordSixChars": "Password must be at least 6 characters",
+      "emptyPassword": "Password cannot be only spaces"
     }
   },
   "catalog": {
@@ -121,6 +174,45 @@
       "text": "Looks like you haven't added anything yet"
     }
   },
+  "checkout": {
+    "title": "Checkout",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Enter your full name",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter your phone number",
+      "address": "Address",
+      "addressPlaceholder": "Enter your delivery address",
+      "errors": {
+        "nameRequired": "Please enter your name.",
+        "emailRequired": "Please enter your email.",
+        "phoneRequired": "Please enter your phone number.",
+        "addressRequired": "Please enter your address."
+      }
+    },
+    "summary": {
+      "title": "Order Summary"
+    },
+    "discount": {
+      "loggedIn": "You’re logged in! A 10% discount has been applied to your total.",
+      "login": "Log in to get 10% off your order!",
+      "loginAria": "Log in to get 10% off your order"
+    },
+    "totals": {
+      "subtotal": "Subtotal",
+      "discount": "Discount",
+      "total": "Total"
+    },
+    "button": {
+      "confirmPurchase": "Confirm Purchase"
+    },
+    "success": {
+      "thankYou": "Thank you for your purchase!",
+      "redirect": "You will be redirected shortly..."
+    }
+  },
   "favourites": {
     "title": "Favourites",
     "empty": {
@@ -139,6 +231,10 @@
   "contacts": {
     "title": "Our Team",
     "text": "We are a team of passionate Front-End Developers who collaborated on this project following real-life workflows and role distributions. Our team combined strengths in UI/UX, state management, component architecture, and project coordination, simulating a professional development environment."
+  },
+  "sideBar": {
+    "nextPurchase": "For your next purchase",
+    "purchaseHistory": "Purchase history"
   },
   "rights": {
     "title": "Welcome to Nice Gadgets!",
@@ -195,6 +291,14 @@
     "addedToCart": "{{name}} added to cart",
     "removedFromCart": "{{name}} removed from cart",
     "addedToFavourites": "{{name}} added to favourites",
-    "removedFromFavourites": "{{name}} removed from favourites"
+    "removedFromFavourites": "{{name}} removed from favourites",
+    "loginSuccess": "Login successful!",
+    "registerSuccess": "Registration successful!",
+    "loginFailed": "Login failed. Please try again.",
+    "registerFailed": "Registration failed. Please try again."
+  },
+  "network": {
+    "offline": "You are offline. Please check your internet connection.",
+    "timeout": "Request timed out. Please try again."
   }
 }

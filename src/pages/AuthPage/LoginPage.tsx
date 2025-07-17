@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FirebaseError } from 'firebase/app';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import { login, loginWithGoogle } from '../../utils/authService';
 import { FormData } from '../../types/types';
@@ -10,6 +11,7 @@ import { Breadcrumbs } from '../../ui/components/Breadcrumbs';
 
 export const LoginPage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const {
     register,
@@ -20,22 +22,18 @@ export const LoginPage = () => {
   const handleLogin = async (data: FormData) => {
     try {
       await login(data.email, data.password);
-      toast.success('Login successful!');
+      toast.success(t('toast.loginSuccess'));
       navigate('/');
     } catch (err) {
       const error = err as FirebaseError;
 
       const errorMessages: Record<string, string> = {
-        'auth/user-not-found':
-          'No user found with this email. Please register.',
-        'auth/wrong-password': 'Incorrect password. Please try again.',
-        'auth/invalid-credential':
-          'Invalid credentials or account does not exist.',
+        'auth/user-not-found': t('form.error.userNotFound'),
+        'auth/wrong-password': t('form.error.wrongPassword'),
+        'auth/invalid-credential': t('form.error.invalidCredential'),
       };
 
-      toast.error(
-        errorMessages[error.code] || 'An error occurred during login.',
-      );
+      toast.error(errorMessages[error.code] || t('form.error.unknownLogin'));
     }
   };
 
@@ -43,10 +41,8 @@ export const LoginPage = () => {
     try {
       await loginWithGoogle();
       navigate('/');
-    } catch (err: unknown) {
-      const message =
-        err instanceof Error ? err.message : 'Google login failed';
-      toast.error(message);
+    } catch {
+      toast.error(t('form.error.googleLoginFailed'));
     }
   };
 
@@ -56,7 +52,7 @@ export const LoginPage = () => {
         <Breadcrumbs />
       </div>
       <AuthForm
-        title="Sign In"
+        title={t('form.signInTitle')}
         register={register}
         handleSubmit={handleSubmit}
         errors={errors}
@@ -64,8 +60,8 @@ export const LoginPage = () => {
         isRegister={false}
         isSubmitting={isSubmitting}
         linkPath="/register"
-        linkText="Don't have an account?"
-        buttonText="Login"
+        linkText={t('form.noAccount')}
+        buttonText={t('form.loginBtn')}
         onGoogleClick={handleGoogleLogin}
       />
     </section>

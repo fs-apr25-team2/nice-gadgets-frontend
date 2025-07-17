@@ -1,12 +1,14 @@
+/* eslint-disable react/prop-types */
 import { useAuth } from '../../context/useAuth';
+import { useTranslation } from 'react-i18next';
 import './UserSidebar.scss';
 
 type Props = {
   onClose: () => void;
 };
 
-// eslint-disable-next-line react/prop-types
 export const UserSidebar: React.FC<Props> = ({ onClose }) => {
+  const { t } = useTranslation();
   const { user, logout } = useAuth();
 
   const handleLogout = async () => {
@@ -29,7 +31,9 @@ export const UserSidebar: React.FC<Props> = ({ onClose }) => {
           alt="avatar"
           className="user-sidebar__avatar"
         />
-        <p className="user-sidebar__name">{user?.displayName || 'User'}</p>
+        <p className="user-sidebar__name">
+          {user?.displayName || t('form.label.name')}
+        </p>
         <p className="user-sidebar__email">{user?.email}</p>
       </div>
 
@@ -39,13 +43,13 @@ export const UserSidebar: React.FC<Props> = ({ onClose }) => {
             key={i}
             className="user-sidebar__nav-item"
           >
-            PRODUCT HISTORY
+            {t('sideBar.purchaseHistory')}
           </button>
         ))}
       </nav>
 
       <div className="user-sidebar__promo">
-        <p className="user-sidebar__promo-label">For your next purchase</p>
+        <p className="user-sidebar__promo-label">{t('sideBar.nextPurchase')}</p>
         <p className="user-sidebar__promo-code">PROMO CODE 12345</p>
       </div>
 
@@ -53,7 +57,7 @@ export const UserSidebar: React.FC<Props> = ({ onClose }) => {
         className="user-sidebar__logout"
         onClick={handleLogout}
       >
-        Log out
+        {t('buttons.actions.logoutBtn')}
       </button>
     </aside>
   );
