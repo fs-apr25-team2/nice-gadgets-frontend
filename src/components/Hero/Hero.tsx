@@ -1,10 +1,16 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
+
 import { ArrowLeftIcon } from '../../ui/icons/ArrowLeftIcon';
 import { ArrowRightIcon } from '../../ui/icons/ArrowRightIcon';
 import './Hero.scss';
@@ -13,28 +19,34 @@ const slides = [
   {
     id: 1,
     alt: 'iPhone 14 Pro',
-    responsive: true,
     desktop: '/img/main-hero-banner-desk.png',
     tablet: '/img/main-hero-banner-tab.png',
     mobile: '/img/main-hero-banner-mob.png',
   },
   {
     id: 2,
-    alt: 'banner-accessories',
-    responsive: false,
-    desktop: '/img/banner-accessories.png',
+    alt: 'Phones',
+    desktop: '/img/banner-slider-2-desktop.png',
+    tablet: '/img/banner-slider-2-tablet.png',
+    mobile: '/img/banner-slider-2-mobile.png',
+    link: '/phones',
   },
   {
     id: 3,
-    alt: 'banner-phones',
-    responsive: false,
-    desktop: '/img/banner-phones.png',
+
+    alt: 'Accessories',
+    desktop: '/img/banner-slider-3-desktop.png',
+    tablet: '/img/banner-slider-3-tablet.png',
+    mobile: '/img/banner-slider-3-mobile.png',
+    link: '/accessories',
   },
   {
     id: 4,
-    alt: 'banner-tablets',
-    responsive: false,
-    desktop: '/img/banner-tablets.png',
+    alt: 'Tablets',
+    desktop: '/img/banner-slider-1-desktop.png',
+    tablet: '/img/banner-slider-1-tablet.png',
+    mobile: '/img/banner-slider-1-mobile.png',
+    link: '/tablets',
   },
 ];
 
@@ -42,74 +54,86 @@ export const Hero: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="hero">
+    <section className="hero">
       <h1 className="hero__title">{t('home.title')}</h1>
 
-      <button
-        className="hero__arrow hero__arrow--prev"
-        id="hero-prev"
-      >
-        <ArrowLeftIcon />
-      </button>
-      <button
-        className="hero__arrow hero__arrow--next"
-        id="hero-next"
-      >
-        <ArrowRightIcon />
-      </button>
+      <div className="hero__slider">
+        <button className="hero__arrow hero__arrow--prev">
+          <ArrowLeftIcon />
+        </button>
 
-      <Swiper
-        modules={[Navigation, Pagination]}
-        navigation={{
-          prevEl: '#hero-prev',
-          nextEl: '#hero-next',
-        }}
-        pagination={{
-          el: '#hero-pagination',
-          clickable: true,
-          renderBullet: (index, className) => {
-            return `<span class="hero__bullet ${className}"></span>`;
-          },
-        }}
-        loop
-        className="hero__swiper"
-      >
-        {slides.map((slide) => (
-          <SwiperSlide key={slide.id}>
-            <div className="hero__slide">
-              {slide.responsive ?
-                <>
-                  <img
-                    className="hero__banner hero__banner--desktop"
-                    src={slide.desktop}
-                    alt={slide.alt}
-                  />
-                  <img
-                    className="hero__banner hero__banner--tablet"
-                    src={slide.tablet}
-                    alt={slide.alt}
-                  />
-                  <img
-                    className="hero__banner hero__banner--mobile"
-                    src={slide.mobile}
-                    alt={slide.alt}
-                  />
-                </>
-              : <img
-                  className="hero__banner"
-                  src={slide.desktop}
-                  alt={slide.alt}
-                />
-              }
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-
+        <div className="hero__sliderContent">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay, EffectFade]}
+            navigation={{
+              prevEl: '.hero__arrow--prev',
+              nextEl: '.hero__arrow--next',
+            }}
+            pagination={{
+              el: '.hero__pagination',
+              clickable: true,
+              renderBullet: (_, className) =>
+                `<span class="hero__bullet ${className}"></span>`,
+            }}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            effect="slide"
+            speed={800}
+            loop
+            className="hero__swiper"
+          >
+            {slides.map((slide) => (
+              <SwiperSlide key={slide.id}>
+                <div className="hero__slide">
+                  {slide.link ?
+                    <Link to={slide.link}>
+                      <picture>
+                        <source
+                          media="(max-width: 575px)"
+                          srcSet={slide.mobile}
+                        />
+                        <source
+                          media="(max-width: 766px)"
+                          srcSet={slide.tablet}
+                        />
+                        <img
+                          className="hero__banner"
+                          src={slide.desktop}
+                          alt={slide.alt}
+                        />
+                      </picture>
+                    </Link>
+                  : <picture>
+                      <source
+                        media="(max-width: 575px)"
+                        srcSet={slide.mobile}
+                      />
+                      <source
+                        media="(max-width: 1023px)"
+                        srcSet={slide.tablet}
+                      />
+                      <img
+                        className="hero__banner"
+                        src={slide.desktop}
+                        alt={slide.alt}
+                      />
+                    </picture>
+                  }
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+        <button className="hero__arrow hero__arrow--next">
+          <ArrowRightIcon />
+        </button>
+      </div>
       <div
         className="hero__pagination"
         id="hero-pagination"
       ></div>
-    </div>
+    </section>
   );
 };

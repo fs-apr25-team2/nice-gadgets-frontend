@@ -1,9 +1,8 @@
-import { Link } from 'react-router';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { ArrowRightIcon } from '../../../ui/icons/ArrowRightIcon';
 import { HomeIcon } from '../../../ui/icons/HomeIcon';
 import cn from 'classnames';
 import './Breadcrumbs.scss';
-import { useParams } from 'react-router';
 import { ProductCategory } from '../../../types/types';
 import { useTranslation } from 'react-i18next';
 
@@ -18,11 +17,20 @@ export const Breadcrumbs = ({
 }: BreadcrumbsProps) => {
   const { t } = useTranslation();
   const { category } = useParams();
+  const location = useLocation();
 
   const safeCategory = category as ProductCategory;
 
+  const staticRoutes: Record<string, string> = {
+    register: t('breadcrumbs.register'),
+    login: t('breadcrumbs.login'),
+  };
+
+  const pathSegment = location.pathname.split('/').filter(Boolean)[0];
+  const staticTitle = staticRoutes[pathSegment];
+
   const categoryTitle =
-    category ? t(`breadcrumbs.${safeCategory}`) : t('breadcrumbs.favourites');
+    category && !staticTitle ? t(`breadcrumbs.${safeCategory}`) : staticTitle;
 
   return (
     <nav
@@ -51,18 +59,14 @@ export const Breadcrumbs = ({
           </Link>
         </span>
       : <>
-          <span className="breadcrumbs__separator">
-            <ArrowRightIcon />
-          </span>
+          <span className="breadcrumbs__separator">{ArrowRightIcon()}</span>
           <span className="breadcrumbs__current">{categoryTitle}</span>
         </>
       }
 
       {productName && (
         <>
-          <span className="breadcrumbs__separator">
-            <ArrowRightIcon />
-          </span>
+          <span className="breadcrumbs__separator">{ArrowRightIcon()}</span>
           <span className="breadcrumbs__current">{productName}</span>
         </>
       )}

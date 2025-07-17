@@ -1,3 +1,9 @@
+export type FormData = {
+  name: string;
+  email: string;
+  password: string;
+};
+
 export enum CatalogCategory {
   phones = 'Mobile phones',
   Tablets = 'Tablets',

@@ -1,0 +1,121 @@
+@use '../../../styles/utils/mixins.scss' as *;
+@use '../../../styles/typography.scss' as *;
+
+.auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 83px;
+
+  &__box {
+    width: 100%;
+    max-width: 420px;
+    border: 1px solid var(--border-color);
+    padding: 32px;
+
+    background-color: var(--main-background-color);
+  }
+
+  &__title {
+    @extend .typography--h3;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  &__label {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    @extend .typography--small;
+    color: var(--main-text-color-secondary);
+  }
+
+  &__input {
+    border-radius: 8px;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    font-family: 'Mont', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 100%;
+    &::placeholder {
+      color: #b3b3b3;
+      font-size: 10px;
+    }
+  }
+
+  &__toggle {
+    position: absolute;
+    right: 11px;
+    bottom: 9px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    background-color: transparent;
+    border: none;
+  }
+
+  &__error {
+    @extend .typography--small;
+    color: var(--red-color);
+  }
+
+  &__text {
+    margin-bottom: 16px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 140%;
+    text-transform: capitalize;
+    text-align: center;
+    color: var(--main-text-color-secondary);
+
+    &--link {
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-skip-ink: none;
+      color: #3c74d5;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: 100%;
+    padding: 10px;
+
+    color: var(--buttons-text-color);
+    font-family: 'Mont', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    background-color: var(--buttons-background-color);
+    transition: box-shadow 0.3s ease;
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
+
+    &--google {
+      margin-bottom: 16px;
+      border: 1px solid var(--main-text-color-primary);
+
+      color: var(--main-text-color-primary);
+      background-color: transparent;
+      img {
+        height: 18px;
+      }
+    }
+  }
+}

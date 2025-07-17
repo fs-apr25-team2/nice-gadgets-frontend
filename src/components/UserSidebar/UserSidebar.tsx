@@ -33,11 +33,27 @@ export const UserSidebar: React.FC<Props> = ({ onClose }) => {
         <p className="user-sidebar__email">{user?.email}</p>
       </div>
 
+      <nav className="user-sidebar__nav">
+        {[...Array(2)].map((_, i) => (
+          <button
+            key={i}
+            className="user-sidebar__nav-item"
+          >
+            PRODUCT HISTORY
+          </button>
+        ))}
+      </nav>
+
+      <div className="user-sidebar__promo">
+        <p className="user-sidebar__promo-label">For your next purchase</p>
+        <p className="user-sidebar__promo-code">PROMO CODE 12345</p>
+      </div>
+
       <button
         className="user-sidebar__logout"
         onClick={handleLogout}
       >
-        Вийти
+        Log out
       </button>
     </aside>
   );
