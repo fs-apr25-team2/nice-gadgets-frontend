@@ -7,7 +7,7 @@ The app provides a smooth shopping experience with features like **home page sli
 
 ## Features
 
-✔ **User Authentication** (Firebase) – Sign up, Login, Logout.
+✔ **User Authentication** (Firebase) – Sign up, Login, Logout  
 ✔ **Home Page** – Sliders for promotions and deals, plus a Shop by Category section  
 ✔ **Catalog** – Browse products by categories with filtering and pagination  
 ✔ **Product Page** – Detailed view with images, descriptions, add to cart and favorites + Suggested products slider
@@ -71,4 +71,4 @@ npm run dev
 ## Deployment
 
 The project is deployed on Netlify:
-👉 [Live Demo](nice-gadgets-frontend.netlify.app/)
+👉 [Live Demo](https://nice-gadgets-frontend.netlify.app/#/)
