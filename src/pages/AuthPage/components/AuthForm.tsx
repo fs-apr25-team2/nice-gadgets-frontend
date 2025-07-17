@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FormData } from '../../../types/types';
 import { GoogleButton } from '../../../ui/icons/GoogleButton';
 import { OpenEye } from '../../../ui/icons/OpenEye';
@@ -38,6 +39,7 @@ export const AuthForm = ({
     formState: { errors },
   } = useForm<FormData>();
 
+  const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -51,20 +53,20 @@ export const AuthForm = ({
         >
           {isRegister && (
             <label className="auth__label">
-              Name
+              {t('form.label.name')}
               <input
                 type="text"
-                placeholder="Enter your name"
+                placeholder={t('form.placeHolder.name')}
                 {...register('name', {
-                  required: 'Name is required',
+                  required: t('form.error.requiredName') as string,
                   minLength: {
                     value: 2,
-                    message: 'Name must be at least 2 characters',
+                    message: t('form.error.requiredNameTwoChars'),
                   },
                   validate: (value) =>
                     typeof value === 'string' && value.trim().length > 0 ?
                       true
-                    : 'Name cannot be empty or spaces only',
+                    : t('form.error.emptyName'),
                 })}
                 className="auth__input"
               />
@@ -75,19 +77,19 @@ export const AuthForm = ({
           )}
 
           <label className="auth__label">
-            Email
+            {t('form.label.email')}
             <input
               type="email"
-              placeholder="Enter your email"
+              placeholder={t('form.placeHolder.email')}
               {...register('email', {
-                required: 'Email is required',
+                required: t('form.error.requiredEmail') as string,
                 pattern: {
                   value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
-                  message: 'Invalid email address',
+                  message: t('form.error.invalidEmailAddress'),
                 },
                 validate: (value) =>
                   value.trim().length > 0 ||
-                  'Email cannot be empty or spaces only',
+                  (t('form.error.emptyEmail') as string),
               })}
               className="auth__input"
             />
@@ -97,18 +99,19 @@ export const AuthForm = ({
           </label>
 
           <label className="auth__label">
-            Password
+            {t('form.label.password', 'Password')}
             <input
               type={showPassword ? 'text' : 'password'}
               placeholder="******"
               {...register('password', {
-                required: 'Password is required',
+                required: t('form.error.requiredPassword') as string,
                 minLength: {
                   value: 6,
-                  message: 'Password must be at least 6 characters',
+                  message: t('form.error.requiredPasswordSixChars'),
                 },
                 validate: (value) =>
-                  value.trim().length > 0 || 'Password cannot be only spaces',
+                  value.trim().length > 0 ||
+                  (t('form.error.emptyPassword') as string),
               })}
               className="auth__input"
             />
@@ -130,19 +133,21 @@ export const AuthForm = ({
             className="auth__button"
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Submitting...' : buttonText}
+            {isSubmitting ? t('form.submitting') : buttonText}
           </button>
         </form>
 
         {onGoogleClick && (
           <>
-            <div className="auth__text">Or Continue With</div>
+            <div className="auth__text">
+              {t('form.orContinue', 'Or Continue With')}
+            </div>
             <button
               className="auth__button auth__button--google"
               onClick={onGoogleClick}
             >
               <GoogleButton />
-              Google Account
+              {t('form.googleButton', 'Google Account')}
             </button>
           </>
         )}
@@ -153,7 +158,7 @@ export const AuthForm = ({
             to={linkPath}
             className="auth__text auth__text--link"
           >
-            {isRegister ? 'Sign In' : 'Sign Up'}
+            {isRegister ? t('form.signInTitle') : t('form.signUpTitle')}
           </Link>
         </p>
       </div>

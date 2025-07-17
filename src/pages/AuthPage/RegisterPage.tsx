@@ -2,6 +2,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { updateProfile } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import {
   register as registerUser,
@@ -14,6 +15,7 @@ import { Breadcrumbs } from '../../ui/components/Breadcrumbs';
 
 export const RegisterPage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const {
     register,
@@ -32,17 +34,15 @@ export const RegisterPage = () => {
         });
       }
 
-      toast.success('Registration successful!');
+      toast.success(t('toast.registerSuccess'));
       navigate('/');
     } catch (err: unknown) {
       const errorMessages: Record<string, string> = {
-        'auth/email-already-in-use':
-          'An account with this email already exists.',
-        'auth/invalid-email': 'Invalid email format.',
-        'auth/weak-password': 'Password must be at least 6 characters.',
-        'auth/unauthorized-domain': 'This domain is not authorized.',
-        'auth/network-request-failed':
-          'Network error. Please check your connection.',
+        'auth/email-already-in-use': t('form.error.emailAlreadyInUse'),
+        'auth/invalid-email': t('form.error.invalidEmail'),
+        'auth/weak-password': t('form.error.weekPassword'),
+        'auth/unauthorized-domain': t('form.error.unauthorized-domain'),
+        'auth/network-request-failed': t('form.error.networkRequestFailed'),
       };
 
       if (
@@ -51,11 +51,13 @@ export const RegisterPage = () => {
         'code' in err &&
         typeof err.code === 'string'
       ) {
-        toast.error(errorMessages[err.code] || 'Registration failed.');
+        toast.error(
+          errorMessages[err.code] || t('form.error.registrationFailed'),
+        );
       } else if (err instanceof Error) {
         toast.error(err.message);
       } else {
-        toast.error('Unknown registration error.');
+        toast.error(t('form.error.unknownRegistration'));
       }
     }
   };
@@ -65,7 +67,7 @@ export const RegisterPage = () => {
       await loginWithGoogle();
       navigate('/');
     } catch {
-      toast.error('Google login failed');
+      toast.error(t('form.error.googleLoginFailed'));
     }
   };
 
@@ -75,7 +77,7 @@ export const RegisterPage = () => {
         <Breadcrumbs />
       </div>
       <AuthForm
-        title="Sign Up"
+        title={t('form.signUpTitle')}
         register={register}
         handleSubmit={handleSubmit}
         errors={errors}
@@ -83,8 +85,8 @@ export const RegisterPage = () => {
         isRegister
         isSubmitting={isSubmitting}
         linkPath="/login"
-        linkText="Already have an account?"
-        buttonText="Sign Up"
+        linkText={t('form.haveAccount')}
+        buttonText={t('form.registerBtn')}
         onGoogleClick={handleGoogle}
       />
     </section>

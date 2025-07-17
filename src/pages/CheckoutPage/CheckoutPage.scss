@@ -64,7 +64,6 @@
     &:focus {
       border-color: var(--buttons-background-color);
       outline: none;
-      // background-color: var(--elements-color);
     }
 
     &::placeholder {
@@ -165,7 +164,13 @@
 
     &--promo {
       color: var(--main-text-color-secondary);
-      background-color: var(--elements-color);
+      background-color: var(--buttons-background-color);
+      transition: 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 3px 13px var(--buttons-shadow-color-hover);
+        background-color: var(--buttons-background-color-hover);
+      }
     }
   }
 
@@ -173,7 +178,7 @@
     margin-top: 20px;
     font-size: 14px;
     font-weight: 500;
-    color: var(--primary-color);
+    color: var(--main-text-color-primary);
 
     p {
       margin: 4px 0;

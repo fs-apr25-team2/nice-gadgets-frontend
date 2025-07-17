@@ -5,6 +5,7 @@ import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { CartProduct } from '../../types/types';
 import { GoBack } from '../../ui/components/GoBack';
 import { useAuth } from '../../context/useAuth';
+import { useTranslation } from 'react-i18next';
 
 import './CheckoutPage.scss';
 
@@ -12,6 +13,7 @@ export const CheckoutPage: React.FC = () => {
   const [cartItems, setCartItems] = useLocalStorage<CartProduct[]>('cart', []);
   const navigate = useNavigate();
   const { user, isAuthenticated } = useAuth();
+  const { t } = useTranslation();
 
   const [submitted, setSubmitted] = useState(false);
 
@@ -49,14 +51,16 @@ export const CheckoutPage: React.FC = () => {
 
     setTimeout(() => {
       navigate('/');
-    }, 3000);
+    }, 5000);
   };
 
   return (
     <div className="checkout-page">
       <GoBack />
       <div className="checkout-page__header">
-        <h1 className="checkout-page__title">Checkout</h1>
+        <h1 className="checkout-page__title">
+          {t('checkout.title', 'Checkout')}
+        </h1>
       </div>
 
       {!submitted ?
@@ -70,7 +74,9 @@ export const CheckoutPage: React.FC = () => {
                 name="name"
                 className="checkout-page__field"
               >
-                <Form.Label className="checkout-page__label">Name</Form.Label>
+                <Form.Label className="checkout-page__label">
+                  {t('checkout.form.name', 'Name')}
+                </Form.Label>
                 <Form.Control asChild>
                   <input
                     className="checkout-page__input"
@@ -80,14 +86,20 @@ export const CheckoutPage: React.FC = () => {
                     onChange={handleChange}
                     required
                     autoComplete="name"
-                    placeholder="Enter your full name"
+                    placeholder={t(
+                      'checkout.form.namePlaceholder',
+                      'Enter your full name',
+                    )}
                   />
                 </Form.Control>
                 <Form.Message
                   match="valueMissing"
                   className="checkout-page__error"
                 >
-                  Please enter your name.
+                  {t(
+                    'checkout.form.errors.nameRequired',
+                    'Please enter your name.',
+                  )}
                 </Form.Message>
               </Form.Field>
 
@@ -95,7 +107,9 @@ export const CheckoutPage: React.FC = () => {
                 name="email"
                 className="checkout-page__field"
               >
-                <Form.Label className="checkout-page__label">Email</Form.Label>
+                <Form.Label className="checkout-page__label">
+                  {t('checkout.form.email', 'Email')}
+                </Form.Label>
                 <Form.Control asChild>
                   <input
                     className="checkout-page__input"
@@ -105,14 +119,20 @@ export const CheckoutPage: React.FC = () => {
                     onChange={handleChange}
                     required
                     autoComplete="email"
-                    placeholder="Enter your email"
+                    placeholder={t(
+                      'checkout.form.emailPlaceholder',
+                      'Enter your email',
+                    )}
                   />
                 </Form.Control>
                 <Form.Message
                   match="valueMissing"
                   className="checkout-page__error"
                 >
-                  Please enter your email.
+                  {t(
+                    'checkout.form.errors.emailRequired',
+                    'Please enter your email.',
+                  )}
                 </Form.Message>
               </Form.Field>
 
@@ -121,7 +141,7 @@ export const CheckoutPage: React.FC = () => {
                 className="checkout-page__field"
               >
                 <Form.Label className="checkout-page__label">
-                  Phone Number
+                  {t('checkout.form.phone', 'Phone Number')}
                 </Form.Label>
                 <Form.Control asChild>
                   <input
@@ -132,14 +152,20 @@ export const CheckoutPage: React.FC = () => {
                     onChange={handleChange}
                     required
                     autoComplete="tel"
-                    placeholder="Enter your phone number"
+                    placeholder={t(
+                      'checkout.form.phonePlaceholder',
+                      'Enter your phone number',
+                    )}
                   />
                 </Form.Control>
                 <Form.Message
                   match="valueMissing"
                   className="checkout-page__error"
                 >
-                  Please enter your phone number.
+                  {t(
+                    'checkout.form.errors.phoneRequired',
+                    'Please enter your phone number.',
+                  )}
                 </Form.Message>
               </Form.Field>
 
@@ -148,7 +174,7 @@ export const CheckoutPage: React.FC = () => {
                 className="checkout-page__field"
               >
                 <Form.Label className="checkout-page__label">
-                  Address
+                  {t('checkout.form.address', 'Address')}
                 </Form.Label>
                 <Form.Control asChild>
                   <input
@@ -159,14 +185,20 @@ export const CheckoutPage: React.FC = () => {
                     onChange={handleChange}
                     required
                     autoComplete="street-address"
-                    placeholder="Enter your delivery address"
+                    placeholder={t(
+                      'checkout.form.addressPlaceholder',
+                      'Enter your delivery address',
+                    )}
                   />
                 </Form.Control>
                 <Form.Message
                   match="valueMissing"
                   className="checkout-page__error"
                 >
-                  Please enter your address.
+                  {t(
+                    'checkout.form.errors.addressRequired',
+                    'Please enter your address.',
+                  )}
                 </Form.Message>
               </Form.Field>
             </Form.Root>
@@ -174,7 +206,7 @@ export const CheckoutPage: React.FC = () => {
 
           {cartItems.length > 0 && (
             <div className="checkout-page__summary">
-              <h3>Order Summary</h3>
+              <h3>{t('checkout.summary.title', 'Order Summary')}</h3>
               <ul className="checkout-page__product-list">
                 {cartItems.map((item) => (
                   <li
@@ -202,8 +234,10 @@ export const CheckoutPage: React.FC = () => {
 
               {isAuthenticated ?
                 <div className="checkout-page__discount-banner checkout-page__discount-banner--auth">
-                  You’re logged in! A 10% discount has been applied to your
-                  total.
+                  {t(
+                    'checkout.discount.loggedIn',
+                    'You’re logged in! A 10% discount has been applied to your total.',
+                  )}
                 </div>
               : <div
                   className="checkout-page__discount-banner checkout-page__discount-banner--promo"
@@ -216,18 +250,34 @@ export const CheckoutPage: React.FC = () => {
                     }
                   }}
                   style={{ cursor: 'pointer' }}
+                  aria-label={t(
+                    'checkout.discount.loginAria',
+                    'Log in to get 10% off your order',
+                  )}
                 >
-                  Log in to get 10% off your order!
+                  {t(
+                    'checkout.discount.login',
+                    'Log in to get 10% off your order!',
+                  )}
                 </div>
               }
 
               <div className="checkout-page__totals">
-                {isAuthenticated && <p>Subtotal: ${subtotal.toFixed(2)}</p>}
                 {isAuthenticated && (
-                  <p>Discount: -${discountAmount.toFixed(2)}</p>
+                  <p>
+                    {t('checkout.totals.subtotal', 'Subtotal')}: $
+                    {subtotal.toFixed(2)}
+                  </p>
+                )}
+                {isAuthenticated && (
+                  <p>
+                    {t('checkout.totals.discount', 'Discount')}: -$
+                    {discountAmount.toFixed(2)}
+                  </p>
                 )}
                 <p className="checkout-page__totals-final">
-                  Total: ${totalPrice.toFixed(2)}
+                  {t('checkout.totals.total', 'Total')}: $
+                  {totalPrice.toFixed(2)}
                 </p>
               </div>
             </div>
@@ -238,12 +288,19 @@ export const CheckoutPage: React.FC = () => {
             className="checkout-page__confirm"
             onClick={handleButtonClick}
           >
-            Confirm Purchase
+            {t('checkout.button.confirmPurchase', 'Confirm Purchase')}
           </button>
         </div>
       : <div className="checkout-page__success">
-          <h2>🎉 Thank you for your purchase!</h2>
-          <p>You will be redirected shortly...</p>
+          <h2>
+            🎉 {t('checkout.success.thankYou', 'Thank you for your purchase!')}
+          </h2>
+          <p>
+            {t(
+              'checkout.success.redirect',
+              'You will be redirected shortly...',
+            )}
+          </p>
         </div>
       }
     </div>
