@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ProductSlider } from '../../components/ProductSlider';
@@ -9,9 +10,11 @@ import { useProductStorage } from '../../hooks/useProductStorage';
 
 import './HomePage.scss';
 import { Loader } from '../../components/Loader';
+import { useLoader } from '../../context/loader/useLoader';
 
 export const HomePage: React.FC = () => {
   const { t } = useTranslation();
+  const { isFirstVisit, setIsFirstVisit } = useLoader();
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -30,9 +33,14 @@ export const HomePage: React.FC = () => {
     getProducts()
       .then(setProducts)
       .finally(() => {
-        setTimeout(() => {
+        if (isFirstVisit) {
+          setIsFirstVisit(false);
+          setTimeout(() => {
+            setIsLoading(false);
+          }, 3000);
+        } else {
           setIsLoading(false);
-        }, 6000);
+        }
       });
   }, []);
 
