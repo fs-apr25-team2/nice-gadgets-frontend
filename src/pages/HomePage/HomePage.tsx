@@ -10,7 +10,7 @@ import { useProductStorage } from '../../hooks/useProductStorage';
 
 import './HomePage.scss';
 import { Loader } from '../../components/Loader';
-import { useLoader } from '../../context/loader/useLoader';
+import { useLoader } from '../../context/useLoader';
 
 export const HomePage: React.FC = () => {
   const { t } = useTranslation();

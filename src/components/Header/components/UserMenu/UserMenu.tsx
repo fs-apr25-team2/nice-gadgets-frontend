@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GuestIcon } from '../../../../ui/icons/GuestIcon';
 import { UserIcon } from '../../../../ui/icons/UserIcon';
-import { useAuth } from '../../../../context/auth/useAuth';
+import { useAuth } from '../../../../context/useAuth';
 import { UserSidebar } from '../../../UserSidebar';
 
 import './UserMenu.scss';

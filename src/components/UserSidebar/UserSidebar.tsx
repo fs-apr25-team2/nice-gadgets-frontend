@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import { useAuth } from '../../context/auth/useAuth';
+import { useAuth } from '../../context/useAuth';
 import './UserSidebar.scss';
 
 type Props = {

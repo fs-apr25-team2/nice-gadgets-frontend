@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { CartProduct } from '../../types/types';
 import { GoBack } from '../../ui/components/GoBack';
-import { useAuth } from '../../context/auth/useAuth';
+import { useAuth } from '../../context/useAuth';
 import { useTranslation } from 'react-i18next';
 
 import './CheckoutPage.scss';

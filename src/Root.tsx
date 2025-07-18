@@ -1,6 +1,6 @@
 import React from 'react';
-import { AuthProvider } from './context/auth/AuthProvider';
-import { LoaderProvider } from './context/loader/LoaderProvider';
+import { AuthProvider } from './context/AuthProvider';
+import { LoaderProvider } from './context/LoaderPrivider';
 import { HashRouter, Routes, Route, Navigate } from 'react-router';
 import { AppLayout } from './pages/AppLayout';
 import { HomePage } from './pages/HomePage/HomePage';
