@@ -243,7 +243,8 @@
   },
   "sideBar": {
     "nextPurchase": "For your next purchase",
-    "purchaseHistory": "Purchase history"
+    "purchaseHistory": "Purchase history",
+    "featureInDevelopment": "This feature is currently under development"
   },
   "rights": {
     "title": "Welcome to Nice Gadgets!",

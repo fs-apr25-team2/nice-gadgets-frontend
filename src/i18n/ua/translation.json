@@ -251,7 +251,8 @@
   },
   "sideBar": {
     "nextPurchase": "Для вашої наступної покупки",
-    "purchaseHistory": "Історія покупок"
+    "purchaseHistory": "Історія покупок",
+    "featureInDevelopment": "Ця функція наразі в розробці"
   },
   "rights": {
     "title": "Ласкаво просимо до Nice Gadgets!",

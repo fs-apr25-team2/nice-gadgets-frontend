@@ -8,10 +8,13 @@ import { Product } from '../../types/types';
 import { useProductStorage } from '../../hooks/useProductStorage';
 
 import './HomePage.scss';
+import { Loader } from '../../components/Loader';
 
 export const HomePage: React.FC = () => {
   const { t } = useTranslation();
   const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   const {
     isInCart,
     isAddedToFavourites,
@@ -22,7 +25,15 @@ export const HomePage: React.FC = () => {
   } = useProductStorage();
 
   useEffect(() => {
-    getProducts().then(setProducts);
+    setIsLoading(true);
+
+    getProducts()
+      .then(setProducts)
+      .finally(() => {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 6000);
+      });
   }, []);
 
   const brandNewProducts = products
@@ -41,6 +52,10 @@ export const HomePage: React.FC = () => {
       return secondDiscount - firstDiscount;
     })
     .slice(0, 12);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>
