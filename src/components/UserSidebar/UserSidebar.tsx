@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
-import { useAuth } from '../../context/useAuth';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
+import { useAuth } from '../../context/useAuth';
 import './UserSidebar.scss';
 
 type Props = {
@@ -14,6 +15,10 @@ export const UserSidebar: React.FC<Props> = ({ onClose }) => {
   const handleLogout = async () => {
     await logout();
     onClose();
+  };
+
+  const handleFeatureClick = () => {
+    toast.info(t('sideBar.featureInDevelopment'));
   };
 
   return (
@@ -38,14 +43,12 @@ export const UserSidebar: React.FC<Props> = ({ onClose }) => {
       </div>
 
       <nav className="user-sidebar__nav">
-        {[...Array(2)].map((_, i) => (
-          <button
-            key={i}
-            className="user-sidebar__nav-item"
-          >
-            {t('sideBar.purchaseHistory')}
-          </button>
-        ))}
+        <button
+          className="user-sidebar__nav-item"
+          onClick={handleFeatureClick}
+        >
+          {t('sideBar.purchaseHistory')}
+        </button>
       </nav>
 
       <div className="user-sidebar__promo">

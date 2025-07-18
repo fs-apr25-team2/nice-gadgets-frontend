@@ -37,7 +37,7 @@
     "name": "Yana Lunina",
     "position": "Component & UI Logic Engineer",
     "photo": "/img/team/yana-lunina.jpg",
-    "description": "Yana Developed a reusable product card component with full UI/UX logic. Created a universal product slider component using Swiper.js. Implemented the full structure and layout of the Home Page. Connected and configured catalog page logic: Implemented pagination with custom-designed buttons.- Added product sorting and filtering logic. Ensured compatibility with dynamic routes and product categories.",
+    "description": "Yana developed a reusable product card component with complete UI/UX logic, built a universal product slider using Swiper.js, and implemented the main page layout and catalog logic including custom pagination, sorting, filtering, and dynamic route support. User authentication was also implemented via Firebase.",
     "github": "https://github.com/Ynln69",
     "linkedin": "https://www.linkedin.com/in/yana-lunina/",
     "telegram": "https://t.me/ynln69",

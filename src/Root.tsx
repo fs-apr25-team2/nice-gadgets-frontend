@@ -1,5 +1,6 @@
 import React from 'react';
 import { AuthProvider } from './context/AuthProvider';
+import { LoaderProvider } from './context/LoaderPrivider';
 import { HashRouter, Routes, Route, Navigate } from 'react-router';
 import { AppLayout } from './pages/AppLayout';
 import { HomePage } from './pages/HomePage/HomePage';
@@ -24,76 +25,78 @@ export const Root: React.FC = () => {
 
   return (
     <AuthProvider>
-      <HashRouter>
-        <Routes>
-          <Route element={<AppLayout />}>
-            <Route
-              index
-              element={<HomePage />}
-            />
-            <Route path=":category">
+      <LoaderProvider>
+        <HashRouter>
+          <Routes>
+            <Route element={<AppLayout />}>
               <Route
                 index
-                element={<CatalogPage />}
+                element={<HomePage />}
+              />
+              <Route path=":category">
+                <Route
+                  index
+                  element={<CatalogPage />}
+                />
+                <Route
+                  path=":productId"
+                  element={<ProductPage />}
+                />
+              </Route>
+              <Route
+                path="/cart"
+                element={<CartPage />}
               />
               <Route
-                path=":productId"
-                element={<ProductPage />}
+                path="/checkout"
+                element={<CheckoutPage />}
+              />
+              <Route
+                path="/favourites"
+                element={<FavouritesPage />}
+              />
+              <Route
+                path="/contacts"
+                element={<ContactsPage />}
+              />
+              <Route
+                path="/rights"
+                element={<RightsPage />}
+              />
+              <Route
+                path="/login"
+                element={<LoginPage />}
+              />
+              <Route
+                path="/register"
+                element={<RegisterPage />}
+              />
+              <Route
+                path="/not-found"
+                element={<NotFoundPage />}
+              />
+              <Route
+                path="*"
+                element={<Navigate to="/not-found" />}
               />
             </Route>
-            <Route
-              path="/cart"
-              element={<CartPage />}
-            />
-            <Route
-              path="/checkout"
-              element={<CheckoutPage />}
-            />
-            <Route
-              path="/favourites"
-              element={<FavouritesPage />}
-            />
-            <Route
-              path="/contacts"
-              element={<ContactsPage />}
-            />
-            <Route
-              path="/rights"
-              element={<RightsPage />}
-            />
-            <Route
-              path="/login"
-              element={<LoginPage />}
-            />
-            <Route
-              path="/register"
-              element={<RegisterPage />}
-            />
-            <Route
-              path="/not-found"
-              element={<NotFoundPage />}
-            />
-            <Route
-              path="*"
-              element={<Navigate to="/not-found" />}
-            />
-          </Route>
-        </Routes>
-        <ToastContainer
-          position="bottom-right"
-          autoClose={2000}
-          limit={5}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick={false}
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme={theme}
-          transition={Bounce}
-        />
-      </HashRouter>
+          </Routes>
+          <ToastContainer
+            position="bottom-right"
+            autoClose={2000}
+            limit={5}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme={theme}
+            transition={Bounce}
+          />
+        </HashRouter>
+      </LoaderProvider>
     </AuthProvider>
   );
 };

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ProductSlider } from '../../components/ProductSlider';
@@ -8,10 +9,15 @@ import { Product } from '../../types/types';
 import { useProductStorage } from '../../hooks/useProductStorage';
 
 import './HomePage.scss';
+import { Loader } from '../../components/Loader';
+import { useLoader } from '../../context/useLoader';
 
 export const HomePage: React.FC = () => {
   const { t } = useTranslation();
+  const { isFirstVisit, setIsFirstVisit } = useLoader();
   const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   const {
     isInCart,
     isAddedToFavourites,
@@ -22,7 +28,20 @@ export const HomePage: React.FC = () => {
   } = useProductStorage();
 
   useEffect(() => {
-    getProducts().then(setProducts);
+    setIsLoading(true);
+
+    getProducts()
+      .then(setProducts)
+      .finally(() => {
+        if (isFirstVisit) {
+          setIsFirstVisit(false);
+          setTimeout(() => {
+            setIsLoading(false);
+          }, 3000);
+        } else {
+          setIsLoading(false);
+        }
+      });
   }, []);
 
   const brandNewProducts = products
@@ -41,6 +60,10 @@ export const HomePage: React.FC = () => {
       return secondDiscount - firstDiscount;
     })
     .slice(0, 12);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>
